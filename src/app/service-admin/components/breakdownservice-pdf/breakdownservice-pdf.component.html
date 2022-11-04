@@ -1,0 +1,170 @@
+<section class="pb-4">
+    <div class="page-header">
+        <div>
+            <h2 class="main-content-title tx-24 mb-1"></h2>
+            <!-- <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">App User Management</li>
+                </ol> -->
+        </div>
+        <div class="col-md-6 text-right">
+            <button type="button" class="btn btn-primary" (click)="printComponent('component1')"><i class="fas fa-download"></i>
+                Download</button>
+        </div>
+
+    </div>
+    <div class="container" id="component1">
+    <div class="row bg" class="border border-secondary pd-4" style="background: white;color: black;">
+        <div class="col"></div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 center font-weight-normal ">
+                <h2 class="main-content-title tx-24 mb-1">JOHNSON LIFTS PRIVATE LIMITED</h2>
+                <p>{{branch_name}}</p>
+                <!-- <p> ORISSA 751015 PH- 0674-2554638, 3270085,2354238</p> -->
+            </div>
+            <div class="col-4 sic"><img src="../../../../assets/images/logo.PNG" alt=""  style="width: 50%;"></div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8 ">
+                <h2 class="main-content-title tx-24 mb-1 pd">SERVICE REPORT</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-4">
+                <h2 class="main-content-title tx-24 mb-1 border border-primary center bg1">BREAKDOWN SERVICE DETAILS
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pl-5 pr-5">
+                <div class="row  border border-secondary ">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h2 class="main-content-title tx-24 mb-1 pt-1">JOB NO<span class="fl">: {{job_no}}</span></h2>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Customer Name<span class="fl">: {{customer_name}}</span></p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Location/Address<span class="fl">: {{location}}</span></p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Date<span class="fl">: {{date | date}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Nature Of Contract<span
+                                                class="fl">:{{nature_of_contract}}</span>
+                                        </p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Breakdown No<span
+                                                class="fl">:{{breakdown_no}}</span>
+                                        </p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Technician Name<span
+                                                class="fl">:{{tech_name}}</span></p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Employment No<span
+                                                class="fl">:{{employee_no}}</span>
+                                        </p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Time reported<span
+                                                class="fl">:{{time_reported |  date:'medium'}}</span>
+                                        </p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Time Left<span class="fl">:{{time_left |  date:'medium'}}</span>
+                                        </p>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 p-4">
+                <h2 class="main-content-title tx-24 mb-1 border border-primary center bg1">NATURE OF WORK
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pl-5 pr-5">
+                <div class="row  border border-secondary ">
+                    <div class="col-12">
+                        <h2 class="main-content-title tx-24 mb-1 pt-1">BREAKDOWN SERVICE</h2>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Type of Breakdown<span
+                                                class="fl">: {{type_of_bd}}</span></p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Breakdown Status<span
+                                                class="fl">: {{bd_status}}</span></p>
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Areas of Breakdown<span
+                                                class="fl">: {{areas_of_bd}}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 p-4">
+                <h2 class="main-content-title tx-24 mb-1 border border-primary center bg1">FEEDBACK REMARKS
+                </h2>
+            </div>
+            <div class="col-6 p-4">
+                <h2 class="main-content-title tx-24 mb-1 border border-primary center bg1">SIGNATURE
+                </h2>
+            </div>
+        </div>
+        <div class="row pb-3">
+            <div class="col-6 pl-5 pr-5">
+                <div class="row  border border-secondary ">
+                    <div class="col-12 ht">
+                        <h2 class="main-content-title tx-24 mb-1 pt-1">REMARKS</h2>
+                        <div class="row">
+                           <p>{{remarks}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pl-5 pr-5">
+                <div class="row border border-secondary ">
+                    <div class="col-12 ht">
+                        <h2 class="main-content-title tx-24 mb-1 pt-1">SIGNATURE</h2>
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="{{tech_signature}}" alt="" style="width: 50%;"
+                                    >
+                                <p class="main-content-title tx-20 mb-1 pt-1">Technician Signature</p>
+                                <p class="main-content-title tx-20 mb-1 pt-1">Date : {{signature_date}}</p>
+                            </div>
+                            <div class="col-6">
+                                <img src="{{customer_signature}}" alt="" style="width: 50%;"
+                                    >
+                                <p class="main-content-title tx-20 mb-1 pt-1">Customer Signature</p>
+                                <p class="main-content-title tx-20 mb-1 pt-1">Date : {{signature_date}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-2"></div>
+            <div class="col-8 center font-weight-normal ">
+                <p>CAUTION : IF DOOR OPEN KEY IS USED,ENSURE THAT DOOR IS FULLY CLOSED.</p>
+                <p pt-2> Regd. Office : No.1, East Main Road, Anna Nagar West Extension, Chennai - 600 101.</p>
+                <p>WEBSITE: www.Johnsonliftsltd.com,PH:261520003/4/5/6</p>
+            </div>
+            <div class="col-2 "></div>
+        </div>
+    </div>
+   </div>
+
+</section>

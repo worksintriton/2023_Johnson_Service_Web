@@ -1,0 +1,34 @@
+@import "../../../../../assets/css/style.css";
+.icon{
+    position: absolute;
+    padding: 3px 0px 0px 4px;
+    /* bottom: 0px; */
+    margin-top: 9px;
+}
+:host::ng-deep .btn{
+    font-size:1rem !important;
+    padding: 0px !important
+}
+:host::ng-deep .ui-calendar {
+   /* width: 100%!important  */
+   display: flex;
+
+}
+:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+
+    width: 100% !important;
+}
+:host::ng-deep  .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label  {
+    padding-right: 0em !important;
+    border: none;
+}
+.required:after { content:" *";
+color: red; }
+.is-invalid~.invalid-feedback {
+    display: block !important;
+}
+.invalid-feedback {
+    
+    margin-top: -0.75rem !important;
+  
+}

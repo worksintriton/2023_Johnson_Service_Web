@@ -1,0 +1,232 @@
+
+<section>
+  <div class="page-header">
+      <div>
+          <h2 class="main-content-title tx-24 mb-1">Data entry Details</h2>
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"> Details</li>
+          </ol>
+      </div>
+
+
+  </div>
+
+
+
+  <div class="page-header">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <ng-container *ngFor="let item of grouplist">
+
+        <ng-container *ngFor="let items of activity_list" >
+          <button *ngIf="items._id == item.group_id" type="button" class="btn btn-primary mt-4" (click)="fetch_detail(item._id,items.SMU_UKEY_DESCRIPTION,items.SMU_FORMTYPE)">{{items.SMU_UKEY_DESCRIPTION}}</button>
+          <!-- <p >{{items.SMU_UKEY_DESCRIPTION}}</p> -->
+        </ng-container>
+
+
+      </ng-container>
+
+
+    <!-- <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61ea7e56dcee8502969e6bf0','Pending Builder work')">Pending Builder work</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93805f5b6e53ca97b79ed','Enquiry Spec Vertification & Approval by Branch')"> Enquiry Spec Vertification & Approval by Branch</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93816f5b6e53ca97b79f3','Installation Clearance Entry')"> Installation Clearance Entry</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93828f5b6e53ca97b79f9','Erection-First Stage')"> Erection-First Stage</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93834f5b6e53ca97b79ff','Safety Audit - Erection')"> Safety Audit - Erection</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e9383ef5b6e53ca97b7a05','Erection – Second Stage')"> Erection – Second Stage</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93849f5b6e53ca97b7a0b','Erection – Third Stage')"> Erection – Third Stage</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93852f5b6e53ca97b7a11','Testing Clearance Entry')"> Testing Clearance Entry</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e9385bf5b6e53ca97b7a17','Safety Audit - Testing')"> Safety Audit - Testing</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93940f5b6e53ca97b7a21','PLUMB CHART READING')"> PLUMB CHART READING</button>
+    <button type="button" class="btn btn-primary mt-4" (click)="fetch_detail('61e93957f5b6e53ca97b7a27','Plan of Lift Wall')"> Plan of Lift Wall</button> -->
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+  <div class="row row-sm">
+    <div class="col-lg-12">
+    <button style="float:right" type="button" class="btn btn-primary mt-4" (click)="refresh()">Refresh</button>
+    </div>
+      <div class="col-lg-12">
+
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+              <table style="width:100%" *ngIf="table_value == '1'">
+                <tr>
+                  <th class="th-1">
+                    S.No
+                </th>
+                <th>
+                  Activity Name
+      (without special charaters)
+                </th>
+                <th>
+                  Page Title
+                </th>
+                <th>
+                  Check List Description
+               </th>
+               <th>
+                Value
+               </th>
+                </tr>
+                <ng-container *ngFor="let item of rows; let i = index">
+                  <tr>
+                    <td>{{i+1}}</td>
+                    <td *ngIf="i == 0" [attr.rowspan]="count_value">{{title}}</td>
+                    <td>{{item.field_name}}</td>
+                    <td>{{item.field_comments}}</td>
+                    <td *ngIf="item.field_type == 'File upload'" ><img style="width: 25%;" src="{{item.field_value}}"></td>
+                    <td *ngIf="item.field_type == 'Lift'">
+                      <table style="width:100%">
+                        <tr>
+                          <th>Lift</th>
+                          <th>Value</th>
+                        </tr>
+                        <ng-container *ngFor="let items  of item.lift_list">
+                          <tr>
+                            <td>{{items.title}}</td>
+                            <td>{{items.left}}</td>
+                          </tr>
+                       </ng-container>
+                      </table>
+                    </td>
+                    <!-- <td  *ngIf="item.field_type == 'File upload'">{{item.field_value}}</td> -->
+                    <td  *ngIf="item.field_type !== 'File upload' && item.field_type !== 'File upload' && item.field_type !== 'Lift'">{{item.field_value}}</td>
+                    <!-- <td  *ngIf="item.field_type !== 'File upload' && item.field_type !== 'File upload' &&  item.field_type !== 'LIFT'">{{item.field_value}}</td> -->
+                  </tr>
+                </ng-container>
+              </table>
+
+
+
+              <table style="width:100%" *ngIf="table_value == '3'">
+                <tr>
+                  <th class="th-1">
+                    No of bracket (from top)
+                </th>
+                <th>
+                  dimx one
+                </th>
+                <th>
+                  dimx two
+                </th>
+                <th>
+                  dimx three
+               </th>
+               <th>
+                dimx four
+               </th>
+
+               <th>
+                dimy one
+               </th>
+               <th>
+                dimy two
+               </th>
+               <th>
+                remarks
+               </th>
+                </tr>
+                <ng-container *ngFor="let item of rows; let i = index">
+                  <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{item.dimx_one}}</td>
+                    <td>{{item.dimx_two}}</td>
+                    <td>{{item.dimx_three}}</td>
+                    <td>{{item.dimx_four}}</td>
+                    <td>{{item.dimy_one}}</td>
+                    <td>{{item.dimy_two}}</td>
+                    <td>{{item.remarks}}</td>
+                  </tr>
+                </ng-container>
+              </table>
+
+
+              <table style="width:100%" *ngIf="table_value == '2'">
+                <tr>
+                  <th class="th-1">
+                    S.No
+                </th>
+                <th>
+                  title
+                </th>
+                <th>
+                  A
+                </th>
+                <th>
+                 B
+               </th>
+                </tr>
+                <ng-container *ngFor="let item of rows; let i = index">
+                  <tr>
+                    <td>{{i+1}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.value_a}}</td>
+                    <td>{{item.value_b}}</td>
+                  </tr>
+                </ng-container>
+              </table>
+
+
+              <table style="width:100%" *ngIf="table_value == '5'">
+                <tr>
+               <th class="th-1">
+                    S.No
+                </th>
+                <th>
+                  Part Number
+                </th>
+                <th>
+                  Material Desc
+                </th>
+                <th>
+                  Quantity
+               </th>
+               <th>
+                Accept Qty
+             </th>
+               <th>
+                Damage Qty
+               </th>
+               <th>
+                Excess Qty
+               </th>
+               <th>
+                short Qty
+               </th>
+                </tr>
+                <ng-container *ngFor="let item of rows; let i = index">
+                  <tr *ngIf="item.part_no !== 'remarks'">
+                    <td>{{i+1}}</td>
+                    <td>{{item.part_no}}</td>
+                    <td>{{item.material_desc}}</td>
+                    <td>{{item.desc_qty}}</td>
+                    <td>{{item.accepts}}</td>
+                    <td>{{item.demage}}</td>
+                    <td>{{item.excess}}</td>
+                    <td>{{item.shortage}}</td>
+                  </tr>
+                  <tr *ngIf="item.part_no == 'remarks'">
+                    <td>Remarks</td>
+                    <td colspan="7" style="text-align: center;">{{item.material_desc}}</td>
+                  </tr>
+                </ng-container>
+              </table>
+
+
+
+
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+</section>

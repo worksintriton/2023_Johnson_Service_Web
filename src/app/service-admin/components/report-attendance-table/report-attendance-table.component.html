@@ -1,0 +1,116 @@
+<div class="modal-header" style="position: relative;
+bottom: 21px;">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px !important; "> Reports For Agent Attendance</h5>
+        <button type="button" class="close"  mat-dialog-close aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="search-hero">
+            <div class="input-group mb-3">
+               <!-- <div class="input-group-prepend">
+                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+               </div> -->
+               <!-- <input class="form-control" type="text" name="search2"
+           [(ngModel)]="searchQR" autocomplete="off" placeholder="Search..."> -->
+             <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
+<p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
+             </div>
+          </div>
+    </div>
+    <div class="col-md-6 text-right">
+        <button type="button" class="btn btn-secondary" (click)="tt.filter($event.target.value, 'user_mobile_no', '');tt.filter($event.target.value, 'user_name', '');
+        tt.filter($event.target.value, 'att_start_time', '');tt.filter($event.target.value, 'att_end_time', '');
+    tt.filter($event.target.value, 'att_no_of_hrs', '');tt.filter($event.target.value, 'att_status', '');tt.filter($event.target.value, 'att_reason', ''); refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+    </div>
+  
+</div>
+<div class="table-responsive">
+    <p-table id="demo11" [value]="rows " styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+[rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true" 
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+<ng-template pTemplate="header"   >
+<tr class="thhead" >
+<th *ngFor="let item of header" [pSortableColumn]="item" style="width:150px" >
+{{item}}<p-sortIcon [field]="item"></p-sortIcon> 
+ 
+</th >
+
+
+
+<!-- <th style="width: 163px;text-align:center">
+Action
+</th> -->
+</tr>
+<tr   >
+<th *ngFor="let item of header" >
+   
+<!-- <input *ngIf="item == 'LoginId'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'LoginId', 'contains');" class="filtro"> -->
+
+<!-- <input *ngIf="item == 'AgentId'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'AgentId', 'contains');" class="filtro"> -->
+<input *ngIf="item == 'Phone Number'" id="search" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'user_mobile_no', 'contains');" class="filtro">
+
+<input *ngIf="item == 'Agent Name'" id="search1" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'user_name', 'contains');" class="filtro">
+<input *ngIf="item == 'Login Time'" id="search2" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'att_start_time', 'contains');" class="filtro">
+
+<input *ngIf="item == 'Logout Time'" id="search3" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'att_end_time', 'contains');" class="filtro">
+
+<input *ngIf="item == 'Working Time'" id="search4" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'att_no_of_hrs', 'contains');" class="filtro">
+
+
+<!-- <input *ngIf="item == 'JobCount'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'jobcount', 'contains');" class="filtro"> -->
+
+
+<input *ngIf="item == 'Status'"  id="search5" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'att_status', 'contains');" class="filtro">
+
+
+<input *ngIf="item == 'Logout Reason'" id="search6" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'att_reason', 'contains');" class="filtro">
+
+
+
+</th>
+
+</tr>
+</ng-template>
+
+                            <ng-template pTemplate="body" let-item  let-i="rowIndex">
+<tr class="tdrow">
+<td *ngFor="let e of header">
+
+<!-- <span *ngIf="e == 'LoginId'"  ><span >{{item.LoginId}}</span>&nbsp;&nbsp;</span>
+<span *ngIf="e == 'AgentId'" >{{item.AgentId}}</span> -->
+<span *ngIf="e == 'Phone Number'" >{{item.user_mobile_no}}</span> 
+<span style="color:blue" *ngIf="e == 'Agent Name'" (click)="click(item)">{{item.user_name}}</span>
+<span *ngIf="e == 'Login Time'"> {{item.att_start_time}}</span>
+<span  *ngIf="e == 'Logout Time'">{{item.att_end_time}}</span>
+<span *ngIf="e == 'Working Time'">{{item.att_no_of_hrs}}</span>
+<!-- <span *ngIf="e == 'JobCount'">{{item.jobcount}}</span> -->
+<span *ngIf="e == 'Status'">{{item.att_status}}</span>
+<span *ngIf="e == 'Logout Reason'">{{item.att_reason}}</span>
+
+</td>
+<!-- att_date: "07-07-2022"
+att_end_lat: "12.983191666666668"
+att_end_long: "80.223475"
+
+att_no_of_hrs: "0.0"
+
+att_start_lat: "12.983191666666668"
+att_start_long: "80.223475"
+
+
+user_mobile_no: "98765432101"
+ -->
+
+
+
+<!-- <td class="act">
+<i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+<i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+<!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> 
+</td> -->
+</tr>
+</ng-template>
+</p-table>
+</div>

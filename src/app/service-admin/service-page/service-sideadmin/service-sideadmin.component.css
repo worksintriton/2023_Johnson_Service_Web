@@ -1,0 +1,10 @@
+@import "../../../../assets/css/style.css";
+:host::ng-deep .btn-primary {
+    color: #fff;
+    background-color: #213e99 !important;
+    border-color: #213e99 !important;
+    height: 40px !important;
+    min-width: 80px;
+    font-size: 15px !important;
+    margin-right: 10px;
+}

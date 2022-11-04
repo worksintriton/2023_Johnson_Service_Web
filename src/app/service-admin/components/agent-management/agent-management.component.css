@@ -1,0 +1,9 @@
+@import "../../../../assets/css/style.css";
+:host::ng-deep .ui-inputtext {
+ 
+    padding: 5px !important;
+margin-bottom: 0px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

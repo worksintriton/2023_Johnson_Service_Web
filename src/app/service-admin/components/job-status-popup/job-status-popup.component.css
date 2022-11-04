@@ -1,0 +1,10 @@
+td{
+    padding: 0.571em 0.857em;
+    border: 1px solid #e8e8f7 !important;
+
+}
+.close:focus {
+  
+    border: 0px solid !important;
+  
+}

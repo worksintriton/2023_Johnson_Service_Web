@@ -1,0 +1,558 @@
+/* New Johnson CSS */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 1.5rem;
+    justify-content: space-between;
+    min-height: 50px;
+    border-radius: 7px;
+}
+
+.page-header .breadcrumb {
+    background: none;
+    padding-left: 0!important;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.page-header .breadcrumb-item a {
+    color: #8f9cc0;
+}
+
+.breadcrumb-item+.breadcrumb-item:before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: 0;
+    color: #a8afc7!important;
+    content: "/";
+}
+
+.tx-24 {
+    font-size: 24px;
+}
+
+.custom-card {
+    margin-bottom: 20px;
+    border: 0;
+    box-shadow: 0 10px 30px 0 rgba(25, 28, 32, 0.07);
+    border-radius: 11px !important;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 20px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #c7e8c7;
+    border-radius: 11px !important;
+}
+
+body .ui-button {
+    background-color: #213e99 !important;
+    border: 1px solid #213e99 !important;
+}
+
+.card-item .card-item-icon.card-icon {
+    background: #3ca9ff;
+}
+
+.card-item .card-item-icon.card-icon:after {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, .35) 0, rgba(125, 185, 232, 0));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#59ffffff", endColorstr="#007db9e8", GradientType=1);
+}
+
+.card-item .card-item-icon {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 14px;
+    bottom: 21px;
+    top: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-item .card-item-icon img {
+    width: 70%;
+}
+
+.card-item-title {
+    color: #213e99;
+}
+
+.custom-card .card-item-stat h4 {
+    font-size: 25px !important;
+    margin-bottom: 0 !important;
+}
+
+body .ui-calendar.ui-calendar-w-btn .ui-datepicker-trigger.ui-button {
+    padding: 4px 20px !important;
+}
+
+body .ui-table .ui-table-tbody>tr>td {
+    border: 1px solid #e8e8f7 !important;
+}
+
+.row-sm>div {
+    padding-left: 10px !important;
+    padding-right: 10px!important;
+}
+
+.imgthumcontainer {
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background: url('../../assets/images/product.png') 100%;
+}
+
+.imgthumcontainer img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.truncate-cell {
+    max-width: 100px;
+    /* feel free to include any other value */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn-secondary[_ngcontent-mdw-c181] {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    height: 42px;
+    min-width: 80px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+.btn-secondary.btn-sm, .btn-group-sm>.btn {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+    height: inherit;
+}
+
+.title-h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #16906e;
+}
+
+.thumbSm {
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    border: 1px solid #f3f6f9
+}
+
+.bg-org {
+    background: #ff6434!important
+}
+
+.bg-green {
+    background: #25b398!important
+}
+
+.bg-blue {
+    background: #6179ff!important
+}
+
+.bg-success {
+    background-color: #3ee26c!important
+}
+
+.bg-info {
+    background-color: #36afe2!important
+}
+
+.bg-secondary {
+    background-color: #c054e6!important
+}
+
+.bg-danger {
+    background-color: #ff5061!important
+}
+
+/* existing css */
+
+.btn-primary {
+    color: #fff;
+    background-color: #213e99 !important;
+    border-color: #213e99 !important;
+    height: 30px;
+    min-width: 80px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #15ad91 !important;
+    border-color: #15ad91 !important;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    height: 30px;
+    min-width: 80px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background-color: #808a92 !important;
+    border-color: #808a92 !important;
+}
+
+:host::ng-deep .ui-dropdown {
+    width: 100%
+}
+
+:host::ng-deep .ui-inputtext {
+    width: 100%;
+    margin-bottom: 20px
+}
+:host::ng-deep .ui-autocomplete-input {
+   
+    padding: 10px !important;
+    /* width: 100%; */
+}
+:host::ng-deep .ui-autocomplete {
+    width: 100%;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-current {
+    float: right;
+}
+
+:host::ng-deep .ui-paginator .ui-dropdown {
+    display: none
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-icon {}
+
+:host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page {
+    border: 1px solid #213e99;
+    margin-left: -2px;
+    height: 35px !important;
+    width: 35px !important;
+    line-height: 35px;
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active, :host::ng-deep .ui-paginator .ui-paginator-pages .ui-paginator-page:hover {}
+
+.ui-paginator a {
+    background: #fff;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-pages {
+    float: left;
+}
+
+:host::ng-deep .ui-paginator a.ui-state-disabled {
+    float: left;
+    border: 1px solid #213e99;
+    margin-right: -2px;
+    height: 35px !important;
+    width: 35px !important;
+    line-height: 35px;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-first {
+    float: left!important;
+    border: 1px solid #213e99;
+    border-radius: 5px 0 0 5px;
+    margin-right: -2px;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-prev {
+    float: left!important;
+    border: 1px solid #213e99;
+    height: 35px !important;
+    width: 35px !important;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-next {
+    float: left!important;
+    border: 1px solid #213e99;
+    margin-left: -2px;
+    height: 35px !important;
+    width: 35px !important;
+    line-height: 35px;
+}
+
+:host::ng-deep .ui-paginator .ui-paginator-last {
+    float: left!important;
+    border: 1px solid #213e99;
+    margin-left: -2px;
+    border-radius: 0 5px 5px 0;
+    height: 35px !important;
+    width: 35px !important;
+    line-height: 35px;
+}
+
+:host::ng-deep.ui-paginator .ui-paginator-pages .ui-paginator-page:focus {
+    box-shadow: none!important
+}
+
+.ui-paginator .ui-paginator-icon {
+    font-size: 13px;
+}
+
+:host::ng-deep .ui-table .ui-paginator-bottom {
+    border-color: #e8e8f7;
+    background-color: #fbfafa;
+    padding: 10px 15px;
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background-color: #213e99 !important;
+    color: #fff !important;
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page {
+    color: #333 !important;
+    font-weight: 600;
+    height: 35px !important;
+    width: 35px !important;
+}
+
+body .ui-state-disabled, body .ui-widget:disabled {
+    opacity: 1 !important;
+}
+
+body .ui-state-disabled span, body .ui-widget:disabled span {
+    opacity: 0.5 !important;
+}
+
+.thhead th {
+    color: #fff;
+    background: #213e99;
+    border: 1px solid #e8e8f7 !important;
+}
+
+.tdrow {
+    display: table-row;
+    background: #fff
+}
+
+.tdrow:hover {
+    background-color: #ececff;
+    cursor: pointer
+}
+
+.tdrow td {
+    color: #333;
+    line-height: 1.2;
+    font-weight: unset!important;
+    border-bottom: none
+}
+
+:host::ng-deep .ui-table {
+    overflow: hidden;
+    border: none!important
+}
+
+.th-1 {
+    width: 60px
+}
+
+.act i {
+    padding: 3px;
+    margin: 3px;
+    font-size: 17px
+}
+
+:host::ng-deep .ui-table .ui-table-thead>tr>th {
+    font-size: 14px!important;
+    font-weight: 600!important;
+    line-height: 15px;
+}
+
+.title {
+    font-size: 17px;
+    font-weight: 500;
+    color: #000
+}
+
+.card-box {
+    padding: 20px 30px 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 3px 0 #213e9926;
+    margin-bottom: 35px
+}
+
+.form-lable {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1b1b1b!important;
+    margin-bottom: 5px
+}
+
+.search-hero {
+    margin-bottom: 10px
+}
+
+.search-hero input {
+    padding: 5px;
+    border-radius: 0 4px 4px 0;
+    border-left: 0;
+    height: 42px;
+}
+
+.search-hero .input-group-text {
+    border-radius: 4px 0 0 4px;
+    background: #fff;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    outline: none!important
+}
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background: #fff;
+    border: 1px solid #c7e8c7;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+:host::ng-deep .ui-inputtext {
+    font-size: 14px;
+    color: #333;
+    background: #eeeeee;
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    transition: border-color 0.2s, box-shadow .2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+:host::ng-deep .ui-dropdown.ui-dropdown-clearable .ui-dropdown-label {
+    padding-right: 4em;
+    border: none
+}
+
+:host::ng-deep .ui-dropdown {
+    border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+        background: #eeeeee;
+}
+
+:host::ng-deep button:focus {
+    outline: none!important
+}
+
+::-webkit-scrollbar {
+    /* display: none!important */
+}
+
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar {
+    display: block!important;
+    -webkit-appearance: none;
+    width: 7px;
+    height: 5px
+}
+
+:host::ng-deep .ui-table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5)
+}
+
+.mt-20 {
+    margin-top: 20px
+}
+
+.btn-bg-blue {
+    background-color: #2196F3!important;
+    border-color: #2196F3!important
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+    background-color: #eee;
+}
+
+:host::ng-deep .ui-dropdown-label {
+    padding-right: 4em;
+    border: none;
+    margin-bottom: 0
+}
+
+:host::ng-deep .ui-calendar.ui-calendar-w-btn .ui-inputtext {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 none;
+    width: 70%
+}
+
+.mr-0 {
+    margin-right: 0!important
+}
+
+:host::ng-deep .ui-multiselect {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+:host::ng-deep .ui-multiselect-panel .ui-multiselect-header .ui-multiselect-filter-container .ui-inputtext {
+    padding: .429em;
+    padding-right: 2em;
+    margin-bottom: 0
+}

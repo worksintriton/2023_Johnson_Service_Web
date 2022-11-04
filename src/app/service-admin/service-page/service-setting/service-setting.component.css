@@ -1,0 +1,37 @@
+@import "../../../../assets/css/style.css";
+
+
+:host ::ng-deep .ui-tabview .ui-tabview-panels {
+    border:none !important;
+    background-color: #ffffff;
+    padding: 0.571em 1em;
+    border-top: 1px solid #c8c8c8 !important;
+    color: #333333;
+}
+/* .activeimg
+{
+    background: url('../../../../assets/images/chevron_2.png');
+    background-position: 100% 58%;
+    background-size: cover;
+    color: white;
+}
+.btnimg
+{
+    background: url('../../../../assets/images/chevron_1.png');
+    background-position: 100% 58%;
+    background-size: cover;
+}
+.btn.focus, .btn:focus {
+    box-shadow: 0 0 0 0rem rgb(0 123 255 / 25%);
+} */
+/*right arrow*/
+
+
+host::ng-deep .table-responsive .ui-inputtext {
+ 
+    padding: 5px !important;
+margin-bottom: 0px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

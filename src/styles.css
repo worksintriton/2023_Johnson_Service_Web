@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import  "primeng/resources/themes/nova-light/theme.css";
+@import  "primeng/resources/primeng.min.css";
+html,body {    height: 100%;}
+
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900";
+@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800";
+@import "https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800";
+@import "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap";
+html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+article,aside,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}
+body {font-family: Roboto,sans-serif;margin: 0;background: #f4fbf4;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-size:.875rem;font-weight:400;line-height:1.5;color:#8f9cc0;text-align:left;background-color:#f4fbf4}
+
+.btn-danger{
+    color: #fff;
+    height: 30px;
+    min-width: 80px;
+    font-size: 12px;
+    margin-right: 10px;
+}

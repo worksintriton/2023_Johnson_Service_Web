@@ -1,0 +1,194 @@
+
+<section>
+  <div class="page-header">
+      <div>
+          <h2 class="main-content-title tx-24 mb-1">Group Detail Management</h2>
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Group Detail Management</li>
+          </ol>
+      </div>
+
+  </div>
+
+
+
+
+<!-- <div class="row row-sm">
+<div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <h5 class="form-lable">Index</h5>
+                  <input type="Number" pInputText name="index" [(ngModel)]="index" placeholder="index">
+              </div>
+
+                  <div class="col-md-4">
+                      <h5 class="form-lable">Group Name</h5>
+                      <input type="text" pInputText name="group_detail_name" [(ngModel)]="group_detail_name" placeholder="Group Name">
+                  </div>
+
+                  <div class="col-md-4">
+                    <h5 class="form-lable">Sub Group Status</h5>
+                    <p-dropdown [options]="group_status" [(ngModel)]="gorup_status_name" (ngModelChange)="savesubgroupstatus()"  placeholder="Select Sub Group Status" optionLabel="status" [showClear]="true"></p-dropdown>
+                  </div>
+
+
+                  <div class="col-md-4">
+                      <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()"> <i class="fas fa-edit"></i> Update</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                          Cancel</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+  </div> -->
+
+
+  <div class="row row-sm">
+      <div class="col-md-8" style="font-weight: 500;color: red;">
+        Note : <br>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i> Your can't create the activity in this admin panel.<br>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i> You need to create the activity in oracle and press the fetch oracle button<br>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i> If you edit the existing pulled oracel data. Press the <span><i style="color: lightskyblue;" class="fa fa-download" aria-hidden="true" ></i> </span>
+          icon of the particular cell<br>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i>To add the field for the activity. Press the <span><i style="color: #4CAF50;" class="fa fa-forward" aria-hidden="true" ></i></span>
+          icon of the particular cell<br>
+        <i class="fa fa-arrow-right" aria-hidden="true"></i> You can create the field dynamically only in from type 1 Activity only. Other type of forms are static<br>
+      </div>
+      <div class="col-md-4" >
+        <button type="button" style="float:right" class="btn btn-primary mt-4" (click)="fetch_from_orcal()">Fetch Oracle</button>
+      </div>
+      <br>
+      <!-- <button style="float:right" type="button" class="btn btn-primary mt-4" (click)="rearrange()">Re - Arrange</button> -->
+
+      <div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="search-hero">
+                          <div class="input-group mb-3">
+                             <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                             </div>
+                             <input class="form-control" type="text" name="search2"
+                         [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                           </div>
+                        </div>
+                  </div>
+
+                  <div class="col-md-6 text-right">
+                      <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                  </div>
+              </div>
+
+
+<div class="loader" *ngIf="loader_display"></div>
+<div class="col-lg-12" *ngIf="loader_display">
+  <p><span>{{count_down}}</span> / <span>{{rows.length}}</span></p>
+</div>
+
+
+ <div class="table-responsive" *ngIf="!loader_display">
+  <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+  [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+  <ng-template pTemplate="header">
+      <tr class="thhead">
+          <!-- <th class="th-1">
+              S.No
+          </th> -->
+          <!-- <th>
+            Activity Name
+          </th> -->
+          <th>
+           Index
+          </th>
+          <th>
+            Ukey
+          </th>
+          <th>
+            Group Name
+          </th>
+          <th>
+            Department
+          </th>
+           <!-- <th>
+            Sub Group Status
+          </th> -->
+          <th>
+            Form Type
+          </th>
+          <th>Created by</th>
+          <th>Created at</th>
+          <th style="width: 163px;text-align:center">
+              Action
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item  let-i="rowIndex">
+    <tr class="tdrow">
+          <!-- <td>{{i+1}}</td> -->
+          <!-- <td>
+            <ng-container *ngFor="let items of activitiy_list">
+              <p *ngIf="items._id == item.activity_id" >{{items.activedetail_name}}</p>
+            </ng-container>
+          </td>
+          <td>
+            <ng-container *ngFor="let items of job_no_list">
+              <p *ngIf="items._id == item.job_detail_id" >{{items.job_detail_no}}</p>
+            </ng-container>
+          </td> -->
+          <!-- <td>{{item.activity_id}}</td>-->
+          <td>{{item.SMU_SEQNO}}</td>
+          <td>{{item.SMU_UKEY}}</td>
+          <td>{{item.SMU_UKEY_DESCRIPTION}}</td>
+          <td>{{item.SMU_DEPT}}</td>
+          <td>{{item.SMU_FORMTYPE}}</td>
+
+
+          <!-- <td *ngIf="item.form_type == 1">Input Form</td>
+          <td *ngIf="item.form_type == 2">Image Form</td>
+          <td *ngIf="item.form_type == 3">Table Form</td>
+          <td *ngIf="item.form_type == 4">Approval Form</td>
+          <td *ngIf="item.form_type == 5">RM Form</td> -->
+          <!-- <td>{{item.sub_group_status}}</td> -->
+          <td>
+              Oracel
+          </td>
+          <td>
+           {{item.DATEOFFETCH | date}}
+          </td>
+          <!-- <td>
+            {{item.delete_status}}
+        </td> -->
+          <td class="act">
+            <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+            <i style="color: lightskyblue;" class="fa fa-download" aria-hidden="true" pTooltip="pull from oracle" (click)="pull_and_upload_data(item.SMU_SEQNO)"></i>
+            <i style="color: #4CAF50;" *ngIf="item.SMU_FORMTYPE == 1 || item.SMU_FORMTYPE == 4" class="fa fa-forward" aria-hidden="true" pTooltip="View" (click)="add_field(item)"></i>
+
+              <!-- <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item,i)" pTooltip="Edit"></i>
+              <i style="color: #4CAF50;" *ngIf="item.delete_status" class="fa fa-toggle-on" aria-hidden="true" pTooltip="Delete" (click)="update_disble(item)"></i>
+              <i style="color: #fd2c3a;" *ngIf="!item.delete_status" class="fa fa-toggle-off" aria-hidden="true" pTooltip="Delete" (click)="update_enable(item)"></i>
+              <i *ngIf="item.sub_group_status !== 'true'" style="color: #4CAF50;" class="fa fa-eye" aria-hidden="true" pTooltip="View" (click)="add_field(item)"></i> -->
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+</section>

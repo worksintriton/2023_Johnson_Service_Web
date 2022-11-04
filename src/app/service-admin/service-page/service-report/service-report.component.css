@@ -1,0 +1,31 @@
+@import "../../../../assets/css/style.css";
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    margin: 0 0 7px;
+    background: white;
+}
+.active
+{
+    background: #213e99 !important;
+    color: white;
+}
+.stylecont
+{
+    padding: 0.5rem 1rem;
+    border: 1px solid #090808;
+    border-radius: 10px;
+    margin: 0 0 7px;
+    background: white;
+    margin: 1px 10px 6px;
+}
+.nav-link{
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #090808 !important;
+    border-radius: 10px;
+    margin: 0 0 7px;
+    background: white;
+}

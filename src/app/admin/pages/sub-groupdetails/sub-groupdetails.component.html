@@ -1,0 +1,136 @@
+
+<section>
+  <div class="page-header">
+      <div>
+          <h2 class="main-content-title tx-24 mb-1">Sub Group Detail Management</h2>
+          <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Group Detail Management</li>
+          </ol>
+      </div>
+
+  </div>
+
+  <div class="row row-sm">
+
+    <div class="col-md-6" style="font-weight: 500;color: red;">
+      Note : <br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> If the activity form type 4. then only it will consider as a Join Insepection<br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> Select activity and enter the sub-group name<br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> To add the field in the group. Press <span><i style="color: #4CAF50;"  class="fa fa-forward" aria-hidden="true"></i></span> icon. it will move to field adding page<br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> To edit sub - group name. Press <span><i style="color: #4CAF50;"   class="fas fa-edit"  aria-hidden="true"></i></span> icon.<br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> To delete sub - group name. Press <span><i style="color: red;"   class="fas fa-trash"  aria-hidden="true"></i></span> icon. it will remove sub group.<br>
+      <i class="fa fa-arrow-right" aria-hidden="true"></i> Once you delete the subgroup name can't retrive back. so make sure before delete<br>
+
+
+    </div>
+
+      <div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="form-lable">Group Name</h5>
+                  <p-dropdown [options]="group_lists" [(ngModel)]="group_list_name" (ngModelChange)="selected_activity()"  placeholder="Select Group Name" optionLabel="SMU_UKEY_DESCRIPTION" [showClear]="true"></p-dropdown>
+                </div>
+                  <div class="col-md-4">
+                      <h5 class="form-lable">Sub Group Name</h5>
+                      <input type="text" pInputText name="sub_group_detail_name" [(ngModel)]="sub_group_detail_name" placeholder="Sub Group Name">
+                  </div>
+                  <div class="col-md-4">
+                      <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()"> <i class="fas fa-edit"></i> Update</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                          Cancel</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+
+
+  <div class="row row-sm">
+
+      <div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="search-hero">
+                          <div class="input-group mb-3">
+                             <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                             </div>
+                             <input class="form-control" type="text" name="search2"
+                         [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                           </div>
+                        </div>
+                  </div>
+
+                  <div class="col-md-6 text-right">
+                      <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                  </div>
+              </div>
+
+
+              <div class="table-responsive">
+                  <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+  [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+  <ng-template pTemplate="header">
+      <tr class="thhead">
+          <th class="th-1">
+              S.No
+          </th>
+          <th>
+            Group Name
+          </th>
+          <th>
+            Sub Group Name
+          </th>
+          <th>Created by</th>
+          <th>Created at</th>
+          <th style="width: 163px;text-align:center">
+              Action
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item  let-i="rowIndex">
+    <tr class="tdrow">
+          <td>{{i+1}}</td>
+
+          <!-- group_lists
+          <td>{{item.group_id}}</td> -->
+
+          <td>
+            <ng-container *ngFor="let items of group_lists">
+              <p *ngIf="items._id == item.group_id" >{{items.SMU_UKEY_DESCRIPTION}}</p>
+            </ng-container>
+          </td>
+          <td>{{item.sub_group_detail_name}}</td>
+          <td>
+              Admin
+          </td>
+          <td>
+           {{item.sub_group_detail_created_at}}
+          </td>
+          <td class="act">
+              <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+              <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+              <i style="color: #4CAF50;"  class="fa fa-forward" aria-hidden="true" pTooltip="View" (click)="add_field(item)"></i>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+</section>

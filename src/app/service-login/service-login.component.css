@@ -1,0 +1,69 @@
+.login_box {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1;
+    background-image: url('../../assets/images/product.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login_box_inner {
+    display: contents;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+  }
+  
+  .form-control {
+    background: #fff;
+    border: 1px solid #d7dae3;
+    color: #3e4954;
+    height: 50px !important;
+    padding: .375rem .75rem !important;
+      font-size: .875rem !important;
+      font-weight: 400;
+      line-height: 1.5;border-radius: .50rem !important;
+  }
+  .login_form {
+    margin: 10px 0px; width: 400px;
+  }
+  .card .card-body {
+    text-align: left !important;
+    /* // padding: 0px !important;
+   // box-shadow: 0 0 36px #ff0000; */
+  }
+  
+  .logo img {
+     width: 150px;
+     text-align: center;
+  }
+  .justify-center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login_form .btn {
+    height: 50px;
+    font-weight: 700;border-radius: .50rem !important;
+  }
+  
+  /* // .logo {
+  //   text-align: center;
+  //   width: 500px;
+  //   height: 200px;
+  //   background: url("../../../assets/img/brand/logo1.png") no-repeat;
+  //   display: inline-block;
+  // }
+  // .logo:hover {
+  //   background: url("../../../assets/img/brand/logo2.png") no-repeat;
+  // } */
+  

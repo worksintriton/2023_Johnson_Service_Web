@@ -1,0 +1,211 @@
+<section>
+    <div class="page-header">
+        <div>
+            <h2 *ngIf="addmode" class="main-content-title tx-24 mb-1">Add Employee </h2>
+            <h2 *ngIf="editmode" class="main-content-title tx-24 mb-1">Edit employee </h2>
+
+        </div>
+
+    </div>
+    <div class="row row-sm">
+        <div class="col-lg-12">
+        <div class="card custom-card">
+        <div class="card-body">
+        <input class="" style="height: 28px;"  placeholder="Search Emp ID" name="search_word" [(ngModel)]="search_word">
+        <button class="btn btn-primary" (click)="search_key()">Search</button>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="row row-sm">
+
+        <div class="col-lg-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="row">
+                            <form [formGroup]="employeeForm" style="display: contents;">
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Employee Name</h5>
+                                    <!-- <input type="text" pInputText name="employee_Name" formControlName="employee_Name"  placeholder="employee Name"> -->
+                                    <span>
+                                        <p-autoComplete (keypress)="Emp_name($event)" (keydown)="Emp_name($event)" formControlName="user_name"
+                                            placeholder="Employee Name" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)"
+                                            field="" [minLength]="1" [ngClass]="{ 'is-invalid': submitted && f.user_name.errors }" ></p-autoComplete>
+
+                                        <i *ngIf="editmode" class="fa fa-eye icon" (click)="agent()"></i>
+                                        <span *ngIf="submitted && f.user_name.errors" class="invalid-feedback">
+                                            <span *ngIf="f.user_name.errors.required">Employee Name is required</span>
+                                         </span>
+                                    </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Employee Id</h5>
+                                    <input type="text" pInputText name="user_id" formControlName="user_id" placeholder="Employee Id" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.user_id.errors }"  >
+                                       <span *ngIf="submitted && f.user_id.errors" class="invalid-feedback">
+                                        <span *ngIf="f.user_id.errors.required">Employee Id is required</span>
+                                     </span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Employee Type</h5>
+                                    <p-dropdown [options]="emptype" placeholder="Employee Type" optionLabel="name" [(ngModel)]="emp_type_value"  formControlName="emp_type" dataKey="name" [showClear]="true"
+                                        [ngClass]="{ 'is-invalid': submitted && f.emp_type.errors }"></p-dropdown>
+                                        <span *ngIf="submitted && f.emp_type.errors" class="invalid-feedback">
+                                            <span *ngIf="f.emp_type.errors.required">Employee Type is required</span>
+                                         </span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="form-lable">Personal Phone</h5>
+                                    <input type="number" pInputText name="user_per_mob" formControlName="user_per_mob" placeholder="Personal Phone" maxlength="10"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" >
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Employee Phone</h5>
+                                    <input type="number" pInputText name="employee_phone" formControlName="user_mobile_no" placeholder="Employee Phone" maxlength="10"
+                                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                        [ngClass]="{ 'is-invalid': submitted && f.user_mobile_no.errors }">
+                                        <span *ngIf="submitted && f.user_mobile_no.errors" class="invalid-feedback">
+                                            <span *ngIf="f.user_mobile_no.errors.required">Employee Phone is required</span>
+                                         </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Email Id</h5>
+                                    <input type="text" pInputText name="email_id" formControlName="user_email" placeholder="Email Id"
+                                    [ngClass]="{ 'is-invalid': submitted && f.user_email.errors }">
+                                    <span *ngIf="submitted && f.user_email.errors" class="invalid-feedback">
+                                        <span *ngIf="f.user_email.errors.required">Employee Phone is required</span>
+                                     </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable">Introduced By</h5>
+                                    <input type="text" pInputText name="introduced_by" formControlName="user_introduced_by" placeholder="Introduced By">
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Password</h5>
+                                    <input type="text" pInputText name="custom_field1" formControlName="user_password" placeholder="Password"
+                                    [ngClass]="{ 'is-invalid': submitted && f.user_password.errors }">
+                                    <span *ngIf="submitted && f.user_password.errors" class="invalid-feedback">
+                                        <span *ngIf="f.user_password.errors.required">Password is required</span>
+                                     </span>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <h5 class="form-lable">Custom Field 2</h5>
+                                    <input type="text" pInputText name="custom_field2" formControlName="custom_field2"  placeholder="Custom Field 2">
+                                </div> -->
+                                <!-- <div class="col-md-4">
+                                        <h5 class="form-lable">Custom Field 3</h5>
+                                        <input type="text" pInputText name="custom_field3" formControlName="custom_field3"  placeholder="Custom Field 3">
+                                    </div> -->
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Location Name</h5>
+                                    <!-- <input type="text" pInputText name="location_name" formControlName="location_name"  placeholder="Location Name"> -->
+
+                                    <p-autoComplete (keypress)="Emp_loc($event)" (keydown)="Emp_loc($event)" formControlName="user_location" placeholder="Location Name"
+                                        [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" field="" [minLength]="1"
+                                        [ngClass]="{ 'is-invalid': submitted && f.user_location.errors }"></p-autoComplete>
+                                        <span *ngIf="submitted && f.user_location.errors" class="invalid-feedback">
+                                            <span *ngIf="f.user_location.errors.required">Location Name is required</span>
+                                         </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Mobile Model</h5>
+                                    <input type="text" pInputText name="mobile_model" formControlName="user_mob_model" placeholder="Mobile Model"
+                                    [ngClass]="{ 'is-invalid': submitted && f.user_mob_model.errors }">
+                                    <span *ngIf="submitted && f.user_mob_model.errors" class="invalid-feedback">
+                                        <span *ngIf="f.user_mob_model.errors.required">Mobile Model is required</span>
+                                     </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Mobile opearting System</h5>
+                                    <p-dropdown [options]="mobile_operating" [(ngModel)]="mobile_os" placeholder="Mobile opearting System" optionLabel="name"
+                                        dataKey="name" formControlName="user_mob_os" [showClear]="true"
+                                        [ngClass]="{ 'is-invalid': submitted && f.user_mob_os.errors }"></p-dropdown>
+                                        <span *ngIf="submitted && f.user_mob_os.errors" class="invalid-feedback">
+                                            <span *ngIf="f.user_mob_os.errors.required">Mobile opearting System is required</span>
+                                         </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Mobile Make</h5>
+                                    <input type="text" pInputText name="mobile_make" formControlName="user_mob_make" placeholder="Mobile Make"
+                                    [ngClass]="{ 'is-invalid': submitted && f.user_mob_make.errors }">
+                                    <span *ngIf="submitted && f.user_mob_make.errors" class="invalid-feedback">
+                                        <span *ngIf="f.user_mob_make.errors.required">Mobile Make is required</span>
+                                     </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Device Number</h5>
+                                    <input type="text" pInputText name="imie_code" formControlName="device_no" placeholder="Device Number"
+                                    [ngClass]="{ 'is-invalid': submitted && f.device_no.errors }"
+                                    >
+                                    <span *ngIf="submitted && f.device_no.errors" class="invalid-feedback">
+                                        <span *ngIf="f.device_no.errors.required">Device Number is required</span>
+                                     </span>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Organisation Name</h5>
+                                    <input type="text" pInputText name="employee_code" formControlName="organisation_name" placeholder="Organisation Name"
+                                    [ngClass]="{ 'is-invalid': submitted && f.organisation_name.errors }">
+                                    <span *ngIf="submitted && f.organisation_name.errors" class="invalid-feedback">
+                                        <span *ngIf="f.organisation_name.errors.required">Organisation Name is required</span>
+                                     </span>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <h5 class="form-lable required">Status</h5>
+                                    <p-dropdown [options]="status" placeholder="Status" optionLabel="name" formControlName="status" dataKey="name" [showClear]="true"
+                                        [(ngModel)]="active_value" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"></p-dropdown>
+                                        <span *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                                            <span *ngIf="f.status.errors.required">Status is required</span>
+                                         </span>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <h5 class="form-lable required">Mobile Issue Date</h5>
+                                    <p-calendar dateFormat="dd/mm/yy" formControlName="mobile_issue_date" [showIcon]="true" inputId="icon" placeholder="Mobile Issue Date"
+                                        class="mr-3" [readonlyInput]="true" [ngClass]="{ 'is-invalid': submitted && f.mobile_issue_date.errors }"></p-calendar>
+                                        <span *ngIf="submitted && f.mobile_issue_date.errors" class="invalid-feedback">
+                                            <span *ngIf="f.mobile_issue_date.errors.required">Mobile Issue Date is required</span>
+                                         </span>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5 class="form-lable">Upload Certificate</h5>
+                                    <!-- <input type="text" pInputText name="location" formControlName="upload" placeholder="Certificate"> -->
+                                    <!-- <input type="file" #imgType (change)="fileupload($event)" id="imgfile" [(ngModel)]="img_path"
+                      accept=".png, .jpg, .jpeg" class="form-control" id="city" placeholder="User type icon">
+                      <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 800 * 350 (Max 400 kB)</div>
+                      <div class="imgthumcontainer"><img src="{{img_path}}"></div> -->
+                                    <input type="file" #imgType pInputText id="imgfile" formControlName="Documents" accept=".png, .jpg, .jpeg" class="form-control"
+                                        id="city" placeholder="User type icon">
+                                    <!-- <div style="font-size: 11px;text-align: right;color: gray;font-weight: 600;">Upload the user type icon with 800 * 350 (Max 400 kB)</div> -->
+
+                                </div>
+
+                            </form>
+
+
+
+
+
+                            <div class="col-md-12 text-center ">
+                                <button *ngIf="addmode" type="button" class="btn btn-primary mt-4" (click)="Insert_employee()">
+                                    <i class="fas fa-plus-circle"></i> Add</button>
+                                <button type="button" class="btn btn-danger mt-4" (click)="employee_cancel()">
+                                    Cancel</button>
+                                <!-- <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button> -->
+                                <button *ngIf="editmode" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()">
+                                    <i class="fas fa-edit"></i> Update</button>
+                                <!-- <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">  -->
+                                <!-- Cancel</button> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

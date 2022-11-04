@@ -1,0 +1,10 @@
+@import "../../../../assets/css/style.css";
+.card1 {
+ 
+    background-color: #dfdfdf;
+ 
+}
+.fa-arrow-left
+{
+    cursor: pointer;
+}

@@ -1,0 +1,82 @@
+<!-- <mat-toolbar class="modal-header">
+  <h1 class="title d-flex w-100 my-auto">
+    <span class="my-auto product-modal-heading">
+      {{label?.heading}}
+    </span>
+    <span class="ml-auto my-auto">
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </span>
+  </h1>
+</mat-toolbar>
+<section style="display: flex;">
+    <section>
+      <h4>Selected Column</h4>
+      <cdk-drop #listOne [connectedTo]="[listTwo]" class="list-sorted" (dropped)="addToList($event)" [data]="items2">
+        <div *ngFor="let item of header" cdkDrag class="list-sorted__item">{{item}}</div>
+      </cdk-drop>
+    </section>
+  
+    <section>
+      <h4>Remove Column</h4>
+      <cdk-drop #listTwo [connectedTo]="[listOne]" class="list-sorted" (dropped)="addToList($event)" [data]="items3">
+        <div *ngFor="let item of items3" cdkDrag class="list-sorted__item">{{item}}</div>
+      </cdk-drop>
+    </section>
+  
+  </section> -->
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+    <button type="button" class="close"  mat-dialog-close aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<section style="display: flex;">
+    <!-- <section>
+      <h4>Selected Column</h4>
+      <cdk-drop #listOne [connectedTo]="[listTwo]" class="list-sorted" [data]="items2">
+        <div *ngFor="let item of items2" cdkDrag class="list-sorted__item">{{item}}</div>
+      </cdk-drop>
+    </section>
+  
+    <section>
+      <h4>Remove Column</h4>
+      <cdk-drop #listTwo [connectedTo]="[listOne]" class="list-sorted"  [data]="items3">
+        <div *ngFor="let item of items3" cdkDrag class="list-sorted__item">{{item}}</div>
+      </cdk-drop>
+    </section> -->
+  
+    
+    <div #activeList="cdkDropList" style="max-height: 352px;
+    overflow: scroll;"
+  class="box-list"
+  cdkDropList
+  cdkDropListOrientation="vertical"
+  [cdkDropListData]="activeCustomers"
+  [cdkDropListConnectedTo]="[inactiveList]"
+  (cdkDropListDropped)="drop($event)">
+  <h4>Selected Column</h4>
+  <div class="drag-box" *ngFor="let customer of activeCustomers" cdkDrag>
+    {{customer}}
+  </div>
+</div>
+
+<div #inactiveList="cdkDropList" style="max-height: 352px;
+    overflow: scroll;"
+  class="box-list"
+  cdkDropList
+  cdkDropListOrientation="vertical"
+  [cdkDropListData]="inactiveCustomers"
+  [cdkDropListConnectedTo]="[activeList]"
+  (cdkDropListDropped)="drop($event)">
+  <h4>Remove Column</h4>
+  <div class="drag-box" *ngFor="let customer of inactiveCustomers" cdkDrag>
+    {{customer}}
+  </div>
+</div>
+  
+  </section>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary"  style="padding: 0px;" (click)="Save()">Save</button>
+  </div>

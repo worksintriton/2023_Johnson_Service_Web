@@ -1,0 +1,95 @@
+/* .list-sorted {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    /* max-height: 100%; */
+    /* position: relative;
+    white-space: normal;
+    width: 272px;
+    margin-right: 2rem;
+    height: 300px; */
+     /* overflow-y: scroll;  */
+/* } */
+.list-sorted__item {
+    background-color: #fff;
+    cursor: -webkit-grab;
+    display: block;
+    padding: 5px;
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+} */
+code, kbd, pre {
+    background-color: #cfc;
+    color: navy;
+    font-family: Consolas, Monaco, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+    font-size: smaller;
+}
+
+pre {
+    line-height: 1.5em;
+    margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    overflow: auto;
+    padding: 0.75em 1.625em;
+}
+
+.box-list {
+  border: dashed black 1px;
+  display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+  /* when cdkDropListOrientation="horizontal" comment out flex properties below: */
+  /* flex-direction: row; */
+  margin: .5em;
+  padding: .5em 0;
+  width: 45%;
+}
+
+.box-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.drag-box {
+  background-color: yellow;
+  border: dashed orange 1px;
+  cursor: move;
+  display: flex;
+    box-sizing: border-box;
+    flex-grow: 1;
+    justify-content: center;
+  margin: .25em;
+  padding: .25em;
+  width: 90%;
+}
+
+.cdk-drag {
+  /* this is the animation that fires for the drag */
+    transition: transform 150ms ease;
+}
+
+.cdk-drag-animating {
+  /* this is the animation that fires for the drop */
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-placeholder {
+  /* setting opacity to zero makes a blank space between list items during drag preview */
+  opacity: 0;
+}
+
+.cdk-drag-preview {
+  background-color: greenyellow;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  opacity: .7;
+}
+.close:focus {
+  
+  border: 0px solid !important;
+
+}

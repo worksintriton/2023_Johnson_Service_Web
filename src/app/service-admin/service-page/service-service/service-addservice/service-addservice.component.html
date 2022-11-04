@@ -1,0 +1,124 @@
+<section>
+
+    <div class="row row-sm">
+
+        <div class="col-lg-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="card-item">
+                        <div class="row">
+
+                            <div class="col-md-12 text-center" style="margin-bottom: 14px;">
+                                <h2 class="main-content-title tx-24 mb-1">Service Summary </h2>
+                                <!-- <h2 class="main-content-title tx-24 mb-1">Edit Agent </h2> -->
+
+                            </div>
+                            <div class="col-md-6 text-justify bd">
+                                <p>
+                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature
+                                    from 45 BC, making it over 2000 years old. Richard McClintock, a 
+                                    Latin professor at Hampden-Sydney
+                                </p>
+                                    <p>College in Virginia, looked up one of the more obscure Latin words, consectetur, from
+                                    a Lorem Ipsum passage, and going through the cites of the word in classical literature,
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33
+                                    of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) 
+                                    by Cicero, written
+                                    in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.</p>
+                                   
+                            </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="serviceForm">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                                <h5 class="form-lable">Service Name</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                                <input type="text" pInputText name="service_Name" formControlName="service_Name" placeholder="Service Name">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                            <div class="col-md-4">
+                                                    <h5 class="form-lable">Service Description</h5>
+                                            </div>
+                                            <div class="col-md-8">
+                                                    <!-- <input type="text" pInputText name="Description" formControlName="Description" placeholder="Service Description"> -->
+                                                    <textarea [rows]="5" [cols]="30" pInputTextarea formControlName="Description" placeholder="Service Description" autoResize="autoResize"></textarea>
+                                            </div>
+    
+                                        </div>
+                                        <div class="row">
+                                                <div class="col-md-4">
+                                                        <h5 class="form-lable">Group Name</h5>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <p-dropdown [options]="group"  placeholder="Group Name" optionLabel="name" formControlName="group_name" [showClear]="true"></p-dropdown>
+
+        
+                                                </div>
+        
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                        <h5 class="form-lable">Job List</h5>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <p-dropdown [options]="job"  placeholder="Job List" optionLabel="name" formControlName="job_list" [showClear]="true"></p-dropdown>
+
+        
+                                                </div>
+        
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-md-4">
+                                                            <h5 class="form-lable">Admin Approval</h5>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                            <p-dropdown [options]="admin"  placeholder="Admin Approval" optionLabel="name" formControlName="approval" [showClear]="true"></p-dropdown>
+
+            
+                                                    </div>
+            
+                                                </div>
+                                                <div class="row">
+                                                        <div class="col-md-4">
+                                                                <h5 class="form-lable">IMEI No. Verfication</h5>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                                <p-dropdown [options]="imei"  placeholder="IMEI No. Verfication" optionLabel="name" formControlName="verfication" [showClear]="true"></p-dropdown>
+
+                
+                                                        </div>
+                
+                                                    </div>
+                                                    <div class="row">
+                                                            <div class="col-md-4">
+                                                                    <h5 class="form-lable">Template File</h5>
+                                                            </div>
+                                                            <div class="col-md-8">
+                                                                    <input type="text" pInputText name="file"  placeholder="Template File" formControlName="file">
+                    
+                                                            </div>
+                    
+                                                        </div>
+
+                                </form>
+                                <div class="col-md-12 text-center ">
+                                        <button  type="button" class="btn btn-primary mt-4" (click)="Insert_Agent()" ><i class="fas fa-plus-circle"></i> Add</button>
+                                        <button  type="button" class="btn btn-danger mt-4" (click)="Insert_Agent()"> 
+                                                Cancel</button> 
+                                    <!-- <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button> -->
+                                    <!-- <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()"> <i class="fas fa-edit"></i> Update</button>
+                                    <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()"> -->
+                                        <!-- Cancel</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

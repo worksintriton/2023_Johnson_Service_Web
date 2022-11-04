@@ -1,0 +1,117 @@
+.example-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 90px;
+}
+
+.side {
+    width: 250px;
+    transition: all 0.5s;
+}
+
+.side .sidenav-item h5 {
+    margin: 0px 0px 0px !important;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.mat-drawer {
+    background: #213e99;
+}
+
+.active {
+    background: #f4fbf4  !important;
+}
+mat-icon {color: #fff;}
+.active mat-icon{color:#213e99 !important}
+mat-icon.menuBar { font-size: 20px !important;}
+mat-icon { font-size: 18px !important;}
+mat-icon .pi {font-size: 16px !important;}
+.side .active .sidenav-item h5 {color:#213e99 !important}
+
+.sub-menu mat-icon { font-size: 14px !important;width: 20px;}
+.sub-menu .active mat-icon {width: 20px;height: 20px;line-height: 17px;font-size: 12px !important;}
+.sub-menu .mat-list-item.mat-list-item-with-avatar {height: 45px !important;opacity: 0.8;}
+
+.active {
+    height: 50px!important;
+}
+
+.active mat-icon {
+    font-size: 16px !important;
+    margin-right: 10px;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff !important;
+    background: #213e99;
+}
+
+:host::ng-deep .mat-list-base {
+    padding-top: 0px !important;
+}
+
+.sb-sidenav-collapse-arrow {
+    text-align: right;
+    position: absolute;
+    right: 10px;
+}
+
+.sb-sidenav-collapse-arrow i {
+    color: #ffffff;
+}
+
+.mat-drawer.mat-drawer-side {
+    z-index: 2;
+    position: fixed;
+    top: 75px;
+}
+:host::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+    padding: 0 6px;
+}
+:host::ng-deep .mat-typography h5 {
+    font-family: 'Roboto', sans-serif !important;
+}
+:host::ng-deep  .menuslider .side{
+    width: 39px !important;
+    transition: all 0.5s;
+}
+
+:host::ng-deep  .menuslider .mat-drawer-content{
+    margin-left: 39px !important;
+    transition: all 0.5s;
+}
+:host::ng-deep  .mat-nav-list .mat-list-item:hover {
+    background: rgb(0 0 0 / 22%) !important;
+}
+
+
+.sb-sidenav-collapse-arrow i {font-size: 12px !important;}
+:host::ng-deep  .menuslider mat-drawer h5{
+    display: none !important;
+}
+.example-container::-webkit-scrollbar {
+    display: none;
+  }
+  .example-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+:host::ng-deep .mat-list-base::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 5px;
+}
+/* :host::ng-deep .mat-list-base::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+} */
+::-webkit-scrollbar {
+    display: none !important;
+}

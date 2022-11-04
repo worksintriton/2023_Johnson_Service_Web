@@ -1,0 +1,195 @@
+
+<section>
+  <div class="page-header">
+
+        <div class="col-md-12 row">
+        <div class="col-md-6">
+        <p  style="
+            font-size: 16px;
+            font-weight: bold;
+            color: gray;
+        ">Field Management</p>
+          <!-- <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page"> Details</li>
+          </ol> -->
+          <h2>Group Name : {{group_name}}</h2>
+          <h2>Sub Group Name : {{sub_group_name}}</h2>
+        </div>
+        <div class="col-md-6">
+          <div  style="float: right;">
+          <button type="button" class="btn btn-primary" (click)="add_form()"><i class="fas fa-plus"></i> Add</button>
+          <button type="button" class="btn btn-primary" (click)="hide_form()"><i class="fas fa-eye-slash"></i> Hide</button>
+          </div>
+        </div>
+
+      </div>
+</div>
+
+<div class="row row-sm" *ngIf="form">
+<div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <h5 class="form-lable">Group Name</h5>
+                  <h2>{{group_name}}</h2>
+                  <!-- <p-dropdown [options]="group_list" [disabled]="true" [(ngModel)]="group_list_name"  placeholder="Group Name" optionLabel="group_detail_name" [showClear]="true"></p-dropdown> -->
+                </div>
+                <div class="col-md-6">
+                  <h5 class="form-lable">Sub Group Name</h5>
+                  <h2>{{sub_group_name}}</h2>
+                  <!-- <p-dropdown [options]="group_list" [disabled]="true" [(ngModel)]="group_list_name"  placeholder="Group Name" optionLabel="group_detail_name" [showClear]="true"></p-dropdown> -->
+                </div>
+
+                <!-- <div class="col-md-6">
+                  <h5 class="form-lable">Select Group Sub</h5>
+                  <p-dropdown [options]="sub_group_lists" [(ngModel)]="sub_group_lists_name"  placeholder="Sub Group Name" optionLabel="sub_group_detail_name" [showClear]="true"></p-dropdown>
+                </div> -->
+                <hr>
+
+
+                  <div class="col-md-4">
+                      <h5 class="form-lable">Field Name</h5>
+                      <input type="text" pInputText name="field_name" [(ngModel)]="field_name" placeholder="Field Name">
+                  </div>
+                <div class="col-md-4">
+                    <h5 class="form-lable">Field Type</h5>
+                    <p-dropdown [options]="rows1" [(ngModel)]="field_type"  placeholder="Field Type" optionLabel="diagnosis" [showClear]="true"></p-dropdown>
+                </div>
+
+                <div class="col-md-4" *ngIf="field_type.diagnosis == 'Dropdown'">
+                  <h5 class="form-lable">DropDown Option</h5>
+                  <div class="row">
+                     <div class="col-md-8">
+                      <input type="text" pInputText name="dropdown_text" [(ngModel)]="dropdown_text" placeholder="Dropdown text">
+                     </div>
+                     <div class="col-md-4">
+                      <button type="button" class="btn btn-primary" (click)="add_dropdown()"><i class="fas fa-plus-circle"></i> Add</button>
+                    </div>
+                    <div class="col-md-12">
+                      <table style=" width: 100%;">
+                        <tr>
+                          <th>Option Lable</th>
+                          <th>Action</th>
+                        </tr>
+                        <ng-container *ngFor="let item of dropdown_option; let i = index;">
+                        <tr>
+                          <td>{{item}}</td>
+                          <td><button class="btn btn-danger" (click)="delete_dropdown(i)"><i class="fas fa-trash"></i> Delete</button></td>
+                        </tr>
+                      </ng-container>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <h5 class="form-lable">Field length</h5>
+                  <input type="number" pInputText name="field_length" [(ngModel)]="field_length" placeholder="Field Length">
+              </div>
+              <div class="col-md-4">
+                <h5 class="form-lable">Field Comment</h5>
+                <textarea type="text" pInputText name="field_comments" [(ngModel)]="field_comments" placeholder="Field Comment"></textarea>
+              </div>
+                  <div class="col-md-4">
+                      <button *ngIf="update_button == true" type="button" class="btn btn-primary mt-4" (click)="Insert_pet_type_details()"><i class="fas fa-plus-circle"></i> Add</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-primary mt-4" (click)="Edit_pet_type_details()"> <i class="fas fa-edit"></i> Update</button>
+                      <button *ngIf="update_button == false" type="button" class="btn btn-danger mt-4" (click)="cancel()">
+                          Cancel</button>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+
+
+<div class="row row-sm">
+      <div class="col-lg-12">
+<div class="card custom-card">
+      <div class="card-body">
+          <div class="card-item">
+
+              <div class="row">
+                  <div class="col-md-3">
+                      <div class="search-hero">
+                          <div class="input-group mb-3">
+                             <div class="input-group-prepend">
+                               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                             </div>
+                             <input class="form-control" type="text" name="search2"
+                         [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                           </div>
+                        </div>
+                  </div>
+                  <div class="col-md-6 text-center">
+                      <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
+                      <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
+                      <button type="button" class="btn btn-primary" (click)="filter_date()"><i class="fas fa-search"></i> Search</button>
+                  </div>
+                  <div class="col-md-3 text-right">
+                      <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                  </div>
+              </div>
+
+
+              <div class="table-responsive">
+                  <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+  [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+  <ng-template pTemplate="header">
+      <tr class="thhead">
+          <th class="th-1">
+              S.No
+          </th>
+          <th>Group</th>
+          <!-- <th>Sub Group</th> -->
+          <th>Field Name</th>
+          <th>Field Type</th>
+          <th>Field Length</th>
+          <th>Field Comments</th>
+          <th>Field Update Reason</th>
+          <th>Created by</th>
+          <th>Created at</th>
+          <th style="width: 163px;text-align:center">
+              Action
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item  let-i="rowIndex">
+    <tr class="tdrow">
+          <td>{{i+1}}</td>
+
+          <td>
+            <ng-container *ngFor="let items of group_list">
+              <p *ngIf="items._id == item.group_id" >{{items.SMU_UKEY_DESCRIPTION}}</p>
+            </ng-container>
+          </td>
+          <!-- <td>{{item.group_id}}</td> -->
+          <!-- <td>{{item.sub_group_id}}</td> -->
+          <td>{{item.field_name}}</td>
+          <td>{{item.field_type}}</td>
+          <td>{{item.field_length}}</td>
+          <td>{{item.field_comments}}</td>
+          <td>{{item.field_update_reason}}</td>
+          <td>{{item.created_by}}</td>
+          <td>{{item.date_of_create}}</td>
+          <td class="act">
+              <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
+              <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
+              <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
+</section>

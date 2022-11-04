@@ -1,0 +1,44 @@
+<div class="row" style=" margin-top: 12px;">
+    <div class="col-md-1">
+       
+        <i class="fas fa-arrow-left "(click)="back()"> back</i>
+
+</div>
+        <div class="col-md-2">
+    
+            <h5 class="form-lable" style="font-size: 15px;
+                        padding: 12px 1px 5px;">Area</h5>
+        </div>
+    
+        <div class="col-md-4">
+            <input type="text" pInputText [(ngModel)]="area" placeholder="Area">
+    
+    
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary " (click)="Insert_Agent()">
+                <i class="fas fa-plus-circle"></i> Add</button>
+    
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2" *ngFor="let i of areaes">
+                    <div class="card card1 custom-card">
+                            <span style="color: black;
+                            font-weight: 800;     text-align: right;
+                            padding: 0px 11px;" (click)="remove(i)">X
+                                </span>
+                        <div class="card-body" style="padding: 0px 5px 4px 8px;">
+                              
+                            <div class="card-item" style="cursor:pointer" (click)="street()">
+                                {{i}} 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </div>

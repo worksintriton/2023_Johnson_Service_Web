@@ -1,0 +1,196 @@
+<mat-drawer-container class="example-container" [ngClass]="{'menuslider' : menu_slider}">
+  <mat-drawer class="side" mode="side" opened>
+      <mat-nav-list>
+          <mat-list-item (click)="menuslide()">
+              <mat-icon class="menuBar"> notes</mat-icon>
+          </mat-list-item>
+          <mat-list-item routerLink="dashboard" routerLinkActive="active">
+              <mat-icon  mat-list-icon><i class="fab fa-slideshare" aria-hidden="true"
+                      ></i></mat-icon>
+              <div fxFlex="10"></div>
+              <div class="sidenav-item">
+                  <h5 class="lead">Dashboard</h5>
+              </div>
+          </mat-list-item>
+
+            <mat-list-item style="padding-left: 5px;" routerLink="groupdetail" routerLinkActive="active">
+              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                      aria-hidden="true"
+                      ></i>
+              </mat-icon>
+              <div fxFlex="10"></div>
+              <div class="sidenav-item">
+                  <h5 class="lead">Group Detail</h5>
+              </div>
+          </mat-list-item>
+
+
+          <mat-list-item style="padding-left: 5px;" routerLink="subgroupdetail" routerLinkActive="active">
+            <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                    aria-hidden="true"
+                    ></i>
+            </mat-icon>
+            <div fxFlex="10"></div>
+            <div class="sidenav-item">
+                <h5 class="lead">Sub Group Detail</h5>
+            </div>
+        </mat-list-item>
+
+        <mat-list-item style="padding-left: 5px;" routerLink="joininspection_job_list" routerLinkActive="active">
+          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                  aria-hidden="true"
+                  ></i>
+          </mat-icon>
+          <div fxFlex="10"></div>
+          <div class="sidenav-item">
+              <h5 class="lead">Joint Inspection</h5>
+          </div>
+       </mat-list-item>
+
+
+            <!-- <mat-list-item style="padding-left: 5px;" routerLink="field_management" routerLinkActive="active">
+              <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                      aria-hidden="true"
+                      ></i>
+              </mat-icon>
+              <div fxFlex="10"></div>
+              <div class="sidenav-item">
+                  <h5 class="lead">Field Management</h5>
+              </div>
+          </mat-list-item> -->
+
+
+
+
+
+         <mat-list-item style="padding-left: 5px;" routerLink="user_managment" routerLinkActive="active">
+          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                  aria-hidden="true"
+                  ></i>
+          </mat-icon>
+          <div fxFlex="10"></div>
+          <div class="sidenav-item">
+              <h5 class="lead">User Detail</h5>
+          </div>
+       </mat-list-item>
+
+       <mat-list-item style="padding-left: 5px;" routerLink="dataentry_detail" routerLinkActive="active">
+        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                aria-hidden="true"
+                ></i>
+        </mat-icon>
+        <div fxFlex="10"></div>
+        <div class="sidenav-item">
+            <h5 class="lead">Data Entry</h5>
+        </div>
+     </mat-list-item>
+
+       <mat-list-item style="padding-left: 5px;" routerLink="attendance" routerLinkActive="active">
+        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                aria-hidden="true"
+                ></i>
+        </mat-icon>
+        <div fxFlex="10"></div>
+        <div class="sidenav-item">
+            <h5 class="lead">Attendance Detail</h5>
+        </div>
+     </mat-list-item>
+
+     <mat-list-item style="padding-left: 5px;" routerLink="tab_chqcollection_list" routerLinkActive="active">
+      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+              aria-hidden="true"
+              ></i>
+      </mat-icon>
+      <div fxFlex="10"></div>
+      <div class="sidenav-item">
+          <h5 class="lead">Collection ChQ</h5>
+      </div>
+   </mat-list-item>
+
+
+   <mat-list-item style="padding-left: 5px;" routerLink="tab_usermanagement" routerLinkActive="active">
+    <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+            aria-hidden="true"
+            ></i>
+    </mat-icon>
+    <div fxFlex="10"></div>
+    <div class="sidenav-item">
+        <h5 class="lead">Tab User Detail</h5>
+    </div>
+ </mat-list-item>
+
+
+
+
+
+          <!-- <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
+              <mat-icon  mat-list-icon>
+                  <i class="fab fa-android" aria-hidden="true"
+                      ></i></mat-icon>
+              <div fxFlex="10"></div>
+              <div class="sidenav-item">
+                  <h5 class="lead">App Features</h5>
+              </div>
+              <div class="sb-sidenav-collapse-arrow">
+                  <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
+                  <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
+              </div>
+          </mat-list-item>
+          <mat-nav-list style="background: #011b91;padding-left: 5px;" *ngIf="expand1">
+              <div class="sub-menu">
+
+                  <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
+                      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true"
+                              ></i></mat-icon>
+                      <div fxFlex="10"></div>
+                      <div class="sidenav-item">
+                          <h5 class="lead">Master</h5>
+                      </div>
+                      <div class="sb-sidenav-collapse-arrow">
+                          <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
+                          <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
+                      </div>
+                  </mat-list-item>
+                  <mat-nav-list style="background: #011b91;" *ngIf="expand2">
+
+                  </mat-nav-list>
+
+
+                  <mat-list-item routerLinkActive="active" (click)="expand3 = !expand3">
+                    <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true"
+                            ></i></mat-icon>
+                    <div fxFlex="10"></div>
+                    <div class="sidenav-item">
+                        <h5 class="lead">Oracle</h5>
+                    </div>
+                    <div class="sb-sidenav-collapse-arrow">
+                        <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
+                        <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
+                    </div>
+                </mat-list-item>
+                <mat-nav-list style="background: #011b91;" *ngIf="expand3">
+                    <div class="sub-menu">
+                      <mat-list-item style="padding-left: 5px;" routerLink="oracel_new_groupdetail" routerLinkActive="active">
+                        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                                aria-hidden="true"
+                                ></i>
+                        </mat-icon>
+                        <div fxFlex="10"></div>
+                        <div class="sidenav-item">
+                            <h5 class="lead">Oracle Activity</h5>
+                        </div>
+                    </mat-list-item>
+
+                    </div>
+                </mat-nav-list>
+              </div>
+          </mat-nav-list> -->
+      </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+      <section class="container-fluid">
+          <router-outlet></router-outlet>
+      </section>
+
+  </mat-drawer-content>
+</mat-drawer-container>

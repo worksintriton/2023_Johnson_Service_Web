@@ -1,0 +1,154 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+:host::ng-deep .mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: 75px;
+}
+
+:host::ng-deep .mat-toolbar.mat-primary {
+    /* background-image: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%) !important; */
+    box-shadow: -9.829px 11.607px 20px 0 rgba(144,143,160,.09);
+    color: white;
+    /* border-bottom: 2px solid #007ad9; */
+    position: fixed;
+    top: 0px;
+    z-index: 9;
+    background-color: #fff;
+}
+
+.fas {
+    color: #019278;
+    font-size: 24px;
+    /* position: absolute;*/
+    padding-left: 5px; 
+}
+
+.logo-img {
+    padding-left: 20px;
+}
+.bage {
+    position: absolute;
+    top: -3px;
+    right: 3px;
+    font-size: 11px !important;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    line-height: 1.9;
+    font-family: "Helvetica Neue", sans-serif !important;
+    padding: 0px 7px;
+  }
+  .ad-user h5{
+    font-size: 14px;
+    z-index: 999;
+    color: #3e3e3e;
+    font-weight: 600;
+    margin-bottom: 3px;
+    line-height: 0;
+    margin-top: 17px;
+  }
+  .ad-user p{
+      
+    font-size: 12px;
+    z-index: 999;
+    color: #777777;
+    font-weight: 600;
+margin-bottom: 3px;
+  }
+  :host::ng-deep .ui-dialog .ui-dialog-titlebar {
+    border: 1px solid #ffffff !important;
+    background-color: #ffffff !important;
+    color: #333333;
+    padding: 1em;
+    font-weight: 700;
+    border-bottom: none;
+}
+
+:host::ng-deep  .ui-dialog .ui-dialog-content {
+    background-color: #ffffff;
+    color: #333333;
+    border: 1px solid #ffffff;
+    padding: 0.571em 1em;
+}
+
+table {
+    background: #fff url("http://kukie.net/blog/wp-content/uploads/2019/01/blogger_bg_table.png") repeat-x left top;
+    border-width: 0;
+    font-size: 100%;
+    color: #333;
+    width: 100%;
+}
+
+th {
+    color: #262626;
+    text-align: left;
+    font-weight: 400 !important;
+    padding: 10px 10px;
+}
+
+tr {
+    border-bottom: 1px solid #CABBA9;
+    border-width: 1px;
+}
+
+td {
+    padding: 5px 10px;
+    font-size: 93%;
+    line-height: 1.5em;
+    text-align: left;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+.card-box {
+    padding: 0px 30px 0px 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: none;
+}
+.headth th label{
+    font-weight: 600;
+}
+:host::ng-deep button:focus {
+    outline: none !important;
+}
+:host::ng-deep button.mat-menu-item:focus{
+    outline: none !important;
+}
+:host::ng-deep .mat-icon-button i:hover {
+    filter: brightness(0.5);
+}
+
+/* notification */
+.notifications-item {
+    overflow:auto;
+     max-height:250px;
+     height: 60px;
+    background: #f3f3f3; padding: 4px 20px; border-bottom: 1px solid #ccc;
+   }
+   
+.menu-title {
+    color:#ff7788;
+    font-size:1.5rem;
+ }
+ 
+ .notification-item p {font-size: 12px;line-height: 1;}
+
+ .text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.notifications-item p.mins,.notifications-item p {
+    line-height: 24px;
+}
+
+.notifications-item p.conts {
+    line-height: 24px; font-size: 14px;
+}
+ 

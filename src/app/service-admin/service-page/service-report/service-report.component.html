@@ -1,0 +1,83 @@
+<div class="page-header">
+    <div>
+        <h2 class="main-content-title tx-24 mb-1">Reports For Material Request</h2>
+
+    </div>
+
+</div>
+<div class="row row-sm">
+
+    <div class="col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="card-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5 class="form-lable">Location Name</h5>
+
+                            <p-autoComplete [(ngModel)]="selectedCountry" placeholder="Location Name" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)"
+                                field="" [minLength]="1" (onSelect)="onSelect($event)" ></p-autoComplete>
+                        </div>
+                        <div class="col-md-4">
+                            <h5 class="form-lable">More Reports</h5>
+                            <p-dropdown #myselect [options]="moreReport" [(ngModel)]="selectedReport"  placeholder="More Reports" optionLabel="name" [showClear]="true"(onChange)="onChange($event)"></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row row-sm">
+
+    <div class="col-lg-12">
+        <div class="row">
+
+            <div class="col-md-2">
+                <nav class="sidebar mb-4">
+                    <ul class="nav flex-column" id="nav_accordion">
+                        <li class="nav-item" *ngFor="let item of reportSide" (click)="reportChange(item)">
+                            <span class="nav-link " [ngClass]="{'active': firstChild == item.name}">{{item.name}} </span>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-10">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="card-item">
+                            <div class="row">
+                                <div class="col-md-2 stylecont text-center " [ngClass]="{'active': dayChild == item}" *ngFor="let item of dateReport" (click)="dayChange(item)" >
+                                    <span class=""  >{{item}}</span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <div style="display: block">
+                                                <canvas baseChart
+                                                        [datasets]="barChartData"
+                                                        [labels]="mbarChartLabels"
+                                                        [options]="barChartOptions"
+                                                        [colors]="barChartColors"
+                                                        [legend]="barChartLegend"
+                                                        [chartType]="barChartType"
+                                                        (chartHover)="chartHovered($event)"
+                                                        (chartClick)="chartClicked($event)"></canvas>
+                                              </div>
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
