@@ -14,6 +14,12 @@ import { ServiceAddserviceComponent } from './service-page/service-service/servi
 import { AgentManagementComponent } from './components/agent-management/agent-management.component';
 import { JobBreakDownComponent } from './components/job-break-down/job-break-down.component';
 import { BreakdownservicePdfComponent } from './components/breakdownservice-pdf/breakdownservice-pdf.component';
+import { PreventiveMaintenanceComponent } from './components/preventive-maintenance/preventive-maintenance.component';
+import { PreventiveMaintenancePdfComponent } from './components/preventive-maintenance-pdf/preventive-maintenance-pdf.component';
+import { LrServiceComponent } from './components/lr-service/lr-service.component';
+import { LrServicePdfComponent } from './components/lr-service-pdf/lr-service-pdf.component';
+import { PartsReplacementAckComponent } from './components/parts-replacement-ack/parts-replacement-ack.component';
+import { PartsReplacementAckPdfComponent } from './components/parts-replacement-ack-pdf/parts-replacement-ack-pdf.component';
 const routes: Routes = [
   { path: '', redirectTo: 'service-dashboard', pathMatch: 'full' },
   { path: 'service-dashboard', component: ServiceDashboardComponent },
@@ -28,7 +34,20 @@ const routes: Routes = [
   { path: 'service-add', component: ServiceAddserviceComponent },
   { path: 'service-agent', component: AgentManagementComponent },
   { path: 'service-job_details/break_down', component: JobBreakDownComponent },
-  { path: 'Breakdownservice-Pdf', component: BreakdownservicePdfComponent }
+  { path: 'Breakdownservice-Pdf', component: BreakdownservicePdfComponent },
+
+  { path: 'preventive-maintenance', component: PreventiveMaintenanceComponent },
+  { path: 'preventive-maintenance-Pdf', component: PreventiveMaintenancePdfComponent },
+
+  { path: 'lr-service', component: LrServiceComponent },
+  { path: 'lr-service-Pdf', component: LrServicePdfComponent },
+
+  { path: 'parts-ack', component: PartsReplacementAckComponent },
+  { path: 'parts-ack-pdf', component: PartsReplacementAckPdfComponent },
+
+
+  
+  
 ]
 @NgModule({
   declarations: [],

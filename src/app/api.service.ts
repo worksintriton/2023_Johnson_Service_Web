@@ -421,13 +421,22 @@ getBranchList(){
 }
 //break down 
 getbreak_down(){
-  return this.http.get(this.apiUrl +'breakdown_management/getlist');
+  return this.http.get(this.apiUrl +'breakdown_management/getlist_completed_bd');
 }
 
+
+//getlist_completed_pm 
+getlist_completed_pm(){
+  return this.http.get(this.apiUrl +'breakdown_management/getlist_completed_pm');
+}
 
 
 breakdown_data_details(data){
   return this.http.post(this.apiUrl + 'breakdown_data_management/fetch_job_id', data);
+}
+
+preventive_data_management(data){
+  return this.http.post(this.apiUrl + 'preventive_data_management/fetch_job_id', data);
 }
 
 

@@ -72,8 +72,14 @@ import { AgentManagementComponent } from './components/agent-management/agent-ma
 import { CurrentLoginComponent } from './components/current-login/current-login.component';
 import { JobBreakDownComponent } from './components/job-break-down/job-break-down.component';
 import { BreakdownservicePdfComponent } from './components/breakdownservice-pdf/breakdownservice-pdf.component';
+import { PreventiveMaintenanceComponent } from './components/preventive-maintenance/preventive-maintenance.component';
+import { PreventiveMaintenancePdfComponent } from './components/preventive-maintenance-pdf/preventive-maintenance-pdf.component';
+import { LrServiceComponent } from './components/lr-service/lr-service.component';
+import { LrServicePdfComponent } from './components/lr-service-pdf/lr-service-pdf.component';
+import { PartsReplacementAckComponent } from './components/parts-replacement-ack/parts-replacement-ack.component';
+import { PartsReplacementAckPdfComponent } from './components/parts-replacement-ack-pdf/parts-replacement-ack-pdf.component';
 @NgModule({
-  declarations: [ServiceSidebarComponent,ServiceNavBarComponent, ServiceDashboardComponent, ServiceReportComponent, ServiceReportTableComponent, ServiceColumnPopupComponent, JobStatusPopupComponent, ServiceAgentComponent, ServiceAddAgentComponent, ServiceSideadminComponent, SeviceAddadminComponent, ServiceSettingComponent, ServiceServiceComponent, ServiceAddserviceComponent, SettingCountryComponent, SettingZoneComponent, SettingStateComponent, SettingCityComponent, SettingAreaComponent, SettingStreetComponent, ReportAttendanceTableComponent, AgentManagementComponent, CurrentLoginComponent, JobBreakDownComponent, BreakdownservicePdfComponent],
+  declarations: [ServiceSidebarComponent,ServiceNavBarComponent, ServiceDashboardComponent, ServiceReportComponent, ServiceReportTableComponent, ServiceColumnPopupComponent, JobStatusPopupComponent, ServiceAgentComponent, ServiceAddAgentComponent, ServiceSideadminComponent, SeviceAddadminComponent, ServiceSettingComponent, ServiceServiceComponent, ServiceAddserviceComponent, SettingCountryComponent, SettingZoneComponent, SettingStateComponent, SettingCityComponent, SettingAreaComponent, SettingStreetComponent, ReportAttendanceTableComponent, AgentManagementComponent, CurrentLoginComponent, JobBreakDownComponent, BreakdownservicePdfComponent, PreventiveMaintenanceComponent, PreventiveMaintenancePdfComponent, LrServiceComponent, LrServicePdfComponent, PartsReplacementAckComponent, PartsReplacementAckPdfComponent],
   imports: [
     CommonModule,
     HttpClientModule,

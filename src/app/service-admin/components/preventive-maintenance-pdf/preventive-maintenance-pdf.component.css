@@ -1,0 +1,43 @@
+.btn {
+    height: fit-content !important;
+}
+
+.bg {
+    background-color: white;
+}
+
+.bg1 {
+    background-color: #213e99;
+    color: white;
+}
+
+.pd {
+    padding-left: 120px;
+}
+
+.center {
+    text-align: center;
+}
+
+.ht {
+    min-height: 195px;
+}
+
+.sic {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.fl {
+    float: right
+}
+
+p {
+    font-weight: 500;
+}
+
+.img {
+    -webkit-print-color-adjust: exact;
+}
+
+.img{display:visible}
