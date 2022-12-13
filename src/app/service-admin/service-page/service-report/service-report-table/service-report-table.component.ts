@@ -36,16 +36,16 @@ export class ServiceReportTableComponent implements OnInit {
   rows = [];
 
   header = ["SCH_JOBNO", "SCH_CUSNAME", "SCH_MECHANIC", "JOB_STATUS", "SCH_BRCODE", "SCH_BRKDOWNTYPE",
-    "SCH_COMPNO", "SCH_CUSADD1", "SCH_CUSADD2", "SCH_CUSADD3"];
+    "SCH_COMPNO", "SCH_CUSADD1", "SCH_CUSADD2", "SCH_CUSADD3","LAST_UPDATED_TIME","JOB_START_TIME","JOB_END_TIME"];
 
   header1 = ["SCH_JOBNO", "SCH_CUSNAME", "SCH_MECHANIC", "JOB_STATUS", "SCH_BRCODE", "SCH_BRKDOWNTYPE",
-    "SCH_COMPNO", "SCH_CUSADD1", "SCH_CUSADD2", "SCH_CUSADD3"];
+    "SCH_COMPNO", "SCH_CUSADD1", "SCH_CUSADD2", "SCH_CUSADD3","LAST_UPDATED_TIME","JOB_START_TIME","JOB_END_TIME"];
 
   header2 = ["SCQH_JOBNO", "SED_NAME", "SCAH_MECHANIC", "JOB_STATUS", "SCQH_BRCODE",
-    "SCQH_QUOTENO", "SMU_SED_ADDRESS1", "SMU_SED_ADDRESS2", "SMU_SED_ADDRESS3"];
+    "SCQH_QUOTENO", "SMU_SED_ADDRESS1", "SMU_SED_ADDRESS2", "SMU_SED_ADDRESS3","LAST_UPDATED_TIME","JOB_START_TIME","JOB_END_TIME"];
 
   header3 = ["ACK_JOBNO", "ACK_ENGRNAME", "JOB_STATUS", "ACK_COMPNO",
-    "ACK_ADDRESS1", "ACK_ADDRESS2", "ACK_ADDRESS3"];
+    "ACK_ADDRESS1", "ACK_ADDRESS2", "ACK_ADDRESS3","LAST_UPDATED_TIME","JOB_START_TIME","JOB_END_TIME"];
 
   @ViewChild('table')
   tt: Table;
@@ -99,7 +99,7 @@ var year = new Date(new Date().getFullYear() , 0, 1);
 
     this.newdate = new Date();
     this.todaydate = new Date();
-     this.newdate.setDate( this.newdate.getDate() + 1)
+     this.newdate.setDate( this.newdate.getDate() + 1);
     console.log("one", this.newdate)
     console.log( "two",this.todaydate)
     if(this.reportsrange=='Today'){
@@ -162,9 +162,10 @@ var year = new Date(new Date().getFullYear() , 0, 1);
     console.log(this.active)
   }
   submit(){
+    var end_date = this.E_Date.setDate(this.E_Date.getDate() + 1);
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.S_Date,'yyyy-MM-dd') ,
-      "end_date": new DatePipe('en-US').transform(this.E_Date,'yyyy-MM-dd') ,
+      "end_date": new DatePipe('en-US').transform(end_date,'yyyy-MM-dd') ,
       "status":  this.Job_type
     }
     if (this.jwt == 'breakdown') {

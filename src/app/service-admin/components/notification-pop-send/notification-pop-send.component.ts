@@ -5,12 +5,11 @@ import { ApiService } from 'src/app/api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
-  selector: 'app-add-admin-user',
-  templateUrl: './add-admin-user.component.html',
-  styleUrls: ['./add-admin-user.component.css']
+  selector: 'app-notification-pop-send',
+  templateUrl: './notification-pop-send.component.html',
+  styleUrls: ['./notification-pop-send.component.css']
 })
-export class AddAdminUserComponent implements OnInit {
-  branchList:any;
+export class NotificationPopSendComponent implements OnInit {
   adminForm: FormGroup;
   searchQR: any;
   searchQR1: any;
@@ -39,13 +38,14 @@ export class AddAdminUserComponent implements OnInit {
   serviceList: any;
   Report: boolean = false;
   Service: boolean = false;
-  access_location: any = [];
+  employee_detail: any = [];
   service_detail: any = [];
   editTrue: boolean = false;
   filterEmpValue: any;
   filterServiceValue: any;
   employeeChecked: boolean =false;
   serviceChecked: boolean =false;
+  Admin_check:any;
 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toastr: ToastrManager,
@@ -65,32 +65,14 @@ export class AddAdminUserComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this._api.getBranchList().subscribe((response: any) => {
-      this.branchList=response['Data'];
-      console.log( this.branchList)
-    })
-   this._api.Admin_list().subscribe((data: any) => {
-      console.log("emplist", data)
-     
-      this.empList = data['Data'];
-      console.log("emplist",this.empList)
-      this.empList = this.empList.filter((ele) => ele.user_name !== 'Divagar');
-      this.empList = this.empList.filter((ele) => ele.emp_type == 'Mechanic');
-      this.filterEmpValue = this.empList;
-      console.log("emplist1",this.empList)
-    });
-
-
-
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
     this.editEmp = JSON.parse(sessionStorage.getItem('employeeDetail') || '{}');
-    console.log(this.editEmp)
-  //  await this.getEmp();
-  //  await this.getService();
+   await this.getEmp();
+   await this.getService();
 
-    await this._api.getadminDetails({ mobile_no: this.editEmp.mobile_no
-    }).subscribe(
+    await this._api.getEmpDetails({ mobile_no: this.editEmp.user_mobile_no }).subscribe(
       (response: any) => {
-       
+        debugger
         console.log("response", response);
 
         if (response.Message == "No Details Found") {
@@ -98,25 +80,33 @@ export class AddAdminUserComponent implements OnInit {
         } else {
           this.editTrue = true;
 
-          if (response && response.Data.access_location.length == 0) {
+          if (response && response.Data.employee_detail.length == 0) {
             this.setAccess[1].check = false
             this.Report = false;
           } else {
             this.setAccess[1].check = true;
             this.Report = true;
           }
-          if (response && response.Data.access_location.length == 0) {
+          if (response && response.Data.access_live.length == 0) {
             this.setAccess[0].check = false;
             this.Service = false;
           } else {
             this.setAccess[0].check = true;
             this.Service = true;
           }
-console.log("one",this.branchList)
-console.log("two", response.Data.access_location)
-this.branchList && this.branchList.forEach(ele => {
-            response.Data.access_location && response.Data.access_location.forEach(ele2 => {
-              console.log("hrlo",ele.ele2)
+          console.log("one",this.empList)
+          console.log("two",response.Data.employee_detail)
+          this.empList && this.empList.forEach(ele => {
+            response.Data.employee_detail && response.Data.employee_detail.forEach(ele2 => {
+              if (ele._id == ele2._id) {
+                ele.check = true;
+                ele2.check = true;
+              }
+            });
+          });
+          console.log("welcome",this.serviceList )
+          this.serviceList && this.serviceList.forEach(ele => {
+            response.Data.access_live && response.Data.access_live.forEach(ele2 => {
               if (ele._id == ele2._id) {
                 ele.check = true;
                 ele2.check = true;
@@ -124,22 +114,8 @@ this.branchList && this.branchList.forEach(ele => {
             });
           });
 
-          // this.serviceList && this.serviceList.forEach(ele => {
-          //   response.Data.access_live && response.Data.access_live.forEach(ele2 => {
-          //     if (ele._id == ele2._id) {
-          //       ele.check = true;
-          //       ele2.check = true;
-          //     }
-          //   });
-          // });
-console.log(this.empList )
-  console.log( this.empList.length)
-  console.log(response.Data.access_location)
-  console.log(response.Data.access_location
-    .length)
-          if((this.empList && this.empList.length) == (response.Data.access_location
-            && response.Data.access_location
-            .length)){
+// console.log((this.empList && this.empList.length) == (response.Data.employee_detail && response.Data.employee_detail.length))
+          if((this.empList && this.empList.length) == (response.Data.employee_detail && response.Data.employee_detail.length)){
             this.employeeChecked = true;
           }else{
             this.employeeChecked = false;
@@ -151,14 +127,12 @@ console.log(this.empList )
           }else{
             this.serviceChecked = false;
           }
-console.log(response.Data._id)
+
           this.adminForm.patchValue({
-            _id: response.Data._id
-            ,
+            _id: response.Data._id,
           })
 
-          this.access_location = response.Data.access_location,
-          console.log(this.access_location)
+          this.employee_detail = response.Data.employee_detail
           this.service_detail = response.Data.access_live
         }
       }
@@ -167,30 +141,35 @@ console.log(response.Data._id)
     this.adminForm.patchValue({
       firstname: this.editEmp.user_name,
       // lastname:this.editEmp.lastname, 
-      email_id: this.editEmp.email_id,
-      mobile_no: this.editEmp.mobile_no
-      ,
+      email_id: this.editEmp.user_email,
+      mobile_no: this.editEmp.user_mobile_no,
       user_name: this.editEmp.user_name,
-      password: this.editEmp.password
-      ,
-      confirm_password: this.editEmp.confirm_password
-      ,
+      password: this.editEmp.user_password,
+      confirm_password: this.editEmp.user_password,
       // status:this.editEmp.status 
     })
   }
-
+  cancel1() {
+    this.router.navigate(['/service-admin/sub-admin-employee'])
+  }
 
   cancel() {
-    this.router.navigate(['/service-admin/AdminAccess'])
+    this.router.navigate(['/service-admin/service-employee'])
   }
 
   async getEmp() {
-  
+   await this._api.service_employee_list().subscribe((data: any) => {
+      console.log("emplist", data)
+      this.empList = data['Data'];
+      // this.empList = this.empList.filter((ele) => ele.user_name !== 'Divagar');
+      this.empList = this.empList.filter((ele) => ele.emp_type == 'Mechanic');
+      this.filterEmpValue = this.empList;
+      console.log("emplist1", this.empList)
+    });
   }
-  
 
   async getService() {
-   await this._api.Admin_list().subscribe(async (response: any) => {
+   await this._api.service_activity_list().subscribe(async (response: any) => {
       this.serviceList = response['Data'];
       console.log("this.serviceList", this.serviceList);
       this.filterServiceValue = this.serviceList;
@@ -225,16 +204,16 @@ console.log(response.Data._id)
   checkEmployeeValue(event: any, item) {
     if (event.currentTarget.checked) {
       item.check = true;
-      this.access_location.push(item);
-      console.log(this.access_location)
+      this.employee_detail.push(item);
+      console.log(this.employee_detail);
     } else {
       item.check = false;
-      this.access_location = this.access_location.filter((ele) => ele._id !== item._id);
+      this.employee_detail = this.employee_detail.filter((ele) => ele._id !== item._id);
     }
     // console.log("employee_detail", this.employee_detail);
     // console.log("empList", this.empList)
 
-    if((this.empList && this.empList.length) == (this.access_location && this.access_location.length)){
+    if((this.empList && this.empList.length) == (this.employee_detail && this.employee_detail.length)){
       this.employeeChecked = true;
     }else{
       this.employeeChecked = false;
@@ -248,12 +227,12 @@ console.log(response.Data._id)
       this.empList.forEach(element => {
         element.check = true;
       });
-      this.access_location = this.empList;
+      this.employee_detail = this.empList;
     } else {
       this.empList.forEach(element => {
         element.check = false;
       });
-      this.access_location = [];
+      this.employee_detail = [];
     }
 
     
@@ -276,7 +255,7 @@ console.log(response.Data._id)
 
 
   checkServiceValue(event: any, item) {
-   
+    debugger
     if (event.currentTarget.checked) {
       item.check = true;
       var obj = {
@@ -297,31 +276,29 @@ console.log(response.Data._id)
   }
 
   save() {
-  
+    debugger
     var enteredData = this.adminForm.value;
     enteredData.status = enteredData.status.name
     enteredData.access_live = this.service_detail,
-      enteredData.access_location = this.access_location
+      enteredData.employee_detail = this.employee_detail
     // console.log("enteredData", enteredData);
     if (this.editTrue) {
-      this._api.update_admin(enteredData).subscribe((data: any) => {
+      this._api.updateservice_sub_admin(enteredData).subscribe((data: any) => {
         console.log("updateservice_sub_admin", data);
         if (data.Message != "Functiondetails Updated") {
-          this.toastr.successToastr(data.Message);
+          this.toastr.successToastr("Failed");
         } else {
           this.toastr.successToastr("Updated Successfully");
-          this.router.navigate(['/service-admin/AdminAccess'])
         }
         // this.ngOnInit();
       });
     } else {
-      this._api.create_admin(enteredData).subscribe((data: any) => {
+      this._api.createservice_sub_admin(enteredData).subscribe((data: any) => {
         console.log("createservice_sub_admin", data);
         if (data.Message != "Added successfully") {
-          this.toastr.successToastr(data.Message);
+          this.toastr.successToastr("Failed");
         } else {
           this.toastr.successToastr("Created Successfully");
-          this.router.navigate(['/service-admin/AdminAccess'])
         }
         // this.ngOnInit();
       });
@@ -331,14 +308,14 @@ console.log(response.Data._id)
 
 
   filterByText(initial: string) {
-   
+    debugger;
     this.empList = this.filterEmpValue;
     this.empList = this.empList.filter((i: any) => i.user_name.toLowerCase().indexOf(initial.toLocaleLowerCase()) !== -1);
     console.log(this.empList);
   }
 
   filterByService(initial: string) {
- 
+    debugger;
     this.serviceList = this.filterServiceValue;
     this.serviceList = this.serviceList.filter((i: any) => i.service_name.toLowerCase().indexOf(initial.toLocaleLowerCase()) !== -1);
     console.log(this.empList);

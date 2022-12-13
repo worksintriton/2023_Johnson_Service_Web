@@ -45,6 +45,7 @@ import { MrBreakeDownComponent } from './repull-jobs/mr-breake-down/mr-breake-do
 import { MrPreventiveComponent } from './repull-jobs/mr-preventive/mr-preventive.component';
 import { PartReplacementComponent } from './repull-jobs/part-replacement/part-replacement.component';
 import { PreventiveComponent } from './repull-jobs/preventive/preventive.component';
+import { NotificationPopSendComponent } from './components/notification-pop-send/notification-pop-send.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'service-dashboard', pathMatch: 'full' },
@@ -98,7 +99,7 @@ const routes: Routes = [
     { path: 'PartReplacement', component: PartReplacementComponent },
     { path: 'Preventive', component: PreventiveComponent },
     
-  
+    { path: 'service_notification', component: NotificationPopSendComponent },
 ]
 @NgModule({
   declarations: [],

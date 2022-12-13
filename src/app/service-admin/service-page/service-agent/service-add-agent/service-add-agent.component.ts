@@ -28,12 +28,28 @@ branchList:any;
 countries: any[]= [];
 submitted :boolean=false;
   mobile_operating=  [ 
-    {"name": "Android Jelly Bean",}, 
-    {"name": "Android KitKat",}, 
-    {"name": "Android Lollipop", }, 
-    {"name": "Android Marshmallow",}, 
-    {"name": "Android Nougat",}, 
-    {"name": "Android Oreo", },];
+    {"name": "5",}, 
+    {"name": "6",}, 
+    {"name": "7",}, 
+    {"name": "8",}, 
+    {"name": "9",}, 
+    {"name": "10",}, 
+    {"name": "11",}, 
+    {"name": "12",}, 
+    {"name": "13",}, 
+    {"name": "14",}, 
+    {"name": "15",}, 
+    {"name": "16",}, 
+    {"name": "17",}, 
+    {"name": "19",},
+    {"name": "20",},  
+    {"name": "20 Above",}, 
+    ];
+
+
+
+
+
     status=  [ 
       {"name": "Active",}, 
       {"name": "InActive",}, 

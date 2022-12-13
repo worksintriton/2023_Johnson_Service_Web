@@ -49,13 +49,9 @@
                             <div class="col-md-6">
                                 <div class="search-hero">
                                     <div class="input-group mb-3">
-                                  
-                                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
-                        <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
-                        
-                                     </div>
+                                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Seelect Date" class="mr-3"></p-calendar>                        
+                                      </div>
                                   </div>
-                                  
                             </div>
                             <div class="col-md-2 text-left">
                                 <button type="button" class="btn btn-secondary"
@@ -68,12 +64,9 @@
                             <div class="col-md-2 text-left">
                                 <button type="button" class="btn btn-secondary"
                                     (click)="refersh()"><i class="fas
-                                        fa-sync-alt"></i> Refresh</button>
+                                        fa-sync-alt"></i> Clear All</button>
                             </div>
-
                         </div>
-
-
                         <div class="table-responsive">
                             <p-table [value]="rows | filter:searchQR"
                                 styleClass="ui-table-customers" #tt
@@ -91,11 +84,6 @@
                                             style="min-width:209px">
                                             {{item}}
                                         </th>
-    
-    
-                                        <!-- <th style="width: 163px;text-align:center">
-                                    Action
-                                </th> -->
                                     </tr>
                                     <tr>
                                         <th *ngFor="let item of header">
