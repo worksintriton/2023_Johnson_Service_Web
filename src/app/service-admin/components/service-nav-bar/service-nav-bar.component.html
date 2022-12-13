@@ -4,7 +4,7 @@
   </div>
 
   <div class="d-flex">
-    <div class="ad-user mr-4" style="    border: 2px solid #213e99;
+    <!-- <div class="ad-user mr-4" style="    border: 2px solid #213e99;
 border-radius: 10px;     border-left: none;">
       <table>
         <tr>
@@ -12,32 +12,41 @@ border-radius: 10px;     border-left: none;">
           <td class="usrname">jj</td>
         </tr>
       </table>
-    </div>
-    <div class="ad-user mr-4" style="    border: 2px solid #213e99;
+    </div> -->
+    <div class="ad-user mr-4" *ngIf="Admin_check==true" style="    border: 2px solid #213e99;
 border-radius: 10px;     border-left: none;">
       <table>
         <tr>
           <td class="headerlogged">Logged in as</td>
-          <td class="usrname">jj</td>
+          <td class="usrname">{{User_name}}</td>
         </tr>
       </table>
     </div>
+    <div class="ad-user mr-4" *ngIf="Admin_check!=true" style="    border: 2px solid #213e99;
+    border-radius: 10px;     border-left: none;">
+          <table>
+            <tr>
+              <td class="headerlogged">Logged in as</td>
+              <td class="usrname">Admin</td>
+            </tr>
+          </table>
+        </div>
   </div>
   <!-- <span>My App</span> -->
   <span class="example-spacer"></span>
   <div class="ad-user mr-4">
-    <h5>Server Time &nbsp; :
+    <!-- <h5>Server Time &nbsp; :
       <span class="server">{{date| date:'medium'}}</span>
-    </h5>
-    <h5>Last Login Time&nbsp; :
+    </h5> -->
+    <h5>Login Time&nbsp; :
       <span class="server">{{date| date:'medium'}}</span>
     </h5>
 
   </div>
 
 
-  <button mat-icon-button class="example-icon">
-
+  <!-- <button mat-icon-button class="example-icon"> -->
+<!-- 
     <button mat-icon-button [matMenuTriggerFor]="menunotiy" pTooltip="Notification">
       <mat-icon>
         <i class="fas fa-bell" style="color: #82849f;" aria-hidden="true"></i>
@@ -79,7 +88,7 @@ border-radius: 10px;     border-left: none;">
       </a>
     </mat-menu>
 
-  </button>
+  </button> -->
 
   <button mat-icon-button class="example-icon">
 

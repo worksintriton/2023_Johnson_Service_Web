@@ -1,0 +1,50 @@
+.btn {
+    height: fit-content !important;
+}
+
+.bg {
+    background-color: white;
+}
+
+.bg1 {
+    background-color: #213e99;
+    color: white;
+}
+.border {
+    border: 2px solid #dee2e6 !important;
+      border-top-color: rgb(222, 226, 230);
+      border-right-color: rgb(222, 226, 230);
+      border-bottom-color: rgb(222, 226, 230);
+      border-left-color: rgb(222, 226, 230);
+  }
+
+.pd {
+    padding-left: 72px;
+}
+
+.center {
+    text-align: center;
+}
+
+.ht {
+    min-height: 195px;
+}
+
+.sic {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.fl {
+    float: right
+}
+
+p {
+    font-weight: 500;
+}
+
+.img {
+    -webkit-print-color-adjust: exact;
+}
+
+.img{display:visible}

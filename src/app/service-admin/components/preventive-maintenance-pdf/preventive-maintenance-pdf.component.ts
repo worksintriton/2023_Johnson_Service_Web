@@ -39,6 +39,7 @@ export class PreventiveMaintenancePdfComponent implements OnInit {
   type_of_bd = '';
   bd_status = '';
   areas_of_bd = '';
+  areas_of_pm = '';
   remarks = '';
   tech_signature = '';
   customer_signature = '';
@@ -58,11 +59,18 @@ export class PreventiveMaintenancePdfComponent implements OnInit {
     let job_detail = this.storage.get('job_detail');
     console.log(job_detail);
     let datas = {
-      job_id : job_detail.SMU_SCH_JOBNO
+      job_id : job_detail.SMU_SCH_JOBNO,
+      key_value:job_detail.SMU_SCH_COMPNO
     }
     this._api.preventive_data_management(datas).subscribe((response: any) => {
       console.log(response.Data);
       this.storaged_data = response.Data;
+      this. areas_of_pm = response.Data.preventive_check;
+      this.remarks = response.Data.action_req_customer;
+      this.customer_signature =response.Data.customer_signature;
+      this.bd_status = response.Data.pm_status;
+      this.tech_signature =response.Data.tech_signature;
+      
     })
 
     let a = {
@@ -84,10 +92,10 @@ export class PreventiveMaintenancePdfComponent implements OnInit {
 
     this._api.fetch_breakdown_job_detail(datas).subscribe((response: any) => {
       console.log(response.Data);
-
+      this.signature_date  = response.Data.JOB_END_TIME;
       this.job_no = response.Data.SMU_SCH_JOBNO;
       this.customer_name = response.Data.SMU_SCH_CUSNAME;
-      this.location = response.Data.SMU_SCH_CUSADD1 + "," + response.Data.SMU_SCH_CUSADD2 + "," + response.Data.SMU_SCH_CUSADD3 + "," + response.Data.SMU_SCH_CUSADD4 + "," + response.Data.SMU_SCH_CUSCODE;
+      this.location = response.Data.SMU_SCH_CUSADD1 ||""+ "," + response.Data.SMU_SCH_CUSADD2||"" + "," + response.Data.SMU_SCH_CUSADD3||"" + "," + response.Data.SMU_SCH_CUSADD4||"" + "," + response.Data.SMU_SCH_CUSCODE||"";
       this.date = response.Data.SMU_SCH_CRTDT;
 
 
@@ -100,13 +108,12 @@ export class PreventiveMaintenancePdfComponent implements OnInit {
 
 
       this.type_of_bd = response.Data.SMU_SCH_BRKDOWNTYPE;
-      this.bd_status = this.storaged_data.breakdown_service;
-      this.areas_of_bd = 'Breakdown , Breakdown1 , Break Down 3';
-      this.remarks = this.storaged_data.feedback_remark_text
+     
+      this.areas_of_bd =this.storaged_data. pm_status;
+   
 
-      this.tech_signature = this.storaged_data.tech_signature;
-      this.customer_signature = this.storaged_data.customer_acknowledgemnet;
-      this.signature_date  = this.storaged_data.date_of_submission;
+      
+    
 
 
 

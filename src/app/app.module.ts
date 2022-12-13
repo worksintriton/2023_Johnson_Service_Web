@@ -38,7 +38,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { NgxPrintElementModule } from 'ngx-print-element';
 import { ServiceLocationComponent } from './service-login/service-location/service-location.component';
 import { TabViewModule } from 'primeng/tabview';
-
+import { SubAdminLoginComponent } from './sub-admin-login/sub-admin-login.component';
+import { ExcelServiceComponent } from './excel-service/excel-service.component';
+import { RouterModule, Routes } from '@angular/router';
 
 
 
@@ -58,10 +60,13 @@ import { TabViewModule } from 'primeng/tabview';
     ServiceLoginComponent,
     ServiceAdminComponent,
     ServiceLocationComponent,
+    SubAdminLoginComponent,
+    ExcelServiceComponent,
     // ServiceNavBarComponent,
 
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AutocompleteLibModule,
     HttpClientModule,

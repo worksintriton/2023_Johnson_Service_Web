@@ -1,6 +1,6 @@
 <div class="modal-header" style="position: relative;
 bottom: 21px;">
-        <h5 class="modal-title" id="exampleModalLongTitle" style="font-size:21px; font-weight:400">Current Login Status:Logout</h5>
+        <!-- <h5 class="modal-title" id="exampleModalLongTitle" style="font-size:21px; font-weight:400">Current Login Status:Logout</h5> -->
         <button type="button" class="close"  mat-dialog-close aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,15 +15,15 @@ bottom: 21px;">
             <th>Logout Reason</th>
             </tr>
             <tr class="tdrow">
-                    <td>{{time}}</td>
-                    <td>{{status}}</td>
-                    <td>Permisson</td>
+                    <td>{{logintime | date:"hh:mm"}}</td>
+                    <td>{{logoutime | date:"hh:mm"}}</td>
+                    <td>{{reason}}</td>
                     </tr>
-                    <tr class="tdrow">
+                    <!-- <tr class="tdrow">
                             <td>{{time}}</td>
                             <td>{{status}}</td>
                             <td>Leave</td>
-                            </tr>
+                            </tr> -->
 </ng-template>
 
 

@@ -11,5 +11,44 @@
 :host::ng-deep .ui-table-wrapper {
     overflow: auto;
 }
+:host::ng-deep .ui-inputtext {
+ 
+    padding: 5px !important;
+margin-bottom: 0px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.list-sorted {
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    /* max-height: 100%; */
+    position: relative;
+    white-space: normal;
+    width: 272px;
+    margin-right: 2rem;
+    height: 300px;
+     overflow-y: scroll; 
+}
+.list-sorted__item {
+    background-color: #fff;
+    cursor: -webkit-grab;
+    display: block;
+    padding: 5px;
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+:host::ng-deep .modal-dialog {
+    max-width: 612px !important;
+}
+.show{
+    display :none;
+}
+.show1{
+    display :block;
+}
 
 

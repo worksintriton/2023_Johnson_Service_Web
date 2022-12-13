@@ -34,22 +34,22 @@
 
 
             <div class="table-responsive">
-                <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
+                <p-table [value]="rows | filter:searchQR" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
 [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
 <ng-template pTemplate="header">
     <tr class="thhead">
         <th style="width: 80px;">S.No</th>
             <th style="width: 150px;">Job No</th>
-            <th style="width: 250px;">Customer Name</th>
+            <!-- <th style="width: 250px;">Customer Name</th> -->
             <!-- <th style="width: 150px;">Employee Code</th> -->
             <!-- <th style="width: 150px;">Report Cell</th> -->
-            <th style="width: 150px;">MECHANIC</th>
+            <th style="width: 150px;">ENGINEER</th>
             <th style="width: 150px;">Job Status</th>
             <!-- <th style="width: 150px;">View Status</th> -->
-            <th style="width: 150px;">Branch Code</th>
+            <!-- <th style="width: 150px;">Branch Code</th> -->
             <!-- <th style="width: 150px;">BRKDOWNDESC</th> -->
-            <th style="width: 150px;">Brkdown type</th>
+            <!-- <th style="width: 150px;">Brkdown type</th> -->
             <th style="width: 150px;">Complaint Number</th>
             <th style="width: 250px;">Address1</th>
             <th style="width: 250px;">Address2</th>
@@ -67,22 +67,22 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
 <ng-template pTemplate="body" let-item  let-i="rowIndex">
   <tr class="tdrow">
     <td>{{i+1}}</td>
-        <td>{{item.SMU_SCH_JOBNO}}</td>
-      <td>{{item.SMU_SCH_CUSNAME}}</td>
+        <td>{{item.SMU_ACK_JOBNO}}</td>
+      <!-- <td>{{item.SMU_SCH_CUSNAME}}</td> -->
       <!-- <td>{{item.SMU_SCH_EMPCODE}}</td> -->
       <!-- <td>{{item.SMU_SCH_REPORTCELL}}</td> -->
-      <td>{{item.SMU_SCH_MECHANIC}}</td>
+      <td>{{item.SMU_ACK_ENGRNAME}}</td>
       <td>{{item.JOB_STATUS}}</td>
       <!-- <td>{{item.JOB_VIEW_STATUS}}</td> -->
-      <td>
+      <!-- <td>
           {{item.SMU_SCH_BRCODE}}
-      </td>
+      </td> -->
       <!-- <td>{{item.SMU_SCH_BRKDOWNDESC}}</td> -->
-      <td>{{item.SMU_SCH_BRKDOWNTYPE}}</td>
-      <td>{{item.SMU_SCH_COMPNO}}</td>
-      <td>{{item.SMU_SCH_CUSADD1}}</td>
-      <td>{{item.SMU_SCH_CUSADD2}}</td>
-      <td>{{item.SMU_SCH_CUSADD3}}</td>
+      <!-- <td>{{item.SMU_SCH_BRKDOWNTYPE}}</td> -->
+      <td>{{item.SMU_ACK_COMPNO}}</td>
+      <td>{{item.SMU_ACK_ADDRESS1}}</td>
+      <td>{{item.SMU_ACK_ADDRESS2}}</td>
+      <td>{{item.SMU_ACK_ADDRESS3}}</td>
       <!-- <td>{{item.SMU_SCH_MECHCELL}}</td> -->
       <!-- <td>{{item.SMU_SCH_ROUTECODE}}</td> -->
       <!-- <td>{{item.SMU_SCH_DWNFLAG}}</td> -->

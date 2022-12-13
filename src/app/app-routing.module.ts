@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ServiceLoginComponent } from './service-login/service-login.component';
+import { SubAdminLoginComponent } from './sub-admin-login/sub-admin-login.component';
 import { ServiceAdminComponent } from './service-admin/service-admin.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
 { path: 'login', component: LoginComponent, },
   { path: 'home', component: HomeComponent, },
   { path: 'service-login', component: ServiceLoginComponent, },
+  { path: 'sub-admin-login', component: SubAdminLoginComponent, },
   {
     path: 'service-admin', component: ServiceAdminComponent,
     children: [

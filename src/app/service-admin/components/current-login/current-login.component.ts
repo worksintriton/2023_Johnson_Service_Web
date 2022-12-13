@@ -9,17 +9,24 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CurrentLoginComponent implements OnInit {
   rows=[];
-  time:any;
-  status:any;
+  logintime:any;
+  logoutime:any;
+  reason:any;
+  values:any;
   constructor(  @Inject(MAT_DIALOG_DATA) data) {
     console.log('{ -----', data);
- this.time="03-04-1995";
- this.status="Active";
+    this.values=data;
+ this.logintime=data.INTIME;
+ this.logoutime=data.OUTTIME;
+ this.reason=data.LOGOUTREASON
+ ;
+ 
+
 
 
    }
 
   ngOnInit(): void {
-console.log(this.status)
+
   }
 }

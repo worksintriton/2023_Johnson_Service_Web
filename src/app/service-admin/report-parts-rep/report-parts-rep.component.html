@@ -1,0 +1,130 @@
+<div class="page-header">
+    <div>
+        <h2 class="main-content-title tx-24 mb-1">PARTS REPLACEMENT REPORTS</h2>
+
+    </div>
+
+</div>
+<div class="row row-sm">
+
+    <div class="col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="card-item">
+                    <div class="row ">
+                        <div class="col-md-1"  >
+                            <span class=""  ></span>
+                        </div>
+                        <div class="col-md-2 stylecont text-center " (click)="clickdata($event,'Not Started')"  >
+                            <span class=""  >Not Started</span>
+                            <p class="colcolor">{{Not_Started}}</p>
+                        </div>
+                        
+                        <div class="col-md-2 stylecont text-center "  (click)="clickdata($event,'Job Started')" >
+                            <span class=""  >Job Started</span>
+                            <p class="colcolor">{{Job_Started}}</p>
+                        </div>
+                        <div class="col-md-2 stylecont text-center "  (click)="clickdata($event,'Job Paused')" >
+                            <span class=""  >Job Paused</span>
+                            <p class="colcolor">{{Job_Paused}}</p>
+                        </div>
+                     
+                        <div class="col-md-2 stylecont text-center "  (click)="clickdata($event,'Job Submitted')" >
+                            <span class=""  >Job Submitted</span>
+                            <p class="colcolor">{{Job_Submitted}}</p>
+                        </div>
+                       
+                        <div class="col-md-2  "  >
+                            <span class=""  ></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row row-sm">
+
+    <div class="col-lg-12">
+        <div class="row">
+
+            <!-- <div class="col-md-2">
+                <nav class="sidebar mb-4">
+                    <ul class="nav flex-column" id="nav_accordion">
+                        <li class="nav-item" *ngFor="let item of reportSide" (click)="reportChange(item)">
+                            <span class="nav-link " [ngClass]="{'active': firstChild == item.name}">{{item.name}} </span>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div> -->
+            <div class="col-md-12">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <div class="card-item">
+                            <div class="row">
+                              
+                                <div class="col-lg-12">
+                                    <div class="card custom-card">
+                                        <div class="card-body">
+                                            <div class="card-item">
+                                                <div class="row ">
+                                                    <div class="col-md-1"  >
+                                                        <span class=""  ></span>
+                                                    </div>
+                                                    <div class="col-md-2 stylecont text-center " [ngClass]="{'active': firstChild == 'Today'}" (click)="range($event,'Today')"  >
+                                                        <span class=""  >Today</span>
+                                                        
+                                                    </div>
+                                                    <div class="col-md-2 stylecont text-center "  [ngClass]="{'active': firstChild =='This Week'}" (click)="range($event,'This Week')" >
+                                                        <span class=""  >This Week</span>
+                                                       
+                                                    </div>
+                                                 
+                                                    <div class="col-md-2 stylecont text-center "  [ngClass]="{'active': firstChild == 'This Month'}" (click)="range($event,'This Month')" >
+                                                        <span class=""  >This Month</span>
+                                                       
+                                                    </div>
+                                                    <div class="col-md-2 stylecont text-center "  [ngClass]="{'active': firstChild == 'This Year'}" (click)="range($event,'This Year')" >
+                                                        <span class=""  >This Year</span>
+                                                       
+                                                    </div>
+                                                   
+                                                    <div class="col-md-2  "  >
+                                                        <span class=""  ></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                        <div style="display: block">
+                                                <canvas baseChart
+                                                        [datasets]="barChartData"
+                                                        [labels]="mbarChartLabels"
+                                                        [options]="barChartOptions"
+                                                        [colors]="barChartColors"
+                                                        [legend]="barChartLegend"
+                                                        [chartType]="barChartType"
+                                                        (chartHover)="chartHovered($event)"
+                                                        (chartClick)="chartClicked($event)"></canvas>
+                                              </div>
+
+                                </div>
+
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

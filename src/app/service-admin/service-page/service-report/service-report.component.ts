@@ -16,6 +16,8 @@ export class ServiceReportComponent implements OnInit {
   countries: any[]= [];
   selectedReport:any;
   branchList:any;
+  access_tocken:any
+  Admin_check:any
     reportSide= [ 
       {"name": "Material Request"}, 
       {"name": "StockManagement"}, 
@@ -71,6 +73,14 @@ export class ServiceReportComponent implements OnInit {
   constructor(private router: Router,public dialog: MatDialog,private _api: ApiService,) { }
 
   ngOnInit(): void {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+    this.access_tocken = sessionStorage.getItem('access_tocken') ;
+    console.log(this.access_tocken)
+    if( this.access_tocken ==null){
+      console.log("noo")
+       this.router.navigateByUrl('/service-login');
+     
+    }else{
    this.firstChild=this.reportSide[0].name;
    this.dayChild=this.dateReport[0];
    this._api.getBranchList().subscribe((response: any) => {
@@ -83,7 +93,7 @@ export class ServiceReportComponent implements OnInit {
     console.log(this.countries);
   })
   
-  }
+  }}
   filterCountry(event) {
     //in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
     let filtered: any[] = [];

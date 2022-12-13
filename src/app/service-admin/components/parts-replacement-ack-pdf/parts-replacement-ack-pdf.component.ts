@@ -15,7 +15,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./parts-replacement-ack-pdf.component.css']
 })
 export class PartsReplacementAckPdfComponent implements OnInit {
-
+  mat_data:any;
   rows:any;
 
   storaged_data : any;
@@ -23,10 +23,14 @@ export class PartsReplacementAckPdfComponent implements OnInit {
   
   
   searchQR;
-
-  iso_number = '';
+  comp_number = '';
+  mr_number = '';
+  ref_number = '';
   branch_name = '';
-
+address1 ='';
+address2 ='';
+address3 ='';
+address4 ='';
   job_no = '';
   customer_name = '';
   location = '';
@@ -43,7 +47,13 @@ export class PartsReplacementAckPdfComponent implements OnInit {
   remarks = '';
   tech_signature = '';
   customer_signature = '';
+  mec_sign = '';
   signature_date  = '';
+  pin = '';
+  serv_type = '';
+  mat_id = '';
+  mat_quan = '';
+  mat_seq_no = '';
 
 
 
@@ -58,22 +68,44 @@ export class PartsReplacementAckPdfComponent implements OnInit {
   ngOnInit(): void {
     let job_detail = this.storage.get('job_detail');
     console.log(job_detail);
+    this.comp_number=job_detail.SMU_ACK_COMPNO;
     let datas = {
-      job_id : job_detail.SMU_SCH_JOBNO
+      job_id : job_detail.SMU_ACK_JOBNO,
+      key_value: job_detail.SMU_ACK_COMPNO
     }
-    this._api.breakdown_data_details(datas).subscribe((response: any) => {
-      console.log(response.Data);
+    let datas1 = {
+
+      SMU_ACK_COMPNO: job_detail.SMU_ACK_COMPNO
+    }
+    // form format
+    this._api.parts_rep_data_details(datas).subscribe((response: any) => {
+      console.log(response.Data,"one");
       this.storaged_data = response.Data;
+      this.customer_name =response.Data.SMU_ACK_ENGRNAME;
+      this.tech_name = response.Data.SMU_ACK_ENGRNAME;
+      this.job_no = response.Data.SMU_ACK_JOBNO;
+      this.address1 = response.Data.SMU_ACK_ADDRESS1;
+      this.address2 = response.Data.SMU_ACK_ADDRESS2;
+      this.address3 = response.Data.SMU_ACK_ADDRESS3;
+      this.address4 = response.Data.SMU_ACK_ADDRESS4;
+      this.pin = response.Data.SMU_ACK_APINCODE;
+      this.date = response.Data.SMU_ACK_DCDT;
+      this.time_reported = response.Data.JOB_START_TIME;
+      this.time_left = response.Data.JOB_END_TIME;
+      this.serv_type = response.Data.SMU_ACK_SERTYPE;
+      this.mr_number = response.Data.SMU_ACK_REQNO;
+      this.ref_number  = response.Data.SMU_ACK_MRSEQNO;
+
     })
 
-    let a = {
-      ISO_DRH_MODULE : 'BREAKDOWN',
-      ISO_DRH_LETYPE : 'L'
-    }
-    this._api.fetch_iso_number(a).subscribe((response: any) => {
-      console.log(response.Data);
-      this.iso_number = response.Data[0].ISO_DRH_DOCNO;
-    })
+    // let a = {
+    //   ISO_DRH_MODULE : 'BREAKDOWN',
+    //   ISO_DRH_LETYPE : 'L'
+    // }
+    // this._api.fetch_iso_number(a).subscribe((response: any) => {
+    //   console.log(response.Data);
+    //   this.iso_number = response.Data[0].ISO_DRH_DOCNO;
+    // })
 
 
 
@@ -82,22 +114,26 @@ export class PartsReplacementAckPdfComponent implements OnInit {
       this.branch_name = response.Data[0].BRANCNAME;
     })
 
+// form sub
+    this._api.fetc_parts_rep_mat_detail(datas1).subscribe((response: any) => {
+      
 
-    this._api.fetch_breakdown_job_detail(datas).subscribe((response: any) => {
-      console.log(response.Data);
+this.mat_data=response.Data;
+console.log(this.mat_data,"two");
+  
 
-      this.job_no = response.Data.SMU_SCH_JOBNO;
-      this.customer_name = response.Data.SMU_SCH_CUSNAME;
+
+     
+  
       this.location = response.Data.SMU_SCH_CUSADD1 + "," + response.Data.SMU_SCH_CUSADD2 + "," + response.Data.SMU_SCH_CUSADD3 + "," + response.Data.SMU_SCH_CUSADD4 + "," + response.Data.SMU_SCH_CUSCODE;
-      this.date = response.Data.SMU_SCH_CRTDT;
+
 
 
       this.nature_of_contract = response.Data.SMU_SCH_AMCTYPE;
       this.breakdown_no = response.Data.SMU_SCH_COMPNO;
-      this.tech_name = response.Data.SMU_SCH_MECHANIC;
+      
       this.employee_no = response.Data.SMU_SCH_EMPCODE;
-      this.time_reported = response.Data.JOB_START_TIME;
-      this.time_left = response.Data.JOB_END_TIME;
+   
 
 
       this.type_of_bd = response.Data.SMU_SCH_BRKDOWNTYPE;
@@ -106,7 +142,7 @@ export class PartsReplacementAckPdfComponent implements OnInit {
       this.remarks = this.storaged_data.feedback_remark_text
 
       this.tech_signature = this.storaged_data.tech_signature;
-      this.customer_signature = this.storaged_data.customer_acknowledgemnet;
+   
       this.signature_date  = this.storaged_data.date_of_submission;
 
 
@@ -116,9 +152,12 @@ export class PartsReplacementAckPdfComponent implements OnInit {
     })
 
 
-    
-
-    
+    this._api.fetch_sumbmitted_data_partrep(datas).subscribe((response: any) => {
+      console.log(response.Data);
+      this.customer_signature = response.Data.customerAcknowledgement;
+      this.mec_sign = response.Data.techSignature;
+  
+    })
 
 
   }

@@ -78,9 +78,40 @@ import { LrServiceComponent } from './components/lr-service/lr-service.component
 import { LrServicePdfComponent } from './components/lr-service-pdf/lr-service-pdf.component';
 import { PartsReplacementAckComponent } from './components/parts-replacement-ack/parts-replacement-ack.component';
 import { PartsReplacementAckPdfComponent } from './components/parts-replacement-ack-pdf/parts-replacement-ack-pdf.component';
+// import { LRServiceComponent } from './components/l-r-service/l-r-service.component';
+import { PartsReplacementComponent } from './components/parts-replacement/parts-replacement.component';
+import { AdminAccessComponent } from './components/admin-access/admin-access.component';
+import { AddAdminUserComponent } from './components/add-admin-user/add-admin-user.component';
+import { SubAdmnEmployeeComponent } from './sub-admn-employee/sub-admn-employee.component';
+import { SubAdminBreakdownServiceComponent } from './components/sub-admin-breakdown-service/sub-admin-breakdown-service.component';
+import { SubAdminPreventiveMaintenanceComponent } from './components/sub-admin-preventive-maintenance/sub-admin-preventive-maintenance.component';
+import { SubAdminLRServiceComponent } from './components/sub-admin-lr-service/sub-admin-lr-service.component';
+import { SubAdminPartsReplacementComponent } from './components/sub-admin-parts-replacement/sub-admin-parts-replacement.component';
+import { AttendanceComponent } from './components/attendance/attendance.component';
+import { AttendanceSubAdminComponent } from './components/attendance-sub-admin/attendance-sub-admin.component';
+import { ReportBreakdownComponent } from './report-breakdown/report-breakdown.component';
+import { ReportLrComponent } from './report-lr/report-lr.component';
+import { ReporePreventiveMaintenanceComponent } from './repore-preventive-maintenance/repore-preventive-maintenance.component';
+import { ReportPartsRepComponent } from './report-parts-rep/report-parts-rep.component';
+import { ResubmitBreakdownComponent } from './resubmit-breakdown/resubmit-breakdown.component';
+import { ResubmitPrimitiveComponent } from './resubmit-primitive/resubmit-primitive.component';
+import { ResubmitLRComponent } from './resubmit-lr/resubmit-lr.component';
+import { ResubmitPartsreplacementComponent } from './resubmit-partsreplacement/resubmit-partsreplacement.component';
+
+import { AuditComponent } from './repull-jobs/audit/audit.component';
+import { BreakeDownComponent } from './repull-jobs/breake-down/breake-down.component';
+import { LrComponent } from './repull-jobs/lr/lr.component';
+import { MrBreakeDownComponent } from './repull-jobs/mr-breake-down/mr-breake-down.component';
+import { MrPreventiveComponent } from './repull-jobs/mr-preventive/mr-preventive.component';
+import { PartReplacementComponent } from './repull-jobs/part-replacement/part-replacement.component';
+import { PreventiveComponent } from './repull-jobs/preventive/preventive.component';
+
+
+
 @NgModule({
-  declarations: [ServiceSidebarComponent,ServiceNavBarComponent, ServiceDashboardComponent, ServiceReportComponent, ServiceReportTableComponent, ServiceColumnPopupComponent, JobStatusPopupComponent, ServiceAgentComponent, ServiceAddAgentComponent, ServiceSideadminComponent, SeviceAddadminComponent, ServiceSettingComponent, ServiceServiceComponent, ServiceAddserviceComponent, SettingCountryComponent, SettingZoneComponent, SettingStateComponent, SettingCityComponent, SettingAreaComponent, SettingStreetComponent, ReportAttendanceTableComponent, AgentManagementComponent, CurrentLoginComponent, JobBreakDownComponent, BreakdownservicePdfComponent, PreventiveMaintenanceComponent, PreventiveMaintenancePdfComponent, LrServiceComponent, LrServicePdfComponent, PartsReplacementAckComponent, PartsReplacementAckPdfComponent],
+  declarations: [PartReplacementComponent,PreventiveComponent,AuditComponent,BreakeDownComponent,LrComponent,MrBreakeDownComponent,MrPreventiveComponent,ServiceSidebarComponent,ServiceNavBarComponent, ServiceDashboardComponent, ServiceReportComponent, ServiceReportTableComponent, ServiceColumnPopupComponent, JobStatusPopupComponent, ServiceAgentComponent, ServiceAddAgentComponent, ServiceSideadminComponent, SeviceAddadminComponent, ServiceSettingComponent, ServiceServiceComponent, ServiceAddserviceComponent, SettingCountryComponent, SettingZoneComponent, SettingStateComponent, SettingCityComponent, SettingAreaComponent, SettingStreetComponent, ReportAttendanceTableComponent, AgentManagementComponent, CurrentLoginComponent, JobBreakDownComponent, BreakdownservicePdfComponent, PreventiveMaintenanceComponent, PreventiveMaintenancePdfComponent, LrServiceComponent, LrServicePdfComponent, PartsReplacementAckComponent, PartsReplacementAckPdfComponent,  PartsReplacementComponent, AdminAccessComponent, AddAdminUserComponent, SubAdmnEmployeeComponent, SubAdminBreakdownServiceComponent, SubAdminPreventiveMaintenanceComponent, SubAdminLRServiceComponent, SubAdminPartsReplacementComponent, AttendanceComponent, AttendanceSubAdminComponent, ReportBreakdownComponent, ReportLrComponent, ReporePreventiveMaintenanceComponent, ReportPartsRepComponent, ResubmitBreakdownComponent, ResubmitPrimitiveComponent, ResubmitLRComponent, ResubmitPartsreplacementComponent, ],
   imports: [
+    RouterModule,
     CommonModule,
     HttpClientModule,
     ServiceRoutingModule,

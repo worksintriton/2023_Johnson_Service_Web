@@ -103,6 +103,7 @@ export class ServiceLoginComponent implements OnInit {
     this.validator();
     if (this.validation) {
       if ((this.email == 'EMP123') && (this.password == '123456')) {
+        sessionStorage.setItem("access_tocken",'true');
         this.router.navigateByUrl('/service-admin/service-dashboard');
       } else {
         alert('Invalid Account');

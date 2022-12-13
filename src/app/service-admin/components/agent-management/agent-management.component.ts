@@ -13,9 +13,11 @@ export class AgentManagementComponent implements OnInit {
   editEmp:any;
   phoneNumber:any;
   allocation:any=[];
+  Admin_check:any;
   constructor(private _api: ApiService,private router:Router, ) { }
 
   ngOnInit(): void {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
     this.editEmp =JSON.parse(sessionStorage.getItem('employeeDetail')|| '{}');
     this.phoneNumber=this.editEmp.user_mobile_no;
     console.log(this.phoneNumber)
@@ -71,7 +73,11 @@ console.log(this.rows)
 
   }
   back(){
+    if(this.Admin_check==false){
     this.router.navigate(['/service-admin/service-employee'])
+  }else{
+    this.router.navigate(['/service-admin/sub-admin-employee'])
+  }
   }
 
 }

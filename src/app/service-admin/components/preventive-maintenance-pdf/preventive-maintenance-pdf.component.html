@@ -42,17 +42,64 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6">
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-12">
                                         <h2 class="main-content-title tx-24 mb-1 pt-1">JOB NO :<span class="fl"> {{job_no}}</span></h2>
                                         <p class="main-content-title tx-20 mb-1 pt-1">Customer Name :<span class="fl"> {{customer_name}}</span></p>
                                         <p class="main-content-title tx-20 mb-1 pt-1">Location/Address :<span class="fl"> {{location}}</span></p>
                                         <p class="main-content-title tx-20 mb-1 pt-1">Date :<span class="fl"> {{date | date}}</span></p>
                                     </div>
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-5">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1">JOB NO</p> -->
+                                        <h2 class="main-content-title tx-24 mb-1 pt-1">JOB NO </h2>
+                                    </div>
+                                    <div class="col-1">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1">:</p> -->
+                                        <h2 class="main-content-title tx-24 mb-1 pt-1">: </h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1"> {{job_no}} -->
+                                            <h2 class="main-content-title tx-24 mb-1 pt-1">{{job_no}}</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Customer Name</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{customer_name}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Location/Address</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{location}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Date</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{date | date}}
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6">
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-9">
                                         <p class="main-content-title tx-20 mb-1 pt-1">Nature Of Contract<span
                                                 class="fl">:{{nature_of_contract}}</span>
@@ -72,6 +119,75 @@
                                         </p>
                                     </div>
                                   
+                                </div> -->
+                                <div class="row">
+                                    <div class="col-5">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1">Nature Of Contract</p> -->
+                                        <h2 class="main-content-title tx-24 mb-1 pt-1">Nature Of Contract </h2>
+                                    </div>
+                                    <div class="col-1">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1">:</p> -->
+                                        <h2 class="main-content-title tx-24 mb-1 pt-1">: </h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1"> {{nature_of_contract}} -->
+                                            <h2 class="main-content-title tx-24 mb-1 pt-1">{{nature_of_contract}}</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">PM No</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">{{breakdown_no}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Technician Name</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{tech_name}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Employment No</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{employee_no}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Time reported</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1"> {{time_reported |  date:'medium'}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">Time Left</p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p class="main-content-title tx-20 mb-1 pt-1">{{time_left |  date:'medium'}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,18 +207,51 @@
                     <div class="col-12">
                         <h2 class="main-content-title tx-24 mb-1 pt-1">PREVENTIVE SERVICE</h2>
                         <div class="row">
-                            <div class="col-6">
-                                <div class="row">
+                            <!-- <div class="col-6">
+                                <div class="row"> -->
                                     <div class="col-12">
-                                        <p class="main-content-title tx-20 mb-1 pt-1">Type of PM &nbsp; :<span
+                                        <!-- <p class="main-content-title tx-20 mb-1 pt-1">Type of PM &nbsp; :<span
                                                 class="fl"> {{type_of_bd}}</span></p>
                                         <p class="main-content-title tx-20 mb-1 pt-1">PM Status &nbsp; :<span
                                                 class="fl"> {{bd_status}}</span></p>
                                         <p class="main-content-title tx-20 mb-1 pt-1">Areas of PM &nbsp; :<span
-                                                class="fl"> {{areas_of_bd}}</span></p>
+                                                class="fl"> {{areas_of_bd}}</span></p> -->
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">Type of PM</p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">{{type_of_bd}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">PM Status</p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">{{bd_status}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">Areas of PM</p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">:</p>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <p class="main-content-title tx-20 mb-1 pt-1">{{areas_of_pm}}
+                                                    </div>
+                                                </div>
                                     </div>
-                                </div>
-                            </div>
+                                <!-- </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -123,7 +272,7 @@
                 <div class="row  border border-secondary ">
                     <div class="col-12 ht">
                         <h2 class="main-content-title tx-24 mb-1 pt-1">REMARKS</h2>
-                        <div class="row">
+                        <div class="row"style="padding:0px 15px 0px 15px">
                            <p>{{remarks}}</p>
                         </div>
                     </div>

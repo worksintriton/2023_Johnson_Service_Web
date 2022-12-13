@@ -45,6 +45,7 @@ export class SeviceAddadminComponent implements OnInit {
   filterServiceValue: any;
   employeeChecked: boolean =false;
   serviceChecked: boolean =false;
+  Admin_check:any;
 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toastr: ToastrManager,
@@ -64,6 +65,7 @@ export class SeviceAddadminComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
     this.editEmp = JSON.parse(sessionStorage.getItem('employeeDetail') || '{}');
    await this.getEmp();
    await this.getService();
@@ -92,7 +94,8 @@ export class SeviceAddadminComponent implements OnInit {
             this.setAccess[0].check = true;
             this.Service = true;
           }
-
+          console.log("one",this.empList)
+          console.log("two",response.Data.employee_detail)
           this.empList && this.empList.forEach(ele => {
             response.Data.employee_detail && response.Data.employee_detail.forEach(ele2 => {
               if (ele._id == ele2._id) {
@@ -101,7 +104,7 @@ export class SeviceAddadminComponent implements OnInit {
               }
             });
           });
-
+          console.log("welcome",this.serviceList )
           this.serviceList && this.serviceList.forEach(ele => {
             response.Data.access_live && response.Data.access_live.forEach(ele2 => {
               if (ele._id == ele2._id) {
@@ -111,6 +114,7 @@ export class SeviceAddadminComponent implements OnInit {
             });
           });
 
+// console.log((this.empList && this.empList.length) == (response.Data.employee_detail && response.Data.employee_detail.length))
           if((this.empList && this.empList.length) == (response.Data.employee_detail && response.Data.employee_detail.length)){
             this.employeeChecked = true;
           }else{
@@ -145,7 +149,9 @@ export class SeviceAddadminComponent implements OnInit {
       // status:this.editEmp.status 
     })
   }
-
+  cancel1() {
+    this.router.navigate(['/service-admin/sub-admin-employee'])
+  }
 
   cancel() {
     this.router.navigate(['/service-admin/service-employee'])
@@ -158,6 +164,7 @@ export class SeviceAddadminComponent implements OnInit {
       // this.empList = this.empList.filter((ele) => ele.user_name !== 'Divagar');
       this.empList = this.empList.filter((ele) => ele.emp_type == 'Mechanic');
       this.filterEmpValue = this.empList;
+      console.log("emplist1", this.empList)
     });
   }
 
@@ -198,6 +205,7 @@ export class SeviceAddadminComponent implements OnInit {
     if (event.currentTarget.checked) {
       item.check = true;
       this.employee_detail.push(item);
+      console.log(this.employee_detail);
     } else {
       item.check = false;
       this.employee_detail = this.employee_detail.filter((ele) => ele._id !== item._id);

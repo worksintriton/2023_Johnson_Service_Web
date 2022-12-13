@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { AbstractControl,FormBuilder, FormGroup, Validators ,FormArray, FormControl,} from '@angular/forms';
 import { ApiService } from '../../../api.service';
 import { Table } from "primeng/table";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-service-setting',
   templateUrl: './service-setting.component.html',
@@ -21,10 +22,12 @@ rows=[{"Name":"Arun","FrequencyType":"1","FrequencyValue":"5","Status":"Started"
   branchList:any;
   submitted:boolean=false;
   firstChild:any;
+  access_tocken:any
+  Admin_check:any
   branchForm:FormGroup;
   searchQR:any;
   tabdata:boolean=true;
-  constructor( private formBuilder: FormBuilder,private _api: ApiService) {
+  constructor( private formBuilder: FormBuilder,private _api: ApiService,private router:Router,) {
     this.branchForm = this.formBuilder.group({
       _id:[''],
       branch_code:['',Validators.required],
@@ -39,12 +42,20 @@ rows=[{"Name":"Arun","FrequencyType":"1","FrequencyValue":"5","Status":"Started"
    }
 
   ngOnInit(): void {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+    this.access_tocken = sessionStorage.getItem('access_tocken') ;
+    console.log(this.access_tocken)
+    if( this.access_tocken ==null){
+      console.log("noo")
+       this.router.navigateByUrl('/service-login');
+     
+    }else{
     this._api.getBranchList().subscribe((response: any) => {
       this.branchList=response['Data'];
       console.log( this.branchList)
     })
 
-  }
+  }}
   get f(): { [key: string]: AbstractControl } {
     return this.branchForm.controls;
   }

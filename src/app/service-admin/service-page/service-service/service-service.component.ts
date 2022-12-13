@@ -18,6 +18,8 @@ export class ServiceServiceComponent implements OnInit {
   editmode:boolean=false;
   rows:any;
   stat:any;
+  access_tocken:any
+  Admin_check:any
   status=  [ 
     {"name": "Active",}, 
     {"name": "InActive",}, 
@@ -34,10 +36,19 @@ export class ServiceServiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+    this.access_tocken = sessionStorage.getItem('access_tocken') ;
+    console.log(this.access_tocken)
+    if( this.access_tocken ==null){
+      console.log("noo")
+       this.router.navigateByUrl('/service-login');
+     
+    }else{
     this._api.service_activity_list().subscribe((response: any) => {
       this.rows=response['Data']
     })
   }
+}
   addservice(){
 this.router.navigate(['/service-admin/service-add']);
   }

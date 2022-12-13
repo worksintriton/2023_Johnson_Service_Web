@@ -22,6 +22,7 @@ export class AdminSidebarComponent implements OnInit {
   expand11: boolean = false;
   expand12 : boolean = false;
   menu_slider: boolean = false;
+  Admin_check:any;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private router: Router,
@@ -29,6 +30,7 @@ export class AdminSidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+ 
   }
   formtype() {
     this.saveInLocal('Company_detail', undefined);

@@ -35,7 +35,7 @@
         "ng-multiselect-dropdown": "^0.2.10",
         "ng-otp-input": "^1.7.1",
         "ng-tabs": "0.0.2",
-        "ng2-charts": "^2.2.3",
+        "ng2-charts": "^2.4.1",
         "ng2-search-filter": "^0.5.1",
         "ng6-toastr-notifications": "^1.0.4",
         "ngx-filter-pipe": "^2.1.2",

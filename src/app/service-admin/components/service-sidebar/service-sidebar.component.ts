@@ -9,7 +9,7 @@ import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
   styleUrls: ['./service-sidebar.component.css']
 })
 export class ServiceSidebarComponent implements OnInit {
-
+  RepullJob: boolean = false;
   expanded: boolean = false;
   expand: boolean = false;
   expand1: boolean = false;
@@ -20,8 +20,10 @@ export class ServiceSidebarComponent implements OnInit {
   expand9: boolean = false;
   expand10: boolean = false;
   expand11: boolean = false;
+  expand25: boolean = false;
   expand12 : boolean = false;
   menu_slider: boolean = false;
+  Admin_check:any;
   constructor(
     @Inject(SESSION_STORAGE) private storage: StorageService,
     private router: Router,
@@ -29,6 +31,8 @@ export class ServiceSidebarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+    console.log( this.Admin_check)
   }
   formtype() {
     this.saveInLocal('Company_detail', undefined);

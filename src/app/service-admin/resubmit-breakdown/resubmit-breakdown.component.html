@@ -1,0 +1,126 @@
+<section>
+    <div class="page-header">
+            <div>
+                <h2 class="main-content-title tx-24 mb-1">
+                  Breakdown Re-Submit</h2>
+             
+            </div>
+         
+      
+        </div>
+<div class="row row-sm">
+
+    <div class="col-lg-12">
+<div class="card custom-card">
+    <div class="card-body">
+        <div class="card-item">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="search-hero">
+                        <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                           </div>
+                           <input class="form-control" type="text" name="search2"
+                       [(ngModel)]="searchQR" autocomplete="off" placeholder="Search...">
+                         </div>
+                      </div>
+                </div>
+                <!-- <div class="col-md-6 text-right">
+                    <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div> -->
+            </div>
+
+
+            <div class="table-responsive">
+                <p-table [value]="rows" styleClass="ui-table-customers" #tt [paginator]="true" [rows]="10"
+[rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+<ng-template pTemplate="header">
+    <tr class="thhead">
+        <th style="width: 80px;">S.No</th>
+        
+            <th style="width: 150px;">Complaint No</th>
+            <th style="width: 150px;">Customer name</th>
+            <th style="width: 250px;">Service Type</th>
+           
+            <th style="width: 150px;">Breakdown Details</th>
+            <th style="width: 150px;">Breakdown Service</th>
+           
+            <th style="width: 150px;">Cus No </th>
+          
+            <th style="width: 150px;">Date</th>
+            <th style="width: 150px;">Feedback Details</th>
+            <th style="width: 250px;">feedback remarks</th>
+            <th style="width: 250px;">Job ID</th>
+            <th style="width: 150px;">mr_1</th>
+            <th style="width: 150px;">mr_2</th>
+            <th style="width: 150px;">mr_3</th>
+            <th style="width: 150px;">mr_4</th>
+            <th style="width: 150px;">mr_5</th>
+            <th style="width: 150px;">mr_6</th>
+            <th style="width: 150px;">mr_7</th>
+            <th style="width: 150px;">mr_8</th>
+            <th style="width: 150px;">mr_9</th>
+            <th style="width: 150px;">mr_10</th>
+            <th style="width: 150px;">tech_signature</th>
+            <th style="width: 250px;">eng_singature</th>
+            <th style="width: 250px;">customer_acknowledgemnet</th>
+    
+         
+          
+            
+           
+        
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-item  let-i="rowIndex">
+  <tr class="tdrow">
+    <td>{{i+1}}</td>
+        <td>{{item.SMU_SCH_COMPNO}}</td>
+        <td>{{item.customer_name}}</td>
+      <td>{{item.SMU_SCH_SERTYPE}}</td>
+      
+      <td>{{item.bd_details}}</td>
+
+    
+      <td>
+          {{item.breakdown_service}}
+      </td>
+     
+      <td>{{item.customer_number}}</td>
+      <td>{{item.date_of_submission}}</td>
+      <td>{{item.feedback_details | date}}</td>
+      <td>{{item.feedback_remark_text}}</td>
+      <td>{{item.job_id}}</td>
+      <td>{{item.mr_1}}</td>
+      <td>{{item.mr_2}}</td>
+      <td>{{item.mr_3}}</td>
+      <td>{{item.mr_4}}</td>
+      <td>{{item.mr_5}}</td>
+      <td>{{item.mr_6}}</td>
+      <td>{{item.mr_7}}</td>
+      <td>{{item.mr_8}}</td>
+      <td>{{item.mr_9}}</td>
+      <td>{{item.mr_10}}</td>
+     
+      <td><img src="{{item.tech_signature}}" height="35px" width="35px"></td>
+      <td><img src="{{item.eng_singature}}" height="35px" width="35px"></td>
+      <td><img src="{{item.customer_acknowledgemnet}}" height="35px" width="35px"></td>
+   
+      
+    
+    </tr>
+</ng-template>
+</p-table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+
+

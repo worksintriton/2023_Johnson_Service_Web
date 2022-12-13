@@ -41,6 +41,7 @@ export class BreakdownservicePdfComponent implements OnInit {
   bd_status = '';
   areas_of_bd = '';
   remarks = '';
+  area_of_bd='';
   tech_signature = '';
   customer_signature = '';
   signature_date  = '';
@@ -59,7 +60,8 @@ export class BreakdownservicePdfComponent implements OnInit {
     let job_detail = this.storage.get('job_detail');
     console.log(job_detail);
     let datas = {
-      job_id : job_detail.SMU_SCH_JOBNO
+      job_id : job_detail.SMU_SCH_JOBNO,
+      key_value: job_detail.SMU_SCH_COMPNO
     }
     this._api.breakdown_data_details(datas).subscribe((response: any) => {
       console.log(response.Data);
@@ -88,7 +90,7 @@ export class BreakdownservicePdfComponent implements OnInit {
 
       this.job_no = response.Data.SMU_SCH_JOBNO;
       this.customer_name = response.Data.SMU_SCH_CUSNAME;
-      this.location = response.Data.SMU_SCH_CUSADD1 + "," + response.Data.SMU_SCH_CUSADD2 + "," + response.Data.SMU_SCH_CUSADD3 + "," + response.Data.SMU_SCH_CUSADD4 + "," + response.Data.SMU_SCH_CUSCODE;
+      this.location = response.Data.SMU_SCH_CUSADD1||"" + "," + response.Data.SMU_SCH_CUSADD2||"" + "," + response.Data.SMU_SCH_CUSADD3||"" + "," + response.Data.SMU_SCH_CUSADD4||"" + "," + response.Data.SMU_SCH_CUSCODE||"";
       this.date = response.Data.SMU_SCH_CRTDT;
 
 
@@ -103,7 +105,8 @@ export class BreakdownservicePdfComponent implements OnInit {
       this.type_of_bd = response.Data.SMU_SCH_BRKDOWNTYPE;
       this.bd_status = this.storaged_data.breakdown_service;
       this.areas_of_bd = 'Breakdown , Breakdown1 , Break Down 3';
-      this.remarks = this.storaged_data.feedback_remark_text
+      this.remarks = this.storaged_data.feedback_remark_text;
+      this.area_of_bd=this.storaged_data.feedback_details;
 
       this.tech_signature = this.storaged_data.tech_signature;
       this.customer_signature = this.storaged_data.customer_acknowledgemnet;

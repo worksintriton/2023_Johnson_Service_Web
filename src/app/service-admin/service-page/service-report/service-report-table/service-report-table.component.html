@@ -1,7 +1,18 @@
 
 <div class="page-header">
     <div>
-        <h2 class="main-content-title tx-24 mb-1">Job Completed Reports For BreakDown Service</h2>
+        <h2 *ngIf="jwt==
+            'breakdown'" class="main-content-title tx-24 mb-1"> Reports For
+            BreakDown Service</h2>
+        <h2 *ngIf="jwt==
+            'preventive'" class="main-content-title tx-24 mb-1"> Reports For
+            Preventive Maintenance Service</h2>
+        <h2 *ngIf="jwt==
+            'lr'" class="main-content-title tx-24 mb-1"> Reports For LR
+            BreakDown Service</h2>
+        <h2 *ngIf="jwt==
+            'partsrep'" class="main-content-title tx-24 mb-1"> Reports For
+            Parts Replacement Service</h2>
     </div>
 </div>
 <div class="row row-sm">
@@ -10,121 +21,598 @@
         <div class="card custom-card">
             <div class="card-body">
                 <div class="card-item">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <div class="search-hero">
-                                        <div class="input-group mb-3">
-                                           <!-- <div class="input-group-prepend">
-                                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                                           </div> -->
-                                           <!-- <input class="form-control" type="text" name="search2"
-                                       [(ngModel)]="searchQR" autocomplete="off" placeholder="Search..."> -->
-                                         <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Start Date" class="mr-3"></p-calendar>
-                      <p-calendar [(ngModel)]="E_Date" [showIcon]="true" inputId="icon" placeholder="End Date" class="mr-3"></p-calendar>
-                                         </div>
-                                      </div>
-                                </div>
-                                <div class="col-md-6 text-right" style="margin-bottom: 10px;">
-                                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalLong" (click)="addcolumn()"><i class="fas fa-plus"></i> Add Column</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="search-hero">
+                                <div class="input-group mb-3">
+                                    <p-calendar [(ngModel)]="S_Date"
+                                        [showIcon]="true" inputId="icon"
+                                        placeholder="Start Date" class="mr-3"></p-calendar>
+                                    <p-calendar [(ngModel)]="E_Date"
+                                        [showIcon]="true" inputId="icon"
+                                        placeholder="End Date" class="mr-3"></p-calendar>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                    <p-table id="demo11" [value]="rows " styleClass="ui-table-customers" #tt [paginator]="true" [rows]="15"
-                    [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true" 
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
-                    <ng-template pTemplate="header"   >
-                        <tr class="thhead" >
-                            <th *ngFor="let item of header" [pSortableColumn]="item" style="min-width:209px" >
-                               {{item}}<p-sortIcon [field]="item"></p-sortIcon>
-                                 
-                           </th >
-                       
-                            
-                            <!-- <th style="width: 163px;text-align:center">
+                        </div>
+                        <div class="col-md-2 text-right" style="margin-bottom:
+                            10px;">
+                            <button type="button" class="btn btn-secondary"
+                            data-toggle="modal"
+                            data-target="#exampleModalLong"
+                            (click)="submit()"><i class="fa
+                                fa-ok" aria-hidden="true"></i>
+
+                                Submit</button></div>
+                     <!-- <button type="button" class="btn btn-primary" (click)="submit()">Submit</button></div> -->
+                        <div class="col-md-2 text-right" style="margin-bottom:
+                            10px;">
+
+                            <button type="button" class="btn btn-secondary"
+                                data-toggle="modal"
+                                data-target="#exampleModalLong"
+                                (click)="exceldownload()"><i class="fa
+                                    fa-download" aria-hidden="true"></i>
+
+                                Excel</button>
+                        </div>
+                        <div class="col-md-2 text-right" style="margin-bottom:
+                            10px;">
+                            <button type="button" class="btn btn-secondary"
+                                data-toggle="modal"
+                                data-target="#exampleModalLong"
+                                (click)="addcolumn()"><i class="fas fa-plus"></i>
+                                Add Column</button>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <p-table id="demo11" [value]="rows "
+                            styleClass="ui-table-customers" #tt
+                            [paginator]="true" [rows]="10"
+                            [rowHover]="true"
+                            [rowsPerPageOptions]="[5,10,25,50]"
+                            [showCurrentPageReport]="true" *ngIf="jwt==
+                            'breakdown'"
+                            currentPageReportTemplate="Showing {first} to {last}
+                            of {totalRecords} entries"
+                            [globalFilterFields]="['SMU_SCH_JOBNO']">
+                            <ng-template pTemplate="header">
+                                <tr class="thhead">
+                                    <th *ngFor="let item of header"
+                                        [pSortableColumn]="item"
+                                        style="min-width:209px">
+                                        {{item}}<p-sortIcon [field]="item"></p-sortIcon>
+                                    </th>
+
+
+                                    <!-- <th style="width: 163px;text-align:center">
                                 Action
                             </th> -->
-                        </tr>
-                        <tr   >
-                            <th *ngFor="let item of header" >
-                              <input *ngIf="item == 'JobId'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'JobId', 'contains');" class="filtro">
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let item of header">
+                                        <input *ngIf="item == 'SCH_JOBNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_JOBNO', 'contains');"
+                                            class="filtro">
 
-                              <input *ngIf="item == 'AgentId'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'AgentId', 'contains');" class="filtro">
-                          
-                              <input *ngIf="item == 'AgentName'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'AgentName', 'contains');" class="filtro">
-                              <input *ngIf="item == 'ReceivedTime'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'ReceivedTime', 'contains');" class="filtro">
-                              
-                              <input *ngIf="item == 'AgentJobId'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'AgentJobId', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'JobName'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'JobName', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'AgentLocation'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'AgentLocation', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'SMSSentTime'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'SMSSentTime', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'EmailSentTime'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'EmailSentTime', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'UploadDate'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'UploadDate', 'contains');" class="filtro">
-                  
-                            
-                               <input *ngIf="item == 'BD_Details_BD_Date'"  pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'BD_Details_BD_Date', 'contains');" class="filtro">
-                  
-                              
-                               <input *ngIf="item == 'Status'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'Status', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'Customer_Address1'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'Customer_Address1', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'Job_Details_JobID'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'Job_Details_JobID', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'BD_Detais_Db_Number'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'BD_Detais_Db_Number', 'contains');" class="filtro">
-                  
-                              
-                              <input *ngIf="item == 'Branch_Details_BranchCode'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'Branch_Details_BranchCode', 'contains');" class="filtro">
-                            </th>
-                           
-                            </tr>
-                    </ng-template>
-                    
-                                                            <ng-template pTemplate="body" let-item  let-i="rowIndex">
-                      <tr class="tdrow">
-                        <td *ngFor="let e of header">
-                         
-  <span *ngIf="e == 'JobId'"  ><span (click)="jobStatus(item)" style="color:blue">{{item.JobId}}</span>&nbsp;&nbsp;<i [print]="['demo11']" class="fa fa-envelope"></i></span>
-  <span *ngIf="e == 'AgentId'" >{{item.AgentId}}</span>
- <span *ngIf="e == 'AgentName'">{{item.AgentName}}</span>
- <span *ngIf="e == 'ReceivedTime'"> {{item.ReceivedTime}}</span>
- <span  *ngIf="e == 'AgentJobId'">{{item.AgentJobId}}</span>
- <span *ngIf="e == 'JobName'">{{item.JobName}}</span>
- <span *ngIf="e == 'AgentLocation'">{{item.AgentLocation}}</span>
- <span *ngIf="e == 'SMSSentTime'">{{item.SMSSentTime}}</span>
- <span *ngIf="e == 'EmailSentTime'">{{item.EmailSentTime}}</span>
- <span *ngIf="e == 'UploadDate'">{{item.UploadDate}}</span> 
- <span *ngIf="e == 'BD_Details_BD_Date'">{{item.BD_Details_BD_Date}}</span>
- <span *ngIf="e == 'Status'">{{item.Status}}</span>
- <span *ngIf="e == 'Customer_Address1'">{{item.Customer_Address1}}</span> 
- <span *ngIf="e == 'Job_Details_JobID'">{{item.Job_Details_JobID}}</span>
- <span *ngIf="e == 'BD_Detais_Db_Number'">{{item.BD_Detais_Db_Number}}</span>
- <span *ngIf="e == 'Branch_Details_BranchCode'">{{item.Branch_Details_BranchCode}}</span>
-                        </td>
-                     
-                            
-                  
-                            <!-- <td class="act">
-                                <i style="color: #2196f3;" class="fas fa-edit" aria-hidden="true" (click)="Editcompanydetailsdata(item)" pTooltip="Edit"></i>
-                                <i style="color: #fd2c3a;" class="fa fa-trash" aria-hidden="true" pTooltip="Delete" (click)="Deletecompanydetails(item._id)"></i>
-                                <!-- <i style="color: #4CAF50;" class="fa fa-info-circle" aria-hidden="true" pTooltip="View"></i> 
-                            </td> -->
-                        </tr>
-                    </ng-template>
-                  </p-table>
-                                </div>
+                                        <input *ngIf="item == 'SCH_CUSNAME'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSNAME', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_MECHANIC'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_MECHANIC', 'contains');"
+                                            class="filtro">
+                                        <input *ngIf="item == 'JOB_STATUS'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'JOB_STATUS', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SCH_BRCODE'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_BRCODE', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_BRKDOWNTYPE'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_BRKDOWNTYPE', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_COMPNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_COMPNO', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD1'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD1', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD2'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD2', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD3'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD3', 'contains');"
+                                            class="filtro">
+
+
+
+                                    </th>
+
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-item
+                                let-i="rowIndex">
+                                <tr class="tdrow">
+                                    <td *ngFor="let e of header">
+                                        <!-- <i
+                                        [print]="['demo11']" class="fa
+                                        fa-envelope"></i> -->
+                                        <span *ngIf="e == 'SCH_JOBNO'">
+                                            <span
+                                                class="Pr-2" style="color:blue">{{item.SMU_SCH_JOBNO}}</span>
+                                            <img *ngIf="Job_type == 'Job Submitted'"
+                                                class="pl-2"(click)="viewpdf1(item)"
+                                                src="../../../../assets/images/PDF_file_icon.png"
+                                                style="width:13%"></span>
+                                        <span *ngIf="e == 'SCH_CUSNAME'">{{item.SMU_SCH_CUSNAME}}</span>
+                                        <span *ngIf="e == 'SCH_MECHANIC'">{{item.SMU_SCH_MECHANIC}}</span>
+                                        <span *ngIf="e == 'JOB_STATUS'">
+                                            {{item.JOB_STATUS}}</span>
+
+
+
+                                        <span *ngIf="e == 'SCH_BRCODE'">{{item.SMU_SCH_BRCODE}}</span>
+                                        <span *ngIf="e == 'SCH_BRKDOWNTYPE'">{{item.SMU_SCH_BRKDOWNTYPE}}</span>
+                                        <span *ngIf="e == 'SCH_COMPNO'">{{item.SMU_SCH_COMPNO}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD1'">{{item.SMU_SCH_CUSADD1}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD2'">{{item.SMU_SCH_CUSADD2}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD3'">{{item.SMU_SCH_CUSADD3}}</span>
+                                    </td>
+
+
+
+
+                                </tr>
+                            </ng-template>
+                        </p-table>
+
+
+
+
+                        <p-table id="demo11" [value]="rows "
+                            styleClass="ui-table-customers" #tt
+                            [paginator]="true" [rows]="10"
+                            [rowHover]="true"
+                            [rowsPerPageOptions]="[5,10,25,50]"
+                            [showCurrentPageReport]="true" *ngIf="jwt==
+                            'preventive'"
+                            currentPageReportTemplate="Showing {first} to {last}
+                            of {totalRecords} entries"
+                            [globalFilterFields]="['SMU_SCH_JOBNO']">
+                            <ng-template pTemplate="header">
+                                <tr class="thhead">
+                                    <th *ngFor="let item of header1"
+                                        [pSortableColumn]="item"
+                                        style="min-width:209px">
+                                        {{item}}<p-sortIcon [field]="item"></p-sortIcon>
+                                    </th>
+
+
+                                    <!-- <th style="width: 163px;text-align:center">
+                              Action
+                          </th> -->
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let item of header1">
+                                        <input *ngIf="item == 'SCH_JOBNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_JOBNO', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SCH_CUSNAME'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSNAME', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SCH_MECHANIC'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_MECHANIC', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'JOB_STATUS'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'JOB_STATUS', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SCH_BRCODE'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_BRCODE', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_BRKDOWNTYPE'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_BRKDOWNTYPE', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_COMPNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_COMPNO', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD1'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD1', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD2'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD2', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SCH_CUSADD3'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCH_CUSADD3', 'contains');"
+                                            class="filtro">
+
+
+
+                                    </th>
+
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-item
+                                let-i="rowIndex">
+                                <tr class="tdrow">
+                                    <td *ngFor="let e of header1">
+
+                                        <span *ngIf="e == 'SCH_JOBNO'">
+                                            <!-- <span (click)="jobStatus(item)"
+                                                style="color:blue">{{item.SMU_SCH_JOBNO}}</span>&nbsp;&nbsp;<i
+                                                [print]="['demo11']" class="fa
+                                                fa-envelope"></i></span> -->
+                                            <span
+                                                class="Pr-2" style="color:blue">{{item.SMU_SCH_JOBNO}}</span>
+                                            <img *ngIf="Job_type == 'Job Submitted'"
+                                                class="pl-2"(click)="viewpdf2(item)"
+                                                src="../../../../assets/images/PDF_file_icon.png"
+                                                style="width:13%"></span>
+                                        <span *ngIf="e == 'SCH_CUSNAME'">{{item.SMU_SCH_CUSNAME}}</span>
+                                        <span *ngIf="e == 'SCH_MECHANIC'">{{item.SMU_SCH_MECHANIC}}</span>
+                                        <span *ngIf="e == 'JOB_STATUS'">
+                                            {{item.JOB_STATUS}}</span>
+                                        <span *ngIf="e == 'SCH_BRCODE'">{{item.SMU_SCH_BRCODE}}</span>
+                                        <span *ngIf="e == 'SCH_BRKDOWNTYPE'">{{item.SMU_SCH_BRKDOWNTYPE}}</span>
+                                        <span *ngIf="e == 'SCH_COMPNO'">{{item.SMU_SCH_COMPNO}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD1'">{{item.SMU_SCH_CUSADD1}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD2'">{{item.SMU_SCH_CUSADD2}}</span>
+                                        <span *ngIf="e == 'SCH_CUSADD3'">{{item.SMU_SCH_CUSADD3}}</span>
+                                    </td>
+
+
+
+
+                                </tr>
+                            </ng-template>
+                        </p-table>
+
+
+                        <p-table id="demo11" [value]="rows "
+                            styleClass="ui-table-customers" #tt
+                            [paginator]="true" [rows]="10"
+                            [rowHover]="true"
+                            [rowsPerPageOptions]="[5,10,25,50]"
+                            [showCurrentPageReport]="true" *ngIf="jwt== 'lr'"
+                            currentPageReportTemplate="Showing {first} to {last}
+                            of {totalRecords} entries"
+                            [globalFilterFields]="['SMU_SCH_JOBNO']">
+                            <ng-template pTemplate="header">
+                                <tr class="thhead">
+                                    <th *ngFor="let item of header2"
+                                        [pSortableColumn]="item"
+                                        style="min-width:209px">
+                                        {{item}}<p-sortIcon [field]="item"></p-sortIcon>
+                                    </th>
+
+
+                                    <!-- <th style="width: 163px;text-align:center">
+                            Action
+                        </th> -->
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let item of header2">
+                                        <input *ngIf="item == 'SCQH_JOBNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCQH_JOBNO', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SED_NAME'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SED_NAME', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'SCAH_MECHANIC'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCAH_MECHANIC', 'contains');"
+                                            class="filtro">
+                                        <input *ngIf="item == 'JOB_STATUS'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'JOB_STATUS', 'contains');"
+                                            class="filtro">
+
+
+
+                                        <input *ngIf="item == 'SCQH_BRCODE'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCQH_BRCODE', 'contains');"
+                                            class="filtro">
+
+
+                                        <!-- <input *ngIf="item == 'BreakDown Type'" pInputText type="text" placeholder="Search" (input)="tt.filter($event.target.value, 'BreakDown Type', 'contains');" class="filtro"> -->
+                                        <input *ngIf="item == 'SCQH_QUOTENO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SCQH_QUOTENO', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SED_ADDRESS1'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SED_ADDRESS1', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SED_ADDRESS2'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SED_ADDRESS2', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'SED_ADDRESS3'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_SED_ADDRESS3', 'contains');"
+                                            class="filtro">
+
+
+
+                                    </th>
+
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-item
+                                let-i="rowIndex">
+                                <tr class="tdrow">
+                                    <td *ngFor="let e of header2">
+
+                                        <span *ngIf="e == 'SCQH_JOBNO'">
+                                            <!-- <span (click)="jobStatus(item)"
+                                                style="color:blue">{{item.SMU_SCQH_JOBNO}}</span>&nbsp;&nbsp;<i
+                                                [print]="['demo11']" class="fa
+                                                fa-envelope"></i></span> -->
+                                            <span
+
+                                                class="Pr-2" style="color:blue">{{item.SMU_SCQH_JOBNO}}</span>
+                                            <img *ngIf="Job_type == 'Job Submitted'"
+                                                class="pl-2"(click)="viewpdf3(item)"
+                                                src="../../../../assets/images/PDF_file_icon.png"
+                                                style="width:13%"></span>
+                                        <span *ngIf="e == 'SED_NAME'">{{item.SMU_SED_NAME}}</span>
+                                        <span *ngIf="e == 'SCAH_MECHANIC'">{{item.SMU_SCAH_MECHANIC}}</span>
+                                        <span *ngIf="e == 'JOB_STATUS'">
+                                            {{item.JOB_STATUS}}</span>
+                                        <span *ngIf="e == 'SCQH_BRCODE'">{{item.SMU_SCQH_BRCODE}}</span>
+                                      
+                                        <span *ngIf="e == 'SCQH_QUOTENO'">{{item.SMU_SCQH_QUOTENO}}</span>
+                                        <span *ngIf="e == 'SED_ADDRESS1'">{{item.SMU_SED_ADDRESS1}}</span>
+                                        <span *ngIf="e == 'SED_ADDRESS2'">{{item.SMU_SED_ADDRESS2}}</span>
+                                        <span *ngIf="e == 'SED_ADDRESS3'">{{item.SMU_SED_ADDRESS3}}</span>
+                                    </td>
+
+
+
+
+                                </tr>
+                            </ng-template>
+                        </p-table>
+
+
+                        <p-table id="demo11" [value]="rows "
+                            styleClass="ui-table-customers" #tt
+                            [paginator]="true" [rows]="10"
+                            [rowHover]="true"
+                            [rowsPerPageOptions]="[5,10,25,50]"
+                            [showCurrentPageReport]="true" *ngIf="jwt==
+                            'partsrep'"
+                            currentPageReportTemplate="Showing {first} to {last}
+                            of {totalRecords} entries"
+                            [globalFilterFields]="['SMU_SCH_JOBNO']">
+                            <ng-template pTemplate="header">
+                                <tr class="thhead">
+                                    <th *ngFor="let item of header3"
+                                        [pSortableColumn]="item"
+                                        style="min-width:209px">
+                                        {{item}}<p-sortIcon [field]="item"></p-sortIcon>
+                                    </th>
+
+
+                                </tr>
+                                <tr>
+                                    <th *ngFor="let item of header3">
+                                        <input *ngIf="item == 'ACK_JOBNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_JOBNO', 'contains');"
+                                            class="filtro">
+
+                                        <input *ngIf="item == 'ACK_ENGRNAME'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_ENGRNAME', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'JOB_STATUS'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'JOB_STATUS', 'contains');"
+                                            class="filtro">
+
+
+
+
+
+                                        <input *ngIf="item == 'ACK_COMPNO'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_COMPNO', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'ACK_ADDRESS1'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_ADDRESS1', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'ACK_ADDRESS2'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_ADDRESS2', 'contains');"
+                                            class="filtro">
+
+
+                                        <input *ngIf="item == 'ACK_ADDRESS3'"
+                                            pInputText type="text"
+                                            placeholder="Search"
+                                            (input)="tt.filter($event.target.value,
+                                            'SMU_ACK_ADDRESS3', 'contains');"
+                                            class="filtro">
+
+
+
+                                    </th>
+
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-item
+                                let-i="rowIndex">
+                                <tr class="tdrow">
+                                    <td *ngFor="let e of header3">
+
+                                        <span *ngIf="e == 'ACK_JOBNO'">
+                                            <!-- <span (click)="jobStatus(item)"
+                                                style="color:blue">{{item.SMU_ACK_JOBNO}}</span>&nbsp;&nbsp;<i
+                                                [print]="['demo11']" class="fa
+                                                fa-envelope"></i></span> -->
+                                            <span
+                                                class="Pr-2" style="color:blue">{{item.SMU_ACK_JOBNO}}</span>
+                                            <img *ngIf="Job_type == 'Job Submitted'"
+                                                class="pl-2"(click)="viewpdf4(item)"
+                                                src="../../../../assets/images/PDF_file_icon.png"
+                                                style="width:13%"></span>
+                                        <span *ngIf="e == 'ACK_ENGRNAME'">{{item.SMU_ACK_ENGRNAME}}</span>
+                                        <span *ngIf="e == 'JOB_STATUS'">
+                                            {{item.JOB_STATUS}}</span>
+
+                                        <span *ngIf="e == 'ACK_COMPNO'">{{item.SMU_ACK_COMPNO}}</span>
+                                        <span *ngIf="e == 'ACK_ADDRESS1'">{{item.SMU_ACK_ADDRESS1}}</span>
+                                        <span *ngIf="e == 'ACK_ADDRESS2'">{{item.SMU_ACK_ADDRESS2}}</span>
+                                        <span *ngIf="e == 'ACK_ADDRESS3'">{{item.SMU_ACK_ADDRESS3}}</span>
+                                    </td>
+
+
+
+
+                                </tr>
+                            </ng-template>
+                        </p-table>
+
+
+                    </div>
 
                 </div>
             </div>
