@@ -120,12 +120,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <h5 class="form-lable required">Mobile opearting System</h5>
-                                    <p-dropdown [options]="mobile_operating" [disabled]="Admin_check==true" [(ngModel)]="mobile_os" placeholder="Mobile opearting System" optionLabel="name"
+                                    <p-dropdown [options]="mobile_operating" [disabled]="Admin_check==true" [(ngModel)]="mobile_os" (ngModelChange)="onChangeObj($event)" placeholder="Mobile opearting System" optionLabel="name"
                                         dataKey="name" formControlName="user_mob_os" [showClear]="true"
                                         [ngClass]="{ 'is-invalid': submitted && f.user_mob_os.errors }"></p-dropdown>
+
+                                         <input  *ngIf="addition_text_visible" f type="text" pInputText name="mobile_model"  formControlName="others" placeholder="Mobile opearting System"
+                                           [ngClass]="{ 'is-invalid': submitted && f.others.errors }">
+
                                         <span *ngIf="submitted && f.user_mob_os.errors" class="invalid-feedback">
                                             <span *ngIf="f.user_mob_os.errors.required">Mobile opearting System is required</span>
                                          </span>
+
                                 </div>
                                 <div class="col-md-4">
                                     <h5 class="form-lable required">Mobile Make</h5>

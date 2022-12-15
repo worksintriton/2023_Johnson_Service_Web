@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, Validators, FormArray, FormControl, } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { HttpClient, HttpRequest } from '@angular/common/http';
 
 @Component({
   selector: 'app-notification-pop-send',
@@ -46,21 +47,15 @@ export class NotificationPopSendComponent implements OnInit {
   employeeChecked: boolean =false;
   serviceChecked: boolean =false;
   Admin_check:any;
+  img_path : any;
+  selectedimgae: any;
+  @ViewChild('imgType', { static: false }) imgType: ElementRef;
 
 
   constructor(private router: Router, private formBuilder: FormBuilder, private toastr: ToastrManager,
-    private _api: ApiService,) {
+    private _api: ApiService,  private http: HttpClient) {
     this.adminForm = this.formBuilder.group({
       _id: [''],
-      firstname: ['', Validators.required,],
-      // lastname: ['', Validators.required,],
-      email_id: ['', Validators.required,],
-      mobile_no: ['', Validators.required,],
-      user_name: ['', Validators.required,],
-      password: ['', Validators.required,],
-      confirm_password: ['', Validators.required,],
-      status: ['Admin',],
-
     })
   }
 
@@ -72,7 +67,7 @@ export class NotificationPopSendComponent implements OnInit {
 
     await this._api.getEmpDetails({ mobile_no: this.editEmp.user_mobile_no }).subscribe(
       (response: any) => {
-        debugger
+
         console.log("response", response);
 
         if (response.Message == "No Details Found") {
@@ -162,7 +157,7 @@ export class NotificationPopSendComponent implements OnInit {
       console.log("emplist", data)
       this.empList = data['Data'];
       // this.empList = this.empList.filter((ele) => ele.user_name !== 'Divagar');
-      this.empList = this.empList.filter((ele) => ele.emp_type == 'Mechanic');
+      // this.empList = this.empList.filter((ele) => ele.emp_type == 'Mechanic');
       this.filterEmpValue = this.empList;
       console.log("emplist1", this.empList)
     });
@@ -255,7 +250,7 @@ export class NotificationPopSendComponent implements OnInit {
 
 
   checkServiceValue(event: any, item) {
-    debugger
+
     if (event.currentTarget.checked) {
       item.check = true;
       var obj = {
@@ -276,48 +271,88 @@ export class NotificationPopSendComponent implements OnInit {
   }
 
   save() {
-    debugger
     var enteredData = this.adminForm.value;
-    enteredData.status = enteredData.status.name
-    enteredData.access_live = this.service_detail,
-      enteredData.employee_detail = this.employee_detail
-    // console.log("enteredData", enteredData);
-    if (this.editTrue) {
-      this._api.updateservice_sub_admin(enteredData).subscribe((data: any) => {
-        console.log("updateservice_sub_admin", data);
-        if (data.Message != "Functiondetails Updated") {
-          this.toastr.successToastr("Failed");
-        } else {
-          this.toastr.successToastr("Updated Successfully");
-        }
-        // this.ngOnInit();
+    enteredData.employee_detail = this.employee_detail;
+    console.log(enteredData.employee_detail);
+    for(let a  = 0 ; a < enteredData.employee_detail.length;a++){
+     let values = {
+      "user_mobile_no": enteredData.employee_detail[a].user_mobile_no,
+      "code" : "12345",
+      "status" :  "Not View",
+      "image_path" :  this.img_path,
+      "date_of_create" : ""+new Date()
+       }   
+       console.log(values);
+      this._api.send_pop_up(values).subscribe((data: any) => {
+         console.log(data);
       });
-    } else {
-      this._api.createservice_sub_admin(enteredData).subscribe((data: any) => {
-        console.log("createservice_sub_admin", data);
-        if (data.Message != "Added successfully") {
-          this.toastr.successToastr("Failed");
-        } else {
-          this.toastr.successToastr("Created Successfully");
-        }
-        // this.ngOnInit();
-      });
+      if(a == enteredData.employee_detail.length - 1){
+        this.toastr.successToastr("Send Successfully");
+        this.router.navigate(['/service-admin/service_notification_list'])
+      }
     }
+
+    
+    
     // this.toastr.errorToastr(msg);
   }
 
 
   filterByText(initial: string) {
-    debugger;
+
     this.empList = this.filterEmpValue;
     this.empList = this.empList.filter((i: any) => i.user_name.toLowerCase().indexOf(initial.toLocaleLowerCase()) !== -1);
     console.log(this.empList);
   }
 
   filterByService(initial: string) {
-    debugger;
+
     this.serviceList = this.filterServiceValue;
     this.serviceList = this.serviceList.filter((i: any) => i.service_name.toLowerCase().indexOf(initial.toLocaleLowerCase()) !== -1);
     console.log(this.empList);
+  }
+
+
+    fileupload(event, str) {
+    console.log("this.width")
+    this.selectedimgae = event.target.files[0];
+    console.log(this.selectedimgae.size / 100000);
+    let fr = new FileReader();
+    fr.onload = () => { // when file has loaded
+      var img = new Image();
+      img.onload = () => {
+        let width = img.width;
+        let height = img.height;
+        console.log(width, height);
+          let d = this.selectedimgae.size / 100000;
+          console.log(d);
+          if (d < 21) {
+            this.addfiles(str);
+          } else {
+            alert('Please upload the file below 1 MB');
+            this.imgType.nativeElement.value = "";
+          }
+      };
+      img.src = fr.result as string; // The data URL
+    };
+    fr.readAsDataURL(this.selectedimgae);
+    // clear the value after upload
+  }
+
+  addfiles(data: any) {
+    const fd = new FormData();
+    fd.append('sampleFile', this.selectedimgae, this.selectedimgae.name);
+    this.http.post('http://smart.johnsonliftsltd.com:3000/upload' , fd)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.img_path = res.Data;
+      });
+  }
+
+
+  view_send_notificationview(){
+    this.router.navigate(['/service-admin/service_notification_list'])
+
+    
   }
 }

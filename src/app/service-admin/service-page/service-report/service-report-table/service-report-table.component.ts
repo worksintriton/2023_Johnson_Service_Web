@@ -106,33 +106,49 @@ var year = new Date(new Date().getFullYear() , 0, 1);
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.todaydate,'yyyy-MM-dd') ,
       "end_date": new DatePipe('en-US').transform(this.newdate,'yyyy-MM-dd'),
-      "status":  this.Job_type
+      "status":  this.Job_type,
+      "user_type" : "",
+      "access_location":[],
     }
   }
   if(this.reportsrange=='This Week'){
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.firstday,'yyyy-MM-dd') ,
       "end_date": new DatePipe('en-US').transform(this.lastday,'yyyy-MM-dd'),
-      "status":  this.Job_type
+      "status":  this.Job_type,
+      "user_type" : "",
+      "access_location":[],
     }
   }
   if(this.reportsrange=='This Month'){
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.monthfirstDay,'yyyy-MM-dd') ,
       "end_date": new DatePipe('en-US').transform(this.monthlastDay,'yyyy-MM-dd'),
-      "status":  this.Job_type
+      "status":  this.Job_type,
+      "user_type" : "",
+      "access_location":[],
     }
   }
   if(this.reportsrange=='This Year'){
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.start,'yyyy-MM-dd') ,
       "end_date": new DatePipe('en-US').transform(this.end,'yyyy-MM-dd'),
-      "status":  this.Job_type
+      "status":  this.Job_type,
+      "user_type" : "",
+      "access_location":[],
     }
+  }
+  var Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+  if(Admin_check == null){
+    this.data.user_type = "Admin"
+    this.data.access_location = [];
+  }else{
+    var access_loc = JSON.parse(sessionStorage.getItem('access_loc') );
+    this.data.user_type = "SubAdmin"
+    this.data.access_location = access_loc;
   }
  console.log(this.data)
     if (this.jwt == 'breakdown') {
- 
       console.log('breakdown working lol')
       this._api.getbreak_down_reports(this.data).subscribe((response: any) => {
         this.rows = response['Data'];

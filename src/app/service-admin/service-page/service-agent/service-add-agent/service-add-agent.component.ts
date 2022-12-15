@@ -28,24 +28,19 @@ branchList:any;
 countries: any[]= [];
 submitted :boolean=false;
   mobile_operating=  [ 
-    {"name": "5",}, 
-    {"name": "6",}, 
-    {"name": "7",}, 
-    {"name": "8",}, 
-    {"name": "9",}, 
-    {"name": "10",}, 
-    {"name": "11",}, 
-    {"name": "12",}, 
-    {"name": "13",}, 
-    {"name": "14",}, 
-    {"name": "15",}, 
-    {"name": "16",}, 
-    {"name": "17",}, 
-    {"name": "19",},
-    {"name": "20",},  
-    {"name": "20 Above",}, 
+    {"name": "Android Jelly Bean",}, 
+    {"name": "Android KitKat",}, 
+    {"name": "Android Lollipop", }, 
+    {"name": "Android Marshmallow",}, 
+    {"name": "Android Nougat",}, 
+    {"name": "Android Oreo", },
+    {"name": "Others",}, 
     ];
 
+
+
+    addition_text = '';
+    addition_text_visible = false;
 
 
 
@@ -91,6 +86,7 @@ submitted :boolean=false;
        device_no:['',Validators.required], 
        organisation_name:['Johnson Lifts Private Limited',Validators.required],
        Documents:[''],
+       others:[''],
         status:['',Validators.required],
         user_password:['',Validators.required]    
       })
@@ -161,6 +157,8 @@ this.loc=true;
     console.log(this.employeeForm.value);
     var enterdata = this.employeeForm.value;
     var emptype = enterdata?.emp_type.name
+    
+
 
     this.employeeForm.patchValue({
       user_mob_os:this.mobile_os.name,
@@ -170,18 +168,17 @@ this.loc=true;
     console.log(this.employeeForm.value)
     this.submitted=true;
     if(this.employeeForm.valid){
-      console.log(this.employeeForm.value);
+        if(this.employeeForm.value.user_mob_os == 'Others'){
+          this.employeeForm.value.user_mob_os  = this.employeeForm.value.others;
+        }
+        console.log(this.employeeForm.value);
+
       this._api.service_employee(this.employeeForm.value).subscribe((response: any) => {
         console.log(response)
        if(response['Status']=="Success")
 {
 
-  // this.employeeForm.value.user_location
-  // this.employeeForm.value.user_id
-  // this.employeeForm.value.user_name
-  // this.employeeForm.value.user_mobile_no
-  // this.employeeForm.value.device_no
-  // this.employeeForm.value.stauts
+
 
   var obj={
     "user_location":this.employeeForm.value.user_location,
@@ -343,5 +340,17 @@ else{
         }
         });
      }
+
+
+onChangeObj(deviceValue) {
+    console.log(deviceValue);
+    if(deviceValue.name == 'Others'){
+     this.addition_text_visible = true;
+    }
+}
+
+addvalue(){
+  console.log(this.addition_text);
+}
       
 }

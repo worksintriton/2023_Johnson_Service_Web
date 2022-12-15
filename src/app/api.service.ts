@@ -499,6 +499,9 @@ lr_chart(data){
 pack_chart(data){
   return this.http.post(this.apiUrl +'part_replacement/report/part_detail_graph',data);
 }
+
+
+
 getbreak_down_reports(data){
   return this.http.post(this.apiUrl +'breakdown_management/report/breakdown_detail_list',data);
 }
@@ -599,6 +602,23 @@ update_admin(data){
 create_admin(data){
   // var link ="http://smart.johnsonliftsltd.com:3000/api/service_sub_admin/create"
   return this.http.post(this.apiUrl + 'admin_access/create', data);
+}
+
+
+
+send_pop_up(data){
+  // var link ="http://smart.johnsonliftsltd.com:3000/api/service_sub_admin/create"
+  return this.http.post(this.apiUrl + 'pop_notification/create', data);
+}
+
+
+send_pop_up_list() {
+  return this.http.get(this.apiUrl + 'pop_notification/getlist');
+}
+
+
+send_pop_up_delete(data) {
+  return this.http.post(this.apiUrl + 'pop_notification/delete',data);
 }
 
 }
