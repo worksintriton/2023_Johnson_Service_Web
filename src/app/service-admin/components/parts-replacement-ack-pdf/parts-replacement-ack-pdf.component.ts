@@ -169,6 +169,7 @@ console.log(this.mat_data,"two");
      let printContents = document.getElementById(cmpName).innerHTML;
      let originalContents = document.body.innerHTML;
      document.body.innerHTML = printContents;
+     document.title = this.mr_number;
      window.print();
      document.body.innerHTML = originalContents;
      window.location.reload();

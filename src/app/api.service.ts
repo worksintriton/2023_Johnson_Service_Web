@@ -620,5 +620,14 @@ send_pop_up_list() {
 send_pop_up_delete(data) {
   return this.http.post(this.apiUrl + 'pop_notification/delete',data);
 }
-
+getEmpName_view(data) {
+  return this.http.post(this.apiUrl + 'service_userdetails/fetch_view_status', data);
 }
+job_tracking(data){
+  return this.http.post(this.apiUrl +'location_tracking_job_wise/list_tracking_job_wise', data);
+}
+employee_tracking(data){
+  return this.http.post(this.apiUrl +'location_tracking_job_wise/list_tracking_user_wise', data);
+}
+}
+

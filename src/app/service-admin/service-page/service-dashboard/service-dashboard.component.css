@@ -1,0 +1,52 @@
+@import "../../../../assets/css/style.css";
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.stylecont
+{
+    padding: 0.5rem 1rem;
+    border: 1px solid #090808;
+    border-radius: 10px;
+    margin: 0 0 7px;
+    background: white;
+    margin: 1px 10px 6px;
+}
+.countstyle
+{
+  font-size: 23px;
+font-weight: 500;
+color: #f36f21;
+padding-top: 10px;
+}
+.inputdes
+{
+  font-size: 14px;
+color: #333;
+background: #eeeeee;
+padding: 10px;
+border: 1px solid #dcdcdc;
+  border-top-color: rgb(220, 220, 220);
+  border-right-color: rgb(220, 220, 220);
+  border-bottom-color: rgb(220, 220, 220);
+  border-left-color: rgb(220, 220, 220);
+border-top-color: rgb(220, 220, 220);
+border-right-color: rgb(220, 220, 220);
+border-bottom-color: rgb(220, 220, 220);
+border-left-color: rgb(220, 220, 220);
+transition: border-color 0.2s, box-shadow .2s;
+width: 100%;
+}

@@ -47,7 +47,8 @@ import { PartReplacementComponent } from './repull-jobs/part-replacement/part-re
 import { PreventiveComponent } from './repull-jobs/preventive/preventive.component';
 import { NotificationPopSendComponent } from './components/notification-pop-send/notification-pop-send.component';
 import { NotificationPopSendListComponent } from './components/notification-pop-send-list/notification-pop-send-list.component';
-
+import { JobTrackingComponent } from './components/job-tracking/job-tracking.component';
+import { EmployeeTrackingComponent } from './components/employee-tracking/employee-tracking.component';
 const routes: Routes = [
   { path: '', redirectTo: 'service-dashboard', pathMatch: 'full' },
   { path: 'service-dashboard', component: ServiceDashboardComponent },
@@ -90,6 +91,10 @@ const routes: Routes = [
   { path: 'ReporePreventiveMaintenanceComponent', component: ReporePreventiveMaintenanceComponent },
   { path: 'ReportPartsRepComponent', component: ReportPartsRepComponent },
 
+   //tracking
+   { path: 'Job-tracking', component: JobTrackingComponent },
+   { path: 'employee-tracking', component: EmployeeTrackingComponent },
+  
 
     //Repull-jobs
     { path: 'Audit', component: AuditComponent },

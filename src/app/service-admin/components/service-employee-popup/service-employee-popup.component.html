@@ -1,0 +1,71 @@
+<div class="modal-header" style="position: relative;    padding: 5px;
+bottom: 21px;">
+  <h5 class="modal-title" id="exampleModalLongTitle">List of jobs for</h5>
+
+  <button type="button" class="close" mat-dialog-close aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="card ">
+  <div class="card-header text-center">
+    Job Status
+  </div>
+  <div class="card-body">
+<div>
+
+  <table style=" width: 100%;" *ngIf="!showservice">
+  
+    <tr *ngFor = "let item of service_completed">
+      
+      <td (click)="audit(item)"><a style="color: blue;"> {{item.service_name}}</a></td>
+      <td class="text-center">:<span class="pl-1">{{item.count}}</span></td>
+      
+    </tr>
+  
+  </table> 
+  </div>
+  <div>
+
+    <table style=" width: 100%;" *ngIf="showservice">
+      <tr>
+        <th style="width: 20%;">job_id</th>
+        <th style="width: 40%;">start_time</th>
+        <th style="width: 40%;">end_time</th>
+      </tr>
+      
+    
+      <tr *ngFor = "let item of jobServices">
+
+        <td style="width: 20%;">{{item.job_id}}</td>
+        <td  style="width: 40%;">{{item.start_time}}</td>
+        <td style="width: 40%;">{{item.end_time}}</td>
+        
+      </tr>
+    
+    </table> 
+    </div>
+  
+    <!-- <p class="card-text"></p>
+    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+  <!-- <div class="card-footer text-muted">
+    2 days ago
+  </div> -->
+</div>
+<!-- <p-table  styleClass="ui-table-customers"
+>
+
+<ng-template pTemplate="header">
+        <tr class="thhead" >
+            <th>Time</th>
+            <th>Job Status</th>
+            </tr>
+            <tr class="tdrow">
+                    <td>{{time}}</td>
+                    <td>{{status}}</td>
+                    </tr>
+</ng-template>
+
+
+
+</p-table> -->

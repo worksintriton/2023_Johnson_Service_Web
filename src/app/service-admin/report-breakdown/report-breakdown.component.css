@@ -42,3 +42,8 @@
     margin: 0 0 7px;
     background: white;
 }
+
+:host::ng-deep .chartjs-render-monitor {
+    height: 340px !important;
+    width: 550px !important;
+  }

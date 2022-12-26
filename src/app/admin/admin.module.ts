@@ -80,7 +80,6 @@ import { TabChqcollectionViewComponent } from './pages/tab_page/tab-chqcollectio
 import { TabUsermanagmentComponent } from './pages/tab_page/tab-usermanagment/tab-usermanagment.component';
 import { BreakdownpdfComponent } from '../service-admin/service-page/breakdownpdf/breakdownpdf.component';
 
-
 @NgModule({
   declarations: [
     AdminHeaderComponent,
@@ -110,7 +109,8 @@ import { BreakdownpdfComponent } from '../service-admin/service-page/breakdownpd
     TabChqcollectionListComponent,
     TabChqcollectionViewComponent,
     TabUsermanagmentComponent,
-    BreakdownpdfComponent
+    BreakdownpdfComponent,
+    
 
 
 

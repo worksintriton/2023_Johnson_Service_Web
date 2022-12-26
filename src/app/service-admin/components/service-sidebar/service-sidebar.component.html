@@ -12,6 +12,16 @@
                     <h5 class="lead">Dashboard</h5>
                 </div>
             </mat-list-item>
+            <mat-list-item style="padding-left: 5px;" routerLink="AdminAccess" routerLinkActive="active" *ngIf="Admin_check !== true">
+                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                        aria-hidden="true"
+                        ></i>
+                </mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Admin Access</h5>
+                </div>
+             </mat-list-item>
   
             <mat-list-item style="padding-left: 5px;" routerLink="service_notification" routerLinkActive="active"*ngIf="Admin_check !== true">
                 <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
@@ -23,6 +33,16 @@
                     <h5 class="lead">Service Notification</h5>
                 </div>
             </mat-list-item>
+            <mat-list-item style="padding-left: 5px;" routerLink="Attendance-report" routerLinkActive="active" *ngIf="Admin_check !== true" >
+                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                        aria-hidden="true"
+                        ></i>
+                </mat-icon>
+                <div fxFlex="10"></div>
+                <div class="sidenav-item">
+                    <h5 class="lead">Attendance</h5>
+                </div>
+             </mat-list-item>
   
 
             
@@ -47,7 +67,20 @@
                 <h5 class="lead">Employee</h5>
             </div>
         </mat-list-item>
-  
+
+        <mat-list-item style="padding-left: 5px;" routerLink="Attendance-sub-admin" routerLinkActive="active" *ngIf="Admin_check == true" >
+            <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                    aria-hidden="true"
+                    ></i>
+            </mat-icon>
+            <div fxFlex="10"></div>
+            <div class="sidenav-item">
+                <h5 class="lead">Attendance</h5>
+            </div>
+         </mat-list-item>
+
+         
+<!--   
           <mat-list-item style="padding-left: 5px;" routerLink="service-service" routerLinkActive="active" *ngIf="Admin_check !== true">
             <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
                     aria-hidden="true"
@@ -57,8 +90,49 @@
             <div class="sidenav-item">
                 <h5 class="lead">Services</h5>
             </div>
-         </mat-list-item>
-  
+         </mat-list-item> -->
+         <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1" *ngIf="Admin_check !== true">
+            <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                aria-hidden="true"
+                ></i>
+        </mat-icon>
+            <div fxFlex="10"></div>
+            <div class="sidenav-item">
+                <h5 class="lead">Tracking</h5>
+            </div>
+            <div class="sb-sidenav-collapse-arrow">
+                <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
+                <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
+            </div>
+        </mat-list-item>
+           <mat-nav-list style=" padding-left: 5px; " *ngIf="expand1">
+            <div class="sub-menu">
+    
+              
+               
+                <mat-list-item style="padding-left: 5px;"  routerLink="Job-tracking" routerLinkActive="active" *ngIf="Admin_check !== true">
+                    <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                        aria-hidden="true"
+                        ></i>
+                </mat-icon>
+                    <div fxFlex="10"></div>
+                    <div class="sidenav-item">
+                        <h5 class="lead">Job Tracking</h5>
+                    </div>
+                </mat-list-item>
+            
+                <mat-list-item style="padding-left: 5px;"  routerLink="employee-tracking" routerLinkActive="active" *ngIf="Admin_check !== true">
+                    <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                        aria-hidden="true"
+                        ></i>
+                </mat-icon>
+                    <div fxFlex="10"></div>
+                    <div class="sidenav-item">
+                        <h5 class="lead">Employee Tracking</h5>
+                    </div>
+                </mat-list-item>
+                </div>
+                </mat-nav-list>
   
               <!-- <mat-list-item style="padding-left: 5px;" routerLink="field_management" routerLinkActive="active">
                 <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
@@ -141,7 +215,7 @@
         </mat-nav-list>
 
 
-        <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
+        <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2" *ngIf="Admin_check !== true">
             <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
                 aria-hidden="true"
                 ></i>
@@ -236,157 +310,11 @@
                 </mat-nav-list>
 
              
-         <mat-list-item style="padding-left: 5px;" routerLink="AdminAccess" routerLinkActive="active" *ngIf="Admin_check !== true">
-            <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-            <div fxFlex="10"></div>
-            <div class="sidenav-item">
-                <h5 class="lead">Admin Access</h5>
-            </div>
-         </mat-list-item>
+       
   
-         <mat-list-item style="padding-left: 5px;" routerLink="service-setting" routerLinkActive="active" *ngIf="Admin_check !== true">
-          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                  aria-hidden="true"
-                  ></i>
-          </mat-icon>
-          <div fxFlex="10"></div>
-          <div class="sidenav-item">
-              <h5 class="lead">Settings</h5>
-          </div>
-       </mat-list-item>
-       <mat-list-item style="padding-left: 5px;" routerLink="Attendance-report" routerLinkActive="active" *ngIf="Admin_check !== true" >
-        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                aria-hidden="true"
-                ></i>
-        </mat-icon>
-        <div fxFlex="10"></div>
-        <div class="sidenav-item">
-            <h5 class="lead">Attendance</h5>
-        </div>
-     </mat-list-item>
-     <mat-list-item style="padding-left: 5px;" routerLink="Attendance-sub-admin" routerLinkActive="active" *ngIf="Admin_check == true" >
-        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                aria-hidden="true"
-                ></i>
-        </mat-icon>
-        <div fxFlex="10"></div>
-        <div class="sidenav-item">
-            <h5 class="lead">Attendance</h5>
-        </div>
-     </mat-list-item>
-
-
-       <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
-        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-            aria-hidden="true"
-            ></i>
-    </mat-icon>
-        <div fxFlex="10"></div>
-        <div class="sidenav-item">
-            <h5 class="lead">Job Details</h5>
-        </div>
-        <div class="sb-sidenav-collapse-arrow">
-            <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
-            <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
-        </div>
-    </mat-list-item>
-       <mat-nav-list style=" padding-left: 5px; " *ngIf="expand1">
-        <div class="sub-menu">
-
-          
-           
-            <mat-list-item style="padding-left: 5px;"  routerLink="service-job_details/break_down" routerLinkActive="active"*ngIf="Admin_check !== true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Breakdown Service</h5>
-                </div>
-            </mat-list-item>
-            <mat-list-item style="padding-left: 5px;"  routerLink="sub-breakdown" routerLinkActive="active"*ngIf="Admin_check == true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Breakdown Service</h5>
-                </div>
-            </mat-list-item>
-
-            <mat-list-item style="padding-left: 5px;" routerLink="preventive-maintenance" routerLinkActive="" *ngIf="Admin_check !== true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Preventive Maintenance</h5>
-                </div>
-            </mat-list-item>
-            <mat-list-item style="padding-left: 5px;" routerLink="sub-preventivemaintenance" routerLinkActive=""*ngIf="Admin_check == true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Preventive Maintenance</h5>
-                </div>
-            </mat-list-item>
-     
-            <mat-list-item style="padding-left: 5px;" routerLink="lr-service" routerLinkActive="" *ngIf="Admin_check !== true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">LR SERVICE</h5>
-                </div>
-            </mat-list-item>
-            <mat-list-item style="padding-left: 5px;" routerLink="sub-lr" routerLinkActive="" *ngIf="Admin_check == true">
-                <!-- <mat-icon  mat-list-icon>
-                    <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> 
-                    <img class="sidebar-icon" src="../../assets/images/sidebar-menu/user-type-managment.png" alt="">
-                </mat-icon> -->
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">LR SERVICE</h5>
-                </div>
-            </mat-list-item>
-            <mat-list-item style="padding-left: 5px;" routerLink="sub-partsrep" routerLinkActive="" *ngIf="Admin_check == true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Parts Replacement ACK</h5>
-                </div>
-            </mat-list-item>
-            <mat-list-item style="padding-left: 5px;" routerLink="parts-ack" routerLinkActive=""*ngIf="Admin_check !== true">
-                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                    aria-hidden="true"
-                    ></i>
-            </mat-icon>
-                <div fxFlex="10"></div>
-                <div class="sidenav-item">
-                    <h5 class="lead">Parts Replacement ACK</h5>
-                </div>
-            </mat-list-item>
-            </div>
-            </mat-nav-list>
-
+      
+      
+  
 
             <mat-list-item routerLinkActive="active" (click)="RepullJob = !RepullJob">
                 <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
@@ -402,7 +330,7 @@
                     <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
                 </div>
             </mat-list-item>
-               <mat-nav-list style=" padding-left: 5px; " *ngIf="RepullJob">
+            <mat-nav-list style=" padding-left: 5px; " *ngIf="RepullJob">
                 <div class="sub-menu">
         
                   
@@ -463,10 +391,7 @@
                     </mat-list-item>
 
                     <mat-list-item style="padding-left: 5px;" routerLink="PartReplacement" routerLinkActive="" >
-                        <!-- <mat-icon  mat-list-icon>
-                            <i class="fas fa-arrow-circle-right" aria-hidden="true"></i> 
-                            <img class="sidebar-icon" src="../../assets/images/sidebar-menu/user-type-managment.png" alt="">
-                        </mat-icon> -->
+                        
                         <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
                             aria-hidden="true"
                             ></i>
@@ -487,127 +412,27 @@
                             <h5 class="lead">Audit</h5>
                         </div>
                     </mat-list-item>
-                    <!-- <mat-list-item style="padding-left: 5px;" routerLink="parts-ack" routerLinkActive=""*ngIf="Admin_check !== true">
-                        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                            aria-hidden="true"
-                            ></i>
-                    </mat-icon>
-                        <div fxFlex="10"></div>
-                        <div class="sidenav-item">
-                            <h5 class="lead">Parts Replacement ACK</h5>
-                        </div>
-                    </mat-list-item> -->
                     </div>
-                    </mat-nav-list>
-          
-  
-         <!-- <mat-list-item style="padding-left: 5px;" routerLink="" routerLinkActive="active">
-          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                  aria-hidden="true"
-                  ></i>
-          </mat-icon>
-          <div fxFlex="10"></div>
-          <div class="sidenav-item">
-              <h5 class="lead">Attendance Detail</h5>
-          </div>
-       </mat-list-item> -->
-  
-       <!-- <mat-list-item style="padding-left: 5px;" routerLink="" routerLinkActive="active">
-        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                aria-hidden="true"
-                ></i>
-        </mat-icon>
-        <div fxFlex="10"></div>
-        <div class="sidenav-item">
-            <h5 class="lead">Collection ChQ</h5>
-        </div>
-     </mat-list-item> -->
-  
-  
-     <!-- <mat-list-item style="padding-left: 5px;" routerLink="" routerLinkActive="active">
-      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-              aria-hidden="true"
-              ></i>
-      </mat-icon>
-      <div fxFlex="10"></div>
-      <div class="sidenav-item">
-          <h5 class="lead">Tab User Detail</h5>
-      </div>
-   </mat-list-item> -->
-  
-  
-  
-  
-  
-            <!-- <mat-list-item routerLinkActive="active" (click)="expand1 = !expand1">
-                <mat-icon  mat-list-icon>
-                    <i class="fab fa-android" aria-hidden="true"
-                        ></i></mat-icon>
+            </mat-nav-list>
+        
+            <mat-list-item style="padding-left: 5px;" routerLink="service-setting" routerLinkActive="active" *ngIf="Admin_check !== true">
+                <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
+                        aria-hidden="true"
+                        ></i>
+                </mat-icon>
                 <div fxFlex="10"></div>
                 <div class="sidenav-item">
-                    <h5 class="lead">App Features</h5>
+                    <h5 class="lead">Settings</h5>
                 </div>
-                <div class="sb-sidenav-collapse-arrow">
-                    <i *ngIf="!expand1" class="fas fa-chevron-down" aria-hidden="true"></i>
-                    <i *ngIf="expand1" class="fas fa-chevron-up" aria-hidden="true"></i>
-                </div>
-            </mat-list-item>
-            <mat-nav-list style="background: #011b91;padding-left: 5px;" *ngIf="expand1">
-                <div class="sub-menu">
-  
-                    <mat-list-item routerLinkActive="active" (click)="expand2 = !expand2">
-                        <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true"
-                                ></i></mat-icon>
-                        <div fxFlex="10"></div>
-                        <div class="sidenav-item">
-                            <h5 class="lead">Master</h5>
-                        </div>
-                        <div class="sb-sidenav-collapse-arrow">
-                            <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
-                            <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
-                        </div>
-                    </mat-list-item>
-                    <mat-nav-list style="background: #011b91;" *ngIf="expand2">
-  
-                    </mat-nav-list>
-  
-  
-                    <mat-list-item routerLinkActive="active" (click)="expand3 = !expand3">
-                      <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right" aria-hidden="true"
-                              ></i></mat-icon>
-                      <div fxFlex="10"></div>
-                      <div class="sidenav-item">
-                          <h5 class="lead">Oracle</h5>
-                      </div>
-                      <div class="sb-sidenav-collapse-arrow">
-                          <i *ngIf="!expand2" class="fas fa-chevron-down" aria-hidden="true"></i>
-                          <i *ngIf="expand2" class="fas fa-chevron-up" aria-hidden="true"></i>
-                      </div>
-                  </mat-list-item>
-                  <mat-nav-list style="background: #011b91;" *ngIf="expand3">
-                      <div class="sub-menu">
-                        <mat-list-item style="padding-left: 5px;" routerLink="oracel_new_groupdetail" routerLinkActive="active">
-                          <mat-icon  mat-list-icon><i class="fas fa-arrow-circle-right"
-                                  aria-hidden="true"
-                                  ></i>
-                          </mat-icon>
-                          <div fxFlex="10"></div>
-                          <div class="sidenav-item">
-                              <h5 class="lead">Oracle Activity</h5>
-                          </div>
-                      </mat-list-item>
-  
-                      </div>
-                  </mat-nav-list>
-                </div>
-            </mat-nav-list> -->
+             </mat-list-item>
+
+
         </mat-nav-list>
     </mat-drawer>
     <mat-drawer-content>
         <section class="container-fluid">
             <router-outlet></router-outlet>
         </section>
-  
     </mat-drawer-content>
   </mat-drawer-container>
   

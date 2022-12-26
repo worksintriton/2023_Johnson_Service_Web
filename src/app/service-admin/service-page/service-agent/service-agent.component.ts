@@ -6,7 +6,8 @@ import { ExcelService } from '../../../excel.service';
 import * as XLSX from 'xlsx';
 import { DatePipe } from '@angular/common';
 import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ServiceEmployeePopupComponent } from '../../components/service-employee-popup/service-employee-popup.component';
 
 @Component({
   selector: 'app-service-agent',
@@ -33,7 +34,7 @@ export class ServiceAgentComponent implements OnInit {
   header = ["S no", "Emp Name", "Emp Code", "Emp Phone", "Location Name", "Emp type",
   "Device Number", "Status", "Login Status", "Last Login Time","Last LogoutTime","Action"];
   // rows=[{"agent_name":"arun","agent_phone":"8794561230","Email_id":"Arun@gmail.com","org_name":"Jhonshon","location_name":"chennai","mobile_model":"Nokia","mobile_make":"HMD","imei":"321546687"}]
-  constructor(private router:Router, private toastr:ToastrManager,private _api: ApiService,private excelservice: ExcelService) { }
+  constructor(private router:Router, private toastr:ToastrManager,private _api: ApiService,private excelservice: ExcelService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
@@ -222,5 +223,14 @@ console.log( this.newexcel)
     this.detail=item;
     this.router.navigate(['/service-admin/service-add-admin'])
     sessionStorage.setItem('employeeDetail', JSON.stringify(this.detail));
+  }
+  employeepopup(item) {
+    console.log(item);
+    const dialogRef = this.dialog.open(ServiceEmployeePopupComponent, {
+      width: '600px',
+      data: item,
+    });
+    dialogRef.afterClosed().subscribe(password => {
+    });
   }
 }

@@ -31,6 +31,7 @@ export class ServiceReportTableComponent implements OnInit {
   S_Date: any;
   E_Date: any;
   reportsrange:any;
+  Admin_check : any;
   col: boolean = false;
 
   rows = [];
@@ -178,12 +179,27 @@ var year = new Date(new Date().getFullYear() , 0, 1);
     console.log(this.active)
   }
   submit(){
+    this.Admin_check = JSON.parse(sessionStorage.getItem('Sub_Admin_login') );
+
     var end_date = this.E_Date.setDate(this.E_Date.getDate() + 1);
     this. data = {
       "start_date":new DatePipe('en-US').transform(this.S_Date,'yyyy-MM-dd') ,
       "end_date": new DatePipe('en-US').transform(end_date,'yyyy-MM-dd') ,
-      "status":  this.Job_type
+      "status":  this.Job_type,
+      "user_type" : "",
+      "access_location":[],
     }
+
+    if(this.Admin_check == null){
+      this.data.user_type = "Admin"
+      this.data.access_location = [];
+    }else{
+      var access_loc = JSON.parse(sessionStorage.getItem('access_loc') );
+      this.data.user_type = "SubAdmin"
+      this.data.access_location = access_loc;
+    }
+
+
     if (this.jwt == 'breakdown') {
  
       console.log('breakdown working lol')

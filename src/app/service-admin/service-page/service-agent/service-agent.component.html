@@ -49,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="search-hero">
                                     <div class="input-group mb-3">
-                                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Seelect Date" class="mr-3"></p-calendar>                        
+                                     <p-calendar [(ngModel)]="S_Date" [showIcon]="true" inputId="icon" placeholder="Select Date" class="mr-3"></p-calendar>                        
                                       </div>
                                   </div>
                             </div>
@@ -172,7 +172,7 @@
                                             <span
                                                 class="Pr-2" style="color:blue">{{i+1}}</span>
                                             </span>
-                                        <span *ngIf="e == 'Emp Name'">{{item.user_name}}</span>
+                                        <span *ngIf="e == 'Emp Name'" (click)="employeepopup(item.user_mobile_no)"><a style="color: blue;">{{item.user_name}}</a></span>
                                         <span *ngIf="e == 'Emp Code'">{{item.user_id}}</span>
                                         <span *ngIf="e == 'Emp Phone'">
                                             {{item.user_mobile_no}}</span>

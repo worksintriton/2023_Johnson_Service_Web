@@ -1,0 +1,4 @@
+:host::ng-deep button:focus {
+  
+    outline: 0px auto -webkit-focus-ring-color;
+}

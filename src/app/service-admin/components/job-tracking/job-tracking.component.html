@@ -1,0 +1,125 @@
+<section>
+  <div class="page-header">
+          <div>
+              <h2 class="main-content-title tx-24 mb-1">Job Tracking</h2>
+              <!-- <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a routerLink="dashboard">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">App User Management</li>
+              </ol> -->
+          </div>
+       
+    
+      </div>
+<div class="row row-sm">
+
+  <div class="col-lg-12">
+<div class="card custom-card">
+  <div class="card-body">
+      <div class="card-item">
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="search-hero">
+                      <div class="input-group mb-3">
+                         <!-- <div class="input-group-prepend">
+                           <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                         </div> -->
+                         <span class="d-flex " style="align-items:center">Search Job No</span>
+                         <input type="text" style="margin-left:5px" (keyup.enter)="job_search()" pInputText name="field_length" [(ngModel)]="jobno" placeholder="Search">
+                       </div>
+                    </div>
+              </div>
+              <div class="col-md-6 text-right">
+                  <!-- <button type="button" class="btn btn-secondary" (click)="refersh()"><i class="fas fa-sync-alt"></i> Refresh</button> -->
+              </div>
+          </div>
+
+  <agm-map 
+  [latitude]="lat"
+  [longitude]="lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false"
+>
+
+  <agm-marker 
+      *ngFor="let m of markers; let i = index"
+      (markerClick)="clickedMarker(m.label, i)"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]="m.label"
+     
+    >
+      
+    <agm-info-window>
+      <strong>{{m.job_no}}</strong><br>
+      <strong>{{m.location_text}}</strong><br>
+      <strong>{{m.user_mobile_no}}</strong><br>
+    </agm-info-window>
+    
+  </agm-marker>
+  
+  <!-- <agm-circle [latitude]="lat + 0.3" [longitude]="lng" 
+      [radius]="5000"
+      [fillColor]="'red'"
+      [circleDraggable]="true"
+      [editable]="true">
+  </agm-circle> -->
+
+</agm-map>
+
+
+          <div *ngIf="jobtable==true" class="table-responsive mt-5">
+            <p-table [value]="rows " styleClass="ui-table-customers" #tt [paginator]="true" [rows]="5"
+            [rowHover]="true" [rowsPerPageOptions]="[5,10,25,50]" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="['type']">
+            <ng-template pTemplate="header">
+            <tr class="thhead">
+            <th style="width: 80px;">S.No</th>
+            <th style="width: 100px;">Job No</th>
+            <th style="width: 154px;">Service Type</th>
+            <th style="width: 180px;">Complaint No</th>
+            <th style="width: 150px;">User Mobile No</th>
+            <th style="width: 250px;">Location Text</th>
+            <th style="width: 150px;">Latitude</th>
+            <th style="width: 150px;">Longitude</th>
+            <th style="width: 150px;">Date</th>
+            <th style="width: 200px;">Remarks</th>
+       
+            <!-- <th style="width: 100px;">ACTION</th> -->
+            
+            
+            
+            </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item  let-i="rowIndex">
+            <tr class="tdrow">
+            <td>{{i+1}}</td>
+            <td>{{item.job_no}}</td>
+            <td>{{item.km}}</td>
+            <td>{{item.complaint_no}}</td>
+            <td>{{item.user_mobile_no}}</td>
+            <td>{{item.location_text}}</td>
+            <td>
+            {{item.loc_lat}}
+            </td>
+            <td>{{item.loc_long}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.remarks}}</td>
+            <!-- <td>{{item.SMU_SCH_CUSADD3}}</td> -->
+            
+            </tr>
+            </ng-template>
+            </p-table>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+
